@@ -147,6 +147,14 @@
     (a) => a.clear().mark("S_Ready", "active-el"), // caveat 노출 — 마킹 유지
   ];
 
+  // 슬라이드 11: 범위 — 시작과 끝 (경계 강조: 시작 하나 + 결말 셋)
+  // caveat 단일 fragment에서 경계 전체를 함께 표시한다.
+  STEPS["s-scope"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().mark(
+      ["Sc_Start", "Sc_Ready", "Sc_Missing", "Sc_Canceled"], "active-el"),
+  ];
+
   // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
   // 슬라이드 22: 토큰으로 진행 위치 읽기
   STEPS["s-token"] = [

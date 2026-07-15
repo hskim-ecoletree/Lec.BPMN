@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="vendor/reveal/reveal.css" />
   <link rel="stylesheet" href="vendor/bpmn/diagram-js.css" />
   <link rel="stylesheet" href="vendor/bpmn/bpmn-embedded.css" />
-  <link rel="stylesheet" href="assets/css/theme.css?v=7" />
+  <link rel="stylesheet" href="assets/css/theme.css?v=8" />
 </head>
 <body>
   <div class="reveal">
@@ -307,15 +307,53 @@
       </section>
 
       <!-- ============================================================= -->
-      <!-- 온보딩 전체 이야기 — 다이어그램 전면                            -->
+      <!-- 08 — BPMN이란 무엇인가 (같은 문장, 다른 그림)                    -->
+      <!-- ============================================================= -->
+      <section data-plan="08">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">여섯 질문과 언어</div>
+          <div class="slide__q">Q6</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">BPMN은 그림 솜씨가 아니라,<br />누가 봐도 같게 읽히는 약속입니다.</h2>
+
+            <div class="src">“서류를 검토하고, 문제가 있으면 반려한다.”</div>
+
+            <div class="rows">
+              <div class="rows__item fragment">
+                <span class="rows__term">수진은</span>
+                <span class="rows__desc">반려하면 보완을 받아 다시 검토로 돌아온다고 읽는다.</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term">민호는</span>
+                <span class="rows__desc">반려하면 그대로 온보딩이 끝난다고 읽는다.</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term">지민은</span>
+                <span class="rows__desc">‘문제’가 무엇인지 몰라 언제 반려되는지 모른다.</span>
+              </div>
+            </div>
+
+            <p class="caveat fragment" style="margin-bottom:96px">같은 문장을 셋이 다르게 읽습니다 — BPMN은 기호마다 뜻이 합의돼 있어, 이 갈래를 <em>한 흐름</em>으로 좁힙니다.</p>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — "BPMN이 무엇인가"에 정의로 답한다. 그림 도구가 아니라 합의된 표기라는 점을 프로즈의 모호함으로 보인다. Q6(도구의 성격)에 복무, 메시지 M2 계열.</p>
+            <p><b>대사</b> — BPMN이 뭔지 한마디로 정하고 갑시다. 흔한 오해가 "예쁘게 그리는 도구"입니다. 아닙니다. 한 문장을 봅시다 — "서류를 검토하고, 문제가 있으면 반려한다." 명확해 보이죠? [다음] 그런데 수진은 반려 뒤 보완을 받아 다시 검토로 돌아온다고 읽습니다. [다음] 민호는 반려하면 온보딩이 그냥 끝난다고 읽습니다. [다음] 지민은 '문제'가 뭔지 몰라 자기가 언제 반려될지 모릅니다. 한 문장인데 셋이 다르게 그립니다. [다음] BPMN은 기호마다 뜻이 하나로 약속돼 있어서, 이 세 갈래를 하나의 흐름으로 좁힙니다. 그게 BPMN이 하는 일입니다 — 그림 솜씨가 아니라, 같게 읽히게 하는 약속.</p>
+            <p><b>오해</b> — "BPMN = 예쁜 다이어그램". <b>교정</b> — 기호마다 합의된 뜻이 있어 읽는 사람이 달라도 같은 흐름을 예상하게 하는 표기.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 09 — 지민의 온보딩 전체 흐름 (다이어그램 전면, 지도 훑기)        -->
       <!-- ============================================================= -->
       <section data-plan="09">
         <div class="slide">
           <div class="slide__shade"></div>
-          <div class="slide__label">BPMN이라는 언어</div>
+          <div class="slide__label">여섯 질문과 언어</div>
           <div class="slide__q">Q1 · Q2</div>
           <div class="slide__inner">
-            <h2 class="slide__msg">같은 그림을 본 사람들이, 같은 실행을 예상합니다.</h2>
+            <h2 class="slide__msg">지민의 온보딩 전체입니다 —<br />오늘 이 지도를 장면 단위로 걷습니다.</h2>
 
             <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:34px">
               <div class="bpmn__canvas"></div>
@@ -324,7 +362,7 @@
               <div class="persona-row">
                 <span class="persona persona--jimin">지민 · 신입사원</span>
                 <span class="persona persona--sujin">수진 · HR</span>
-                <span class="persona persona--minho">민호 · 매니저</span>
+                <span class="persona persona--minho">민호 · 채용 매니저</span>
                 <span class="persona persona--it">IT · 시설</span>
                 <span class="persona persona--ext">외부 Identity Provider</span>
               </div>
@@ -332,7 +370,85 @@
             </div>
           </div>
           <aside class="notes">
-            <p><b>대사</b> — 입사 제안 수락부터 첫 출근 준비 완료까지, 지민의 온보딩 전체 지도입니다. 일반 문장이나 순서도로는 누가 책임지는지, 무엇을 기다리는지가 드러나지 않습니다. BPMN은 역할과 대기와 예외를 합의된 기호로 드러냅니다. 외우지 마세요 — 오늘 하루 동안 이 지도를 장면 단위로 걸어갑니다.</p>
+            <p><b>역할</b> — 2교시 지도 훑기. 08에서 "BPMN = 같게 읽히는 약속"을 정의했으니, 여기서는 그 약속으로 쓴 전체 모델을 한 번 펼쳐 보인다. 세부는 외우지 않는다.</p>
+            <p><b>대사</b> — 입사 제안 수락부터 첫 출근 준비 완료까지, 지민의 온보딩 전체 지도입니다. 지금 다 이해하려 하지 마세요. 한 가지만 봐 두면 됩니다 — 사람마다 다르게 읽히던 흐름이, 합의된 기호로 그리면 역할·대기·예외가 한 자리에 모입니다. 이 지도를 오늘 하루 장면 단위로 걸어갑니다. 서류 대기, 근무 형태 분기, 병렬 준비, 계정 실패 복구 — 각 장면에서 여기 이 조각으로 돌아옵니다.</p>
+            <p><b>예상 질문</b> — "이걸 다 외워야 하나요?" → 아니요. 여섯 질문으로 읽는 눈만 남기면 됩니다. 기호는 장면마다 필요할 때 하나씩.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 10 — 다이어그램 없이 흐름 정리하기                              -->
+      <!-- ============================================================= -->
+      <section data-plan="10">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">여섯 질문과 언어</div>
+          <div class="slide__q">Q1–Q6</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">흐름은 그리기 전에 정리됩니다 —<br />여섯 질문에 답하면 구조가 섭니다.</h2>
+
+            <div class="qa">
+              <div class="qa__item fragment">
+                <span class="qa__q">Q1 · 시작·종료</span>
+                <span class="qa__a">서류 도착으로 시작해, 승인 또는 반려로 끝난다.</span>
+              </div>
+              <div class="qa__item fragment">
+                <span class="qa__q">Q2 · 역할</span>
+                <span class="qa__a">수진이 검토하고, 지민이 보완 서류를 제출한다.</span>
+              </div>
+              <div class="qa__item fragment">
+                <span class="qa__q">Q3 · 분기</span>
+                <span class="qa__a">서류가 완전하면 승인, 아니면 보완을 요청한다.</span>
+              </div>
+              <div class="qa__item fragment">
+                <span class="qa__q">Q4 · 대기</span>
+                <span class="qa__a">지민의 보완 제출을 기다린다.</span>
+              </div>
+              <div class="qa__item fragment">
+                <span class="qa__q">Q5 · 예외·복구</span>
+                <span class="qa__a">기한 내 미제출이면 후속 조치를 결정한다.</span>
+              </div>
+              <div class="qa__item fragment">
+                <span class="qa__q">Q6 · 도구 적합성</span>
+                <span class="qa__a">대기·기한이 있어, 흐름으로 볼 값이 있다.</span>
+              </div>
+            </div>
+
+            <div class="slide__support">기호는 이 답을 옮겨 적는 표기일 뿐 — 구조는 질문에 답하는 순간 이미 선다.</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 표기보다 사고가 먼저임을 보인다. 여섯 질문이 곧 도구이고, BPMN은 그 답을 옮기는 표기라는 점(M1 계열). Q 전체에 복무.</p>
+            <p><b>대사</b> — 한 가지 오해를 풀고 갑시다. "BPMN을 배운다 = 그리는 법을 배운다"가 아닙니다. 수진이 입사 서류 검토를 정리한다고 해 봅시다 — 종이도 툴도 없이, 여섯 질문에만 답합니다. [다음] 시작과 끝 — 서류가 오면 시작, 승인이나 반려로 끝. [다음] 역할 — 검토는 수진, 보완 제출은 지민. [다음] 분기 — 완전하면 승인, 아니면 보완 요청. [다음] 대기 — 지민의 보완을 기다림. [다음] 예외 — 기한 안에 안 오면 후속 결정. [다음] 그리고 여섯 번째, 이건 흐름으로 볼 값이 있나? 대기와 기한이 있으니 있습니다. 보세요 — 아직 아무것도 그리지 않았는데 구조가 이미 섰습니다. 그리기는 이걸 옮겨 적는 일일 뿐입니다.</p>
+            <p><b>시간 조정</b> — 여유 있으면 한 사람에게 자기 업무를 Q1·Q2만 소리내어 답하게 한다(1분).</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 11 — Workflow의 범위: 시작과 끝                                  -->
+      <!-- ============================================================= -->
+      <section data-steps="s-scope" data-plan="11">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">여섯 질문과 언어</div>
+          <div class="slide__q">Q1</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">Workflow는 계기 하나로 시작해,<br />여러 방식으로 끝날 수 있습니다.</h2>
+
+            <div class="bpmn" data-model="models/frag_scope_startend.bpmn" style="margin-top:24px">
+              <div class="bpmn__cap">범위 · OfferAccepted → FirstDayReady</div>
+              <div class="bpmn__canvas"></div>
+            </div>
+
+            <p class="caveat fragment" style="margin-bottom:96px">끝이 하나라고 가정하면 미제출·취소 같은 <em>다른 결말</em>을 흐름 밖에 두게 됩니다.</p>
+
+            <div class="slide__support">시작은 ‘입사 제안 수락’ 하나 — 끝은 준비 완료 · 서류 미제출 · 채용 취소 셋.</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 범위(Q1)를 정의한다. Workflow는 계기(Start)와 결말(End)로 경계가 정해지고, 결말은 여럿일 수 있다. 온보딩 모델의 실제 시작·종료로 보인다.</p>
+            <p><b>대사</b> — Workflow를 그리기 전에 반드시 정해야 하는 게 범위입니다. 어디서 시작해 어디서 끝나는가. [다음] 지민의 온보딩은 '입사 제안 수락'이라는 사건 하나로 시작합니다. 계기가 분명해야 언제 이 업무가 생기는지 압니다. [다음] 그런데 끝은 하나가 아닙니다. 준비 완료로 끝나기도, 서류를 끝내 못 받아 종료되기도, 채용이 취소되어 끝나기도 합니다. 셋 다 정상적인 '끝'입니다. 끝을 '준비 완료' 하나로만 생각하면, 미제출과 취소는 흐름 밖으로 새어 나가 아무도 책임지지 않게 됩니다. 시작과 끝을 먼저 못박는 이유입니다.</p>
+            <p><b>오해</b> — "Workflow의 끝은 성공 하나". <b>교정</b> — 업무적으로 유효한 종료가 여럿이며, 그 전부가 범위 안에 있어야 한다. (이 그림은 범위를 보이기 위한 축약 — 실제 종료 지점은 전체 모델에서 더 세분된다.)</p>
           </aside>
         </div>
       </section>
@@ -471,6 +587,6 @@
 
   <script src="vendor/reveal/reveal.js"></script>
   <script src="vendor/bpmn/bpmn-navigated-viewer.production.min.js"></script>
-  <script src="assets/js/deck.js?v=4"></script>
+  <script src="assets/js/deck.js?v=5"></script>
 </body>
 </html>

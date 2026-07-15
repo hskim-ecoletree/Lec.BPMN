@@ -254,6 +254,19 @@
 .facet { font-size: 21px; font-weight: 740; letter-spacing: -.01em; color: var(--ink-soft); }
 .facet.current-fragment { color: var(--accent); }
 
+/* 원문 인용 — 모호한 한 문장(잉크, 큰따옴표) */
+.src {
+  margin-top: 30px;
+  font-size: 24px; font-weight: 640; color: var(--ink-deep);
+  letter-spacing: -.01em; line-height: 1.4;
+}
+
+/* 질문-답 워크시트 — 다이어그램 없이 여섯 질문으로 정리 (단일 열) */
+.qa { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 17px; }
+.qa__item { display: grid; grid-template-columns: 190px 1fr; gap: 26px; align-items: baseline; }
+.qa__q { font-family: var(--mono); font-size: 13.5px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
+.qa__a { font-size: 17.5px; font-weight: 520; color: var(--ink-soft); line-height: 1.45; }
+
 /* 질문 격자 — 회수 장표의 여섯 질문 (2열) */
 .qgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px 56px; align-content: center; }
 .qgrid__item { display: flex; flex-direction: column; gap: 7px; }

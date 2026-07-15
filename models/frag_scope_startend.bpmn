@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_ScopeStartEnd"
+  targetNamespace="https://example.org/camunda7/training/fragments">
+  <bpmn:process id="Process_ScopeStartEnd" name="범위 — 시작과 끝" isExecutable="false">
+    <bpmn:startEvent id="Sc_Start" name="입사 제안 수락">
+      <bpmn:outgoing>Sc_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Sc_Onboarding" name="온보딩 진행">
+      <bpmn:incoming>Sc_f1</bpmn:incoming>
+      <bpmn:outgoing>Sc_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Sc_Outcome" name="결과">
+      <bpmn:incoming>Sc_f2</bpmn:incoming>
+      <bpmn:outgoing>Sc_fReady</bpmn:outgoing>
+      <bpmn:outgoing>Sc_fMissing</bpmn:outgoing>
+      <bpmn:outgoing>Sc_fCanceled</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Sc_Ready" name="첫 출근 준비 완료">
+      <bpmn:incoming>Sc_fReady</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Sc_Missing" name="서류 미제출로 종료">
+      <bpmn:incoming>Sc_fMissing</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Sc_Canceled" name="채용 취소">
+      <bpmn:incoming>Sc_fCanceled</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Sc_f1" sourceRef="Sc_Start" targetRef="Sc_Onboarding" />
+    <bpmn:sequenceFlow id="Sc_f2" sourceRef="Sc_Onboarding" targetRef="Sc_Outcome" />
+    <bpmn:sequenceFlow id="Sc_fReady" sourceRef="Sc_Outcome" targetRef="Sc_Ready" />
+    <bpmn:sequenceFlow id="Sc_fMissing" sourceRef="Sc_Outcome" targetRef="Sc_Missing" />
+    <bpmn:sequenceFlow id="Sc_fCanceled" sourceRef="Sc_Outcome" targetRef="Sc_Canceled" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ScopeStartEnd">
+    <bpmndi:BPMNPlane id="BPMNPlane_ScopeStartEnd" bpmnElement="Process_ScopeStartEnd">
+      <bpmndi:BPMNShape id="Sc_Start_di" bpmnElement="Sc_Start">
+        <dc:Bounds x="160" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="126" y="265" width="104" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Sc_Onboarding_di" bpmnElement="Sc_Onboarding">
+        <dc:Bounds x="260" y="200" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Sc_Outcome_di" bpmnElement="Sc_Outcome" isMarkerVisible="true">
+        <dc:Bounds x="480" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="490" y="272" width="30" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Sc_Ready_di" bpmnElement="Sc_Ready">
+        <dc:Bounds x="640" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="600" y="125" width="116" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Sc_Missing_di" bpmnElement="Sc_Missing">
+        <dc:Bounds x="640" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="600" y="265" width="116" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Sc_Canceled_di" bpmnElement="Sc_Canceled">
+        <dc:Bounds x="640" y="362" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="618" y="405" width="80" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Sc_f1_di" bpmnElement="Sc_f1">
+        <di:waypoint x="196" y="240" /><di:waypoint x="260" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Sc_f2_di" bpmnElement="Sc_f2">
+        <di:waypoint x="410" y="240" /><di:waypoint x="480" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Sc_fReady_di" bpmnElement="Sc_fReady">
+        <di:waypoint x="505" y="215" /><di:waypoint x="505" y="100" /><di:waypoint x="640" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Sc_fMissing_di" bpmnElement="Sc_fMissing">
+        <di:waypoint x="530" y="240" /><di:waypoint x="640" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Sc_fCanceled_di" bpmnElement="Sc_fCanceled">
+        <di:waypoint x="505" y="265" /><di:waypoint x="505" y="380" /><di:waypoint x="640" y="380" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
