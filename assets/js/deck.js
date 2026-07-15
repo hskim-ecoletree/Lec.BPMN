@@ -114,8 +114,9 @@
         const html = document.createElement("div");
         html.className = "tok " + (cls || "");
         html.textContent = label == null ? "" : label;
+        // 요소 우상단 — 라벨을 가리지 않는다
         const oid = overlays.add(id, {
-          position: { top: el.height / 2 - 13, left: el.width / 2 - 13 },
+          position: { top: -12, left: el.width - 14 },
           html,
         });
         added.overlays.push(oid);
@@ -141,22 +142,22 @@
       .focus(["Task_RequestDocuments", "Gateway_WaitForDocuments",
               "CatchEvent_DocumentsDeadline", "Task_ReviewDocuments"], 60)
       .mark("Gateway_WaitForDocuments", "active-el")
-      .token("Gateway_WaitForDocuments", "1"),
+      .token("Gateway_WaitForDocuments"),
     (a) => a.clear()
       .focus(["Gateway_PreparationSplit", "Task_RegisterTraining", "Task_CreateAccount",
               "Task_PrepareEquipment", "Gateway_PreparationJoin"], 55)
       .mark(["Task_CreateAccount", "Task_PrepareEquipment", "Task_RegisterTraining"], "active-el")
-      .token("Task_CreateAccount", "1")
-      .token("Task_PrepareEquipment", "2")
-      .token("Task_RegisterTraining", "3"),
+      .token("Task_CreateAccount")
+      .token("Task_PrepareEquipment")
+      .token("Task_RegisterTraining"),
     (a) => a.clear()
       .focus(["Gateway_PreparationJoin", "CatchEvent_StartDate", "Task_FinalReadinessCheck"], 60)
       .mark("CatchEvent_StartDate", "active-el")
-      .token("CatchEvent_StartDate", "1"),
+      .token("CatchEvent_StartDate"),
     (a) => a.clear()
       .focus(["Task_FinalReadinessCheck", "EndEvent_FirstDayReady"], 70)
       .mark("EndEvent_FirstDayReady", "active-el")
-      .token("EndEvent_FirstDayReady", "1"),
+      .token("EndEvent_FirstDayReady"),
   ];
 
   // 슬라이드 35: 교착 (XOR 분기 + Parallel 합류)
@@ -165,18 +166,18 @@
     (a) => a.clear()
       .mark(["Frag_XOR", "Frag_fRemote", "Frag_Remote"], "highlight-flow")
       .mark("Frag_Office", "dim-el").mark("Frag_fOffice", "dim-el")
-      .token("Frag_Remote", "1"),
+      .token("Frag_Remote"),
     (a) => a.clear()
       .mark("Frag_Office", "dim-el")
       .mark("Frag_AND", "dead-el")
-      .token("Frag_AND", "1", "tok--wait")
-      .token("Frag_Office", "", "tok--ghost"),
+      .token("Frag_AND", null, "tok--wait")
+      .token("Frag_Office", null, "tok--ghost"),
     (a) => a.clear()
       .mark("Frag_Office", "dim-el")
       .mark(["Frag_AND", "Frag_fToOrientation"], "dead-el")
       .mark(["Frag_Orientation", "Frag_End", "Frag_fEnd"], "dim-el")
-      .token("Frag_AND", "1", "tok--wait")
-      .token("Frag_Office", "", "tok--ghost"),
+      .token("Frag_AND", null, "tok--wait")
+      .token("Frag_Office", null, "tok--ghost"),
   ];
 
   /* ---- 5. step 적용 (fragment 연동) --------------------------------- */
