@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="vendor/reveal/reveal.css" />
   <link rel="stylesheet" href="vendor/bpmn/diagram-js.css" />
   <link rel="stylesheet" href="vendor/bpmn/bpmn-embedded.css" />
-  <link rel="stylesheet" href="assets/css/theme.css?v=6" />
+  <link rel="stylesheet" href="assets/css/theme.css?v=7" />
 </head>
 <body>
   <div class="reveal">
@@ -130,7 +130,7 @@
       <section data-plan="04">
         <div class="slide">
           <div class="slide__shade"></div>
-          <div class="slide__label">오리엔테이션 — 도구 연결</div>
+          <div class="slide__label">업무를 흐름으로 보는 눈</div>
           <div class="slide__q">Q6</div>
           <div class="slide__inner">
             <h2 class="slide__msg">OutSystems를 배운 여러분에게,<br />BPMN은 낯선 세계가 아닙니다.</h2>
@@ -213,6 +213,95 @@
             <p><b>대사</b> — 솔직한 이야기를 하나 하고 갑시다. BPMN에는 부침이 있었습니다. [다음] 2004년, 사람이 읽는 그림 표기로 출발했습니다. [다음] 2011년 BPMN 2.0 — 그림에 실행 의미까지 담겼습니다. '그리면 돌아간다'는 것이 이 표준의 약속이었죠. [다음] 2013년에는 국제 표준이 됐습니다. [다음] 그리고 지금 — 그 시절의 큰 약속이 전부 그대로 남지는 않았습니다. 도구와 제품은 계속 바뀝니다. 그래도 남은 것이 둘 있습니다. 사람과 사람 사이에 흐름을 합의하는 공용어, 그리고 몇 주씩 기다리는 업무를 다루는 실행 엔진. 오늘 우리가 배우는 건 이 둘입니다. [다음] 그리고 부침이 남긴 교훈 — 맞지 않는 업무까지 억지로 모델링하지 않는 것. 이 기준은 마지막 시간에 함께 만듭니다.</p>
             <p><b>오해</b> — "표준이 됐으니 모든 업무를 BPMN으로 그려야 한다" / "유행이 지났으니 배울 가치가 없다". <b>교정</b> — 표기는 ISO 표준·여러 엔진의 공용어로 남았고, 남은 가치는 전부가 아니라 '맞는 업무'에서 나온다.</p>
             <p><b>예상 질문</b> — "Camunda 7도 오래된 것 아닌가요?" → Community Edition은 7.24(2025-10)가 최종 릴리스이고 Enterprise 지원은 2030-04까지다(검증노트 §2). 우리는 Camunda 7을 목적이 아니라 실행 의미를 관찰하는 확대경으로 쓴다 — 언어와 사고법은 엔진이 바뀌어도 남는다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 06 — AI 에이전트와 프로세스의 경계                              -->
+      <!-- ============================================================= -->
+      <section data-plan="06">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">업무를 흐름으로 보는 눈</div>
+          <div class="slide__q">Q2 · Q5</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">AI가 판단을 대신해도,<br />책임·기한·기록·복구는 프로세스에 남습니다.</h2>
+
+            <div class="rows">
+              <div class="rows__item fragment">
+                <span class="rows__term">책임</span>
+                <span class="rows__desc">서류 부적합 판정을 누가 승인하고 책임지는가.</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term">기한</span>
+                <span class="rows__desc">3일이 지나도 판단이 없으면 누가 알게 되는가.</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term">기록</span>
+                <span class="rows__desc">무엇을 근거로 통과시켰는지 남는가.</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term">복구</span>
+                <span class="rows__desc">판단이 틀렸을 때 어떤 경로로 되돌리는가.</span>
+              </div>
+            </div>
+
+            <p class="caveat fragment" style="margin-bottom:96px">AI는 단계 <em>안의 판단</em>을 바꿉니다 — 단계 <em>사이의 구조</em>는 그대로 남습니다.</p>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — "AI 시대에 왜 프로세스인가"라는 질문을 1교시에 정면으로 받는다. Q2(역할·책임)와 Q5(복구)에 복무.</p>
+            <p><b>대사</b> — 요즘이라면 이렇게 물으실 겁니다. "서류가 완전한지는 AI가 판단하면 되지 않나요?" 맞습니다 — 수진이 하던 그 검토, AI 에이전트(목표를 주면 판단과 행동을 스스로 이어 가는 소프트웨어)가 대신할 수 있습니다. 그런데 그 순간에도 네 가지 질문이 사라지지 않습니다. [다음] 책임 — AI가 부적합이라고 했을 때, 지민에게 통보하고 책임지는 사람은 누구인가. [다음] 기한 — AI가 답을 못 내고 사흘이 지나면 누가 알게 되는가. [다음] 기록 — 나중에 감사가 물었을 때, 무엇을 근거로 통과시켰는지 남아 있는가. [다음] 복구 — 잘못 판단했다면 어느 지점부터 되돌리는가. 이 네 가지는 판단하는 주체가 사람이든 AI든 똑같이 필요한, 흐름의 구조입니다. [다음] 그래서 경계가 이렇습니다 — AI는 단계 안의 판단을 바꾸지만, 단계 사이의 구조는 남습니다. 오히려 판단이 빨라질수록 구조가 더 잘 보여야 합니다.</p>
+            <p><b>오해</b> — "AI 에이전트가 있으면 프로세스 정의는 필요 없다". <b>교정</b> — AI는 Task 안을 대체할 수 있어도 책임·기한·기록·복구라는 Task 사이의 구조를 없애 주지 않는다.</p>
+            <p><b>예상 질문</b> — "AI가 흐름 전체를 알아서 조율하면요?" → 그 경우에도 사람·시스템이 합의할 경계(무엇을 맡기고 무엇을 감시하는가)를 정해야 하고, 그 합의를 적는 언어가 필요하다 — 그것이 이 과정의 주제.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 07 — 흐름을 읽는 여섯 관점 (1교시 회수)                          -->
+      <!-- ============================================================= -->
+      <section data-plan="07">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">업무를 흐름으로 보는 눈</div>
+          <div class="slide__q">Q1–Q6</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">외울 것은 기호가 아니라, 여섯 개의 질문입니다.</h2>
+
+            <div class="qgrid">
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Q1 · 시작·종료</span>
+                <span class="qgrid__t">무엇을 계기로 시작하고 어디에서 끝나는가?</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Q2 · 역할</span>
+                <span class="qgrid__t">누가 어떤 일을 완료해야 하는가?</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Q3 · 분기</span>
+                <span class="qgrid__t">어떤 조건 때문에 경로가 달라지는가?</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Q4 · 대기</span>
+                <span class="qgrid__t">어디에서 사람·시간·메시지를 기다리는가?</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Q5 · 예외·복구</span>
+                <span class="qgrid__t">실패하거나 기한을 넘기면 어떤 경로로 복구하는가?</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Q6 · 도구 적합성</span>
+                <span class="qgrid__t">이 흐름을 BPMN으로 표현하는 것이 실제로 도움이 되는가?</span>
+              </div>
+            </div>
+
+            <div class="slide__support">이제 이 질문들을 지민의 온보딩에서 하나씩 답해 갑니다.</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 1교시 회수. 지금까지의 장면(구조·도구·부침·AI 경계)을 여섯 질문으로 접어 과정 전체의 뼈대를 예고한다.</p>
+            <p><b>대사</b> — 오늘 우리가 한 이야기를 접으면 질문 여섯 개가 남습니다. [다음] 하나 — 수진의 일은 목록이 아니라 '입사 제안 수락'이라는 계기에서 시작했죠. 무엇으로 시작하고 어디서 끝나는가. [다음] 둘 — 화면이 아니라 누가 완료해야 할 일인가. [다음] 셋 — 서류가 완전한지에 따라 길이 갈라졌습니다. 어떤 조건이 경로를 바꾸는가. [다음] 넷 — 서류와 입사일을 기다렸습니다. 어디에서 기다리는가. [다음] 다섯 — AI가 판단해도 남는다고 했던 그것, 실패하면 어떻게 복구하는가. [다음] 여섯 — 그리고 다섯 가지 도구를 비교하며 물었던 것, 이 흐름에 BPMN이 실제로 도움이 되는가. 기호는 오늘 하루에 걸쳐 천천히 나옵니다 — 이 여섯 질문만 손에 쥐고 계시면 됩니다.</p>
+            <p><b>시간 조정</b> — 여유 있으면 수강생에게 자기 업무 하나를 여섯 질문 중 Q1·Q2로만 말해 보게 한다(1분).</p>
           </aside>
         </div>
       </section>

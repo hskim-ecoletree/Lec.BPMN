@@ -18,14 +18,21 @@
 - [x] **슬라이드 02 제작 완료 (2026-07-15)**: slide-reviewer **PASS**. 신규 스케치 모델 `models/frag_structure_overview.bpmn`(단일 풀 12요소 — COURSE.md §6 "처음부터 완성 모델 금지" 준수, 완성 모델 훑기는 09의 몫). 신규 구도 `relist`+`facet-row`(DESIGN.md 등재): 상단 화면·기능 목록 스트립 ↔ 전폭 다이어그램, 하단 구조 단어 5개 fragment(시작·일·분기·대기·결과, STEPS `s-structure` 마커 동기화) + caveat. 첫 시안(전체 모델+세로 목록)은 스크린샷 검증에서 겹침·판독 불가로 폐기.
 - [x] **inventory 전면 재등록 (2026-07-15)**: 구성안 v2 기준 50장 등록부로 교체(교시별 표+시간 검산). 재활용 장표 data-plan 새 번호 재부여(03→04, 08→09, 38→22, 35→26, 42→37), deck.js 주석·curriculum 커버리지 검산(02=Q1~Q5)도 정합화. index.html "도형" 표현은 이미 0건.
 
+- [x] **1교시(01~07) 완성 (2026-07-15)**: 03(rows)·05(flow 타임라인+M5)·06(rows)·07(qgrid 회수) 신규 제작, 전부 slide-reviewer PASS. 04 label 1교시 단원명으로 통일 + 재판정 PASS. 26·37 재판정 PASS. **deck-reviewer 1교시 마일스톤 PASS** (2회차 — 1회차 FAIL 2건은 04 label·게이트 문제, 해소함).
+- [x] **verification-notes §3 신설**: BPMN 표준 연혁(2004/2011/2013) 웹 검증 + "흥망 서사는 해석 — 화면·대본 단정 금지" 규칙. §2-11(표준 표기 범위·비교 완화 규칙) 추가.
+- [x] **COURSE.md §7 확장**: Checklist·Flowchart·State Machine·XOR·Parallel·Async·Retry·멱등·안티패턴·AI 에이전트·Service Task·Automatic Activity·Destination Screen·Form 등재.
+
 ## 다음 세션이 할 일 (순서대로)
 
-1. **1교시 나머지 제작** (05·06·07) 순서대로, 1장씩 — `slide-author` 로드, 브라우저 검증 → `slide-reviewer` → inventory 상태 갱신 → 커밋.
-   - 03 완료(통과, rows 구도). ~~26·37 재판정~~ 완료(둘 다 PASS).
-   - 05 BPMN의 부침과 남은 가치(C형): 역사 사실 주장은 verification-notes에 먼저 검증 추가 필요 (BPMN 표준화 연혁 등).
-   - 06 AI 에이전트와 프로세스의 경계(B형), 07 흐름을 읽는 여섯 관점(R형, 회수).
-2. 1교시(01~07) 완성 시 `deck-reviewer`.
-3. 이후 2교시(08~15) 제작.
+1. **2교시(08~15) 제작** — 08 BPMN이란 무엇인가(M2)부터 1장씩. 09는 이미 있음(검증 상태): 2교시 작업 시 재판정 + deck-reviewer가 넘긴 WARN 처리(notes "일반 문장이나 순서도로는 … 드러나지 않습니다" 능력 부정 단정 완화, "민호 · 매니저" → 채용 매니저 표기 확인).
+2. 2교시 완성 시 deck-reviewer.
+3. 이후 3교시(16~21) → 4교시(22 재판정·cite 추가 포함) 순.
+
+### deck-reviewer가 넘긴 WARN (해당 교시에서 처리)
+- 05 msg "유행은 오갔지만" — 해석 서사 잔존(§3-5). 5번 재방문 시 재검토.
+- M1 정확 문장("BPMN은 목적이 아니라 …") 미등장 — 49 제작 전 재검토.
+- 22 화면 주장에 cite 없음 — 4교시에서 추가.
+- Service Task·Form 첫 등장 풀이 배치 — 19 제작 시 확정.
 
 ## 주의 (세션에서 배운 것)
 

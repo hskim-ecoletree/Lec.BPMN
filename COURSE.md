@@ -110,6 +110,10 @@
 | External Task | 엔진이 실행하지 않고 외부 Worker가 가져가 처리하는 작업 방식 | 외부 태스크 |
 | Worker | External Task를 가져가 실행하고 결과·실패를 보고하는 외부 프로그램 | 워커 |
 | Business Key | 업무 인스턴스를 찾는 사용자 지정 식별자 | 비즈니스 키(첫 등장 이후 혼용 가능) |
+| Service Task | 엔진이 자동으로 실행하는 작업 요소 | 서비스 태스크 |
+| Automatic Activity | OutSystems 11 BPT의 자동 처리 요소 | 오토매틱 액티비티 |
+| Destination Screen | OutSystems Human Activity가 가리키는 작업 화면 속성 | 목적지 화면 |
+| Form | BPMN User Task의 사용자 입력 접점 | 폼(단독 첫 등장) |
 | Human Activity | OutSystems 11 BPT의 사람 작업 요소 | Screen과 치환 금지 |
 | BPT | OutSystems 11의 Business Process Technology | ODC 문맥에서 사용 금지(ODC는 Workflows) |
 | Checklist | 할 일을 나열하고 완료를 표시하는 목록 — 대사에서는 '체크리스트'로 읽음 | 점검표 |
@@ -121,6 +125,7 @@
 | Retry | 실패한 Job을 다시 시도하는 것 | 리트라이, 재시도(Retry 표기 대신 단독 사용) |
 | 멱등 | 여러 번 실행해도 결과가 같음 | idempotent 영문 단독 표기 |
 | 안티패턴 | 문법상 가능하지만 의도와 다르게 움직이는 잘못된 모델 조합 | 앤티패턴 |
+| AI 에이전트 | 목표를 주면 판단과 행동을 스스로 이어 가는 소프트웨어 | 에이전트(단독 첫 등장), AI봇 |
 
 스토리 고유명(`OfferAccepted`, `DocumentsSubmitted`, `FirstDayReady`, 인물 이름)은 철자·표기를 바꾸지 않는다. 새 용어가 필요하면 **이 표에 먼저 등재**하고 쓴다.
 

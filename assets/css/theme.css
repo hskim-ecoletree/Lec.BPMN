@@ -254,6 +254,12 @@
 .facet { font-size: 21px; font-weight: 740; letter-spacing: -.01em; color: var(--ink-soft); }
 .facet.current-fragment { color: var(--accent); }
 
+/* 질문 격자 — 회수 장표의 여섯 질문 (2열) */
+.qgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px 56px; align-content: center; }
+.qgrid__item { display: flex; flex-direction: column; gap: 7px; }
+.qgrid__n { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: .1em; }
+.qgrid__t { font-size: 19px; font-weight: 640; color: var(--ink-deep); line-height: 1.4; }
+
 /* 행 원장 — 용어(좌) + 한 줄 설명(우) 반복 구조 */
 .rows { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
 .rows__item { display: grid; grid-template-columns: 260px 1fr; gap: 34px; align-items: baseline; }
