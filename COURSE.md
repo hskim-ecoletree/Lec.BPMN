@@ -128,6 +128,9 @@
 | State Machine | 상태와 전이로 흐름을 적는 표기 — 대사에서는 '상태 기계'로 읽음 | 상태머신, 스테이트 머신 |
 | XOR | Exclusive Gateway의 축약 표기 — 하나만 고르는 분기·합류 | 배타 게이트웨이 |
 | Parallel | Parallel Gateway의 축약 표기 — 모두 실행하는 분기·합류 | 병렬 게이트웨이 |
+| Inclusive | Inclusive Gateway의 축약 표기 — 조건 참인 경로를 모두 여는 분기·합류 | 포함 게이트웨이 |
+| Event-based | Event-based Gateway — 먼저 도착한 사건으로 갈리는 분기(Camunda 7=Catch Event만) | 이벤트 기반 게이트웨이 |
+| Correlation | 메시지를 이름 + Business Key로 특정 인스턴스의 대기 지점에 짝짓는 것 | 코릴레이션, 상관관계 |
 | Async | 완료를 확정할 지점을 나누는 비동기 실행 설정(asyncBefore 등) | 비동기 처리(Async 의미로 단독 사용) |
 | Retry | 실패한 Job을 다시 시도하는 것 — 대사·보조 설명에서는 '재시도'로 읽음(화면 라벨은 Retry) | 리트라이 |
 | 멱등 | 여러 번 실행해도 결과가 같음 | idempotent 영문 단독 표기 |

@@ -330,8 +330,9 @@
   font-size: 50px; font-weight: 300; line-height: 1;
   color: #a89f8e;
 }
-.flow__n--ok  { color: var(--ok); }
-.flow__n--bad { color: var(--err); }
+.flow__n--ok   { color: var(--ok); }
+.flow__n--bad  { color: var(--err); }
+.flow__n--wait { color: var(--wait); }
 .flow__t { font-size: 21px; font-weight: 720; color: var(--ink-deep); }
 .flow__d { font-size: 14.5px; color: var(--ink-mute); line-height: 1.5; }
 .flow__arrow { font-size: 21px; color: var(--line); text-align: center; padding-bottom: 44px; }

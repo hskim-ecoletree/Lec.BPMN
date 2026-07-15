@@ -69,13 +69,13 @@
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 28 | #/27 | Inclusive Gateway 분기 — 조건에 맞는 하나 이상 | Q3 | 6 | 검증 | BPMN 2.0.2·Camunda 7 (§2-5) | 신규. 권한선택 줌 + s-inclusive(VPN·개발도구 O, 관리자 ghost) (리뷰 대기) |
-| 29 | #/28 | Inclusive Gateway 합류 — 활성 경로 대기 | Q3 | 6 | 검증 | Camunda 7 docs (§2-5) | 신규. s-inclusive-join(활성 둘만 대기), 복잡 모델 경고 (리뷰 대기) |
-| 30 | #/29 | Event-based Gateway — 먼저 도착한 사건 | Q3·Q4 | 7 | 검증 | Camunda 7 docs (§2-1) | 신규. 서류대기 줌 + s-eventbased(제출 win·기한 취소), Catch Event만 (리뷰 대기) |
-| 31 | #/30 | Gateway 선택 기준 | Q3 | 5 | 검증 | — | 신규. qgrid 4 Gateway(문장→기호) (리뷰 대기) |
-| 32 | #/31 | Wait State — 상태 저장과 재개 | Q4 | 8 | 검증 | Camunda 7 docs (§2-8) | 신규. flow(도달·저장·대기·재개), Timer 포함 (리뷰 대기) |
-| 33 | #/32 | Message Correlation과 Business Key | Q4 | 6 | 검증 | Camunda 7 docs (§2-9) | 신규. src+rows(이름·Business Key) (리뷰 대기) |
-| 34 | #/33 | 분기와 대기 정리 | Q3·Q4 | 4 | 검증 | — | 신규(회수). rows(Gateway·Wait·Correlation), 6교시 예고 (리뷰 대기) |
+| 28 | #/27 | Inclusive Gateway 분기 — 조건에 맞는 하나 이상 | Q3 | 6 | 통과 | BPMN 2.0.2·Camunda 7 (§2-5) | 신규. 권한선택 줌 + s-inclusive(VPN·개발도구 O, 관리자 ghost) |
+| 29 | #/28 | Inclusive Gateway 합류 — 활성 경로 대기 | Q3 | 6 | 통과 | Camunda 7 docs (§2-5) | 신규. s-inclusive-join(활성 둘만 대기), 복잡 모델 경고 |
+| 30 | #/29 | Event-based Gateway — 먼저 도착한 사건 | Q3·Q4 | 7 | 통과 | Camunda 7 docs (§2-1) | 신규. 서류대기 줌 + s-eventbased(제출 win·기한 취소), Catch Event만 |
+| 31 | #/30 | Gateway 선택 기준 | Q3 | 5 | 통과 | — | 신규. qgrid 4 Gateway(문장→기호) |
+| 32 | #/31 | Wait State — 상태 저장과 재개 | Q4 | 8 | 통과 | Camunda 7 docs (§2-8) | 신규. flow(도달·저장·대기·재개), Timer 포함 |
+| 33 | #/32 | Message Correlation과 Business Key | Q4 | 6 | 통과 | Camunda 7 docs (§2-9) | 신규. src+rows(이름·Business Key) |
+| 34 | #/33 | 분기와 대기 정리 | Q3·Q4 | 4 | 통과 | — | 신규(회수). rows(Gateway·Wait·Correlation), 6교시 예고 |
 
 ### 6교시 — 실행과 복구 (합 43분)
 
@@ -112,4 +112,4 @@
 
 - 교시별 시간 합(장표 배정 기준): 41 / 44 / 36 / 41 / 42 / 43 / 50 / 45 — 전 교시 50분 이내(잔여는 질문·전환 버퍼).
 - 여섯 질문 커버리지: curriculum.md "커버리지 검산" 절과 일치(02는 Q1~Q5 도입부).
-- 제작 현황: 대본 1 (01) · 통과 26 (02~27) · 검증 7 (28~34 리뷰 대기) · 재활용 37(통과) — 제작 34장, 나머지 16장 계획. **1~4교시 통과, 5교시 28~34 제작.**
+- 제작 현황: 대본 1 (01) · 통과 33 (02~34) · 검증 0 · 재활용 37(통과) — 제작 34장, 나머지 16장 계획. **1~5교시(01~34) 전 장표 통과.**
