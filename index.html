@@ -16,7 +16,7 @@
     <div class="slides">
 
       <!-- ============================================================= -->
-      <!-- 01 · 타이틀 (설계안 슬라이드 01)                              -->
+      <!-- 01 · 표지                                                     -->
       <!-- ============================================================= -->
       <section data-plan="01">
         <div class="cover">
@@ -35,221 +35,209 @@
       </section>
 
       <!-- ============================================================= -->
-      <!-- 03 · OutSystems와 BPMN은 Workflow를 어떻게 표현하는가          -->
+      <!-- 04 · OutSystems ↔ BPMN — 대형 매핑                            -->
       <!-- ============================================================= -->
       <section data-plan="03">
         <div class="slide">
-          <div class="slide__eyebrow"><span class="cat">오리엔테이션 · 도구 연결</span></div>
-          <h2 class="slide__title slide__title--sm">OutSystems와 BPMN은 Workflow를 어떻게 표현하는가</h2>
+          <div class="slide__eyebrow">오리엔테이션 · 도구 연결</div>
+          <h2 class="slide__title slide__title--sm">OutSystems와 BPMN, 같은 장면의 두 표현</h2>
           <div class="scene">
             <span class="scene__tag">현재 스토리 장면</span>
-            <span class="scene__text"><b class="nowrap">수진</b>이 <b>입사 서류 검토</b> 업무를 수행하는 같은 장면을, 두 도구가 각자 어떻게 표현하는지 비교합니다.</span>
+            <span class="scene__text"><b>수진</b>이 <b>입사 서류를 검토</b>합니다 — 같은 장면을 두 도구로 그려 봅니다.</span>
           </div>
 
-          <div class="cols cols--2" style="flex:0 0 auto;gap:44px;margin-bottom:26px">
-            <div class="col" style="gap:9px">
-              <span class="pill pill--os">OutSystems 11 · BPT</span>
-              <div class="mono" style="font-size:18px;color:var(--ink)">
-                Process&nbsp;→&nbsp;<b style="color:#c2410c">Human&nbsp;Activity</b>&nbsp;→&nbsp;Destination&nbsp;<b>Screen</b>
-              </div>
-              <p style="font-size:16px;color:var(--ink-soft)">BPT(Business Process Technology)는 앱 안에 내장되어 실행되는 프로세스. Human Activity는 <b>Taskbox</b>에 뜨고 <b>Destination Screen</b>에서 완료합니다.</p>
+          <div class="vs">
+            <div class="vs__head">
+              <span class="vs__side vs__side--os">OutSystems 11 · BPT</span>
+              <span></span>
+              <span class="vs__side vs__side--bpmn">BPMN · Camunda 7</span>
             </div>
-            <div class="col" style="gap:9px">
-              <span class="pill pill--bpmn">BPMN · Camunda 7</span>
-              <div class="mono" style="font-size:18px;color:var(--ink)">
-                Process&nbsp;→&nbsp;<b style="color:var(--brand-dark)">User&nbsp;Task</b>&nbsp;→&nbsp;Tasklist&nbsp;/&nbsp;<b>Form</b>
-              </div>
-              <p style="font-size:16px;color:var(--ink-soft)">역할·시스템을 가로지르는 업무 의미를 <b>표준 기호</b>로 표현합니다. User Task는 사람의 일과 그 <b>대기 상태</b>를 뜻합니다.</p>
+            <div class="vs__group fragment">
+              <div class="vs__cat">사람의 작업</div>
+              <div class="vs__pair"><span class="os">Human Activity</span><span class="vs__x">↔</span><span class="bp">User Task</span></div>
+            </div>
+            <div class="vs__group fragment">
+              <div class="vs__cat">자동 처리</div>
+              <div class="vs__pair"><span class="os">Automatic Activity</span><span class="vs__x">↔</span><span class="bp">Service Task</span></div>
+            </div>
+            <div class="vs__group fragment">
+              <div class="vs__cat">사용자 접점</div>
+              <div class="vs__pair"><span class="os">Destination Screen</span><span class="vs__x">↔</span><span class="bp">Form</span></div>
             </div>
           </div>
 
-          <table class="ctable">
-            <thead><tr><th>관점</th><th>OutSystems 11 (BPT)</th><th>BPMN / Camunda 7</th></tr></thead>
-            <tbody>
-              <tr><td class="k">사람의 작업</td><td class="os"><b>Human Activity</b></td><td class="bp"><b>User Task</b></td></tr>
-              <tr><td class="k">자동 처리</td><td class="os"><b>Automatic Activity</b></td><td class="bp"><b>Service / Script Task</b></td></tr>
-              <tr><td class="k">사용자 접점</td><td class="os">Human Activity의 <b>Destination Screen</b></td><td class="bp">User Task의 <b>Form</b></td></tr>
-              <tr><td class="k">흐름 표기</td><td class="os">OutSystems 고유 flow 기호</td><td class="bp">표준 BPMN 기호</td></tr>
-            </tbody>
-          </table>
-
-          <div class="strip">
-            <span class="tag">요소가 1:1로 대응되지 않음</span>
-            <span class="tag">Screen ≠ User Task (대응은 Human Activity)</span>
-            <span class="tag">ODC에서는 BPT 대신 Workflows</span>
-          </div>
+          <p class="caveat fragment">다만 1:1 치환은 아닙니다 — Screen은 화면이고, <em>User Task는 일과 그 대기 상태</em>입니다.</p>
 
           <div class="slide__key">OutSystems를 배운 여러분에게 BPMN은 낯선 세계가 아닙니다.</div>
-          <div class="slide__cite">출처: OutSystems 11 — Notation Reference for BPMN Practitioners / Human Activity (success.outsystems.com)</div>
+          <div class="slide__cite">출처: OutSystems 11 — Notation Reference for BPMN Practitioners (success.outsystems.com)</div>
+          <aside class="notes">
+            <p><b>대사</b> — BPT(Business Process Technology)는 OutSystems 11에서 프로세스를 앱 안에 내장해 실행하는 기능입니다. Human Activity가 실행되면 사용자의 Taskbox에 뜨고, Destination 속성이 가리키는 Screen에서 완료합니다. BPMN의 User Task는 사람이 완료해야 할 일과 그 대기 상태를 뜻하고, Form은 그 접점입니다. [다음]×3으로 대응 관계를 하나씩 확인.</p>
+            <p><b>오해</b> — "화면 하나 = User Task 하나"라는 치환. <b>교정</b> — User Task에 대응하는 것은 Human Activity이고, Screen/Form은 접점일 뿐. ODC에는 BPT가 없고 Workflows로 대체됨.</p>
+          </aside>
         </div>
       </section>
 
       <!-- ============================================================= -->
-      <!-- 08 · BPMN이란 무엇인가 — 온보딩 전체 이야기 (실제 모델)        -->
+      <!-- 09 · 온보딩 전체 이야기 — 다이어그램 전면                      -->
       <!-- ============================================================= -->
       <section data-plan="08">
         <div class="slide">
-          <div class="slide__eyebrow"><span class="cat">BPMN 배경</span></div>
-          <h2 class="slide__title slide__title--sm">BPMN이란 무엇인가 — 지민의 온보딩 전체 이야기</h2>
+          <div class="slide__eyebrow">BPMN이라는 언어</div>
+          <h2 class="slide__title">지민의 온보딩 전체 이야기</h2>
           <div class="scene">
             <span class="scene__tag">현재 스토리 장면</span>
-            <span class="scene__text"><b>입사 제안 수락</b>부터 <b>첫 출근 준비 완료</b>까지, 온보딩 전체 흐름을 처음으로 펼쳐 봅니다.</span>
+            <span class="scene__text"><b>입사 제안 수락</b>부터 <b>첫 출근 준비 완료</b>까지, 전체 흐름을 처음 펼쳐 봅니다.</span>
           </div>
 
-          <div class="cols cols--bpmn-right">
-            <div class="col">
-              <div class="bpmn" data-model="models/new_hire_onboarding.bpmn">
-                <div class="bpmn__cap">신입사원 온보딩 · Camunda 7 실행 모델</div>
-                <div class="bpmn__canvas"></div>
-              </div>
+          <div class="bpmn" data-model="models/new_hire_onboarding.bpmn">
+            <div class="bpmn__cap">신입사원 온보딩 · Camunda 7 실행 모델</div>
+            <div class="bpmn__canvas"></div>
+          </div>
+          <div class="hero-foot">
+            <div class="persona-row">
+              <span class="persona persona--jimin">지민 · 신입사원</span>
+              <span class="persona persona--sujin">수진 · HR</span>
+              <span class="persona persona--minho">민호 · 매니저</span>
+              <span class="persona persona--it">IT · 시설</span>
+              <span class="persona persona--ext">외부 Identity Provider</span>
             </div>
-            <div class="col" style="gap:14px">
-              <div class="persona-row">
-                <span class="persona persona--jimin">지민 · 신입사원</span>
-                <span class="persona persona--sujin">수진 · HR</span>
-                <span class="persona persona--minho">민호 · 매니저</span>
-                <span class="persona persona--it">IT · 시설</span>
-                <span class="persona persona--ext">외부 Identity Provider</span>
-              </div>
-              <div class="card card--accent" style="flex:1">
-                <div class="card__h">같은 그림, 같은 예상</div>
-                <p style="font-size:18px;color:var(--ink-soft);line-height:1.55">
-                  일반 문장이나 순서도로는 <b>누가 책임지는지</b>, <b>무엇을 기다리는지</b>가 잘 드러나지 않습니다.
-                  BPMN은 역할(Lane)·메시지·대기·예외를 <b>합의된 기호</b>로 드러냅니다.
-                </p>
-                <div class="note" style="margin-top:14px">
-                  <span>지금은 전체를 <b>훑어보기만</b> 합니다. 이후 장표에서 이야기가 진행될 때마다 필요한 요소를 하나씩 발견합니다.</span>
-                </div>
-              </div>
-            </div>
+            <span class="hero-foot__hint">지금은 훑어보기만 — 장면마다 하나씩 발견합니다</span>
           </div>
 
-          <div class="slide__key">BPMN의 핵심 가치는 예쁜 그림이 아니라, 같은 도형을 본 사람들이 같은 실행 흐름을 예상하게 만드는 데 있습니다.</div>
+          <div class="slide__key">BPMN의 가치는 예쁜 그림이 아니라, 같은 실행을 예상하게 하는 데 있습니다.</div>
+          <aside class="notes">
+            <p><b>대사</b> — 일반 문장이나 순서도로는 누가 책임지는지, 무엇을 기다리는지가 잘 드러나지 않습니다. BPMN은 역할(Lane)·메시지·대기·예외를 합의된 기호로 드러냅니다. 전체를 외우려 하지 마세요. 오늘 하루 동안 이 지도의 장면들을 하나씩 걸어갑니다.</p>
+          </aside>
         </div>
       </section>
 
       <!-- ============================================================= -->
-      <!-- 38 · 토큰으로 진행 위치 읽기 (실제 모델 + 토큰 재생)           -->
+      <!-- 22 · 토큰 — 초대형 숫자                                        -->
       <!-- ============================================================= -->
       <section data-steps="s-token" data-plan="38">
         <div class="slide">
-          <div class="slide__eyebrow"><span class="cat">Camunda 논리 실행</span></div>
-          <h2 class="slide__title slide__title--sm">토큰은 Workflow의 현재 진행 위치를 생각하는 도구다</h2>
+          <div class="slide__eyebrow">분기 — 토큰으로 세는 법</div>
+          <h2 class="slide__title">토큰 — 진행 위치를 세는 도구</h2>
           <div class="scene">
             <span class="scene__tag">현재 스토리 장면</span>
-            <span class="scene__text">지민의 업무 한 건이 흘러가는 동안, <b>토큰이 어디에 몇 개</b> 있는지 장면마다 따라갑니다. <span class="muted">(→ / Space 로 진행)</span></span>
+            <span class="scene__text"><b>지민</b>의 업무 한 건을 따라가며 <b>토큰의 위치와 개수</b>를 셉니다.</span>
           </div>
 
-          <div class="cols cols--bpmn-right">
+          <div class="cols cols--jumbo">
             <div class="col">
               <div class="bpmn" data-model="models/new_hire_onboarding.bpmn">
-                <div class="bpmn__cap">토큰 = 지금 일이 어디까지 왔는지 표시하는 사고 도구</div>
+                <div class="bpmn__cap">토큰 = 지금 일이 어디까지 왔는가</div>
                 <div class="bpmn__canvas"></div>
               </div>
             </div>
-            <div class="col" style="gap:12px">
-              <div class="card">
-                <div class="card__h">지금 토큰은</div>
-                <ol style="list-style:none;margin:0;font-size:18px;line-height:1.5">
-                  <li class="fragment"><span class="count"><b>1</b></span> &nbsp;서류 제출·기한을 <b>기다리는 중</b></li>
-                  <li class="fragment"><span class="count"><b>3</b></span> &nbsp;계정·장비·교육 <b>병렬 준비</b> <span class="muted">(1→3)</span></li>
-                  <li class="fragment"><span class="count"><b>1</b></span> &nbsp;합류 후 <b>입사일 대기</b> <span class="muted">(3→1)</span></li>
-                  <li class="fragment"><span class="count"><b>1</b></span> &nbsp;<b>첫 출근 준비 완료</b></li>
-                </ol>
+            <div class="col jumbo">
+              <div class="jumbo__item fragment fade-in-then-out">
+                <span class="jumbo__n">1</span>
+                <span class="jumbo__t">서류를 기다리는 중</span>
+                <span class="jumbo__s">제출 또는 3일 기한, 먼저 오는 쪽</span>
               </div>
-              <div class="note note--info mt-a">
-                <span>토큰을 DB 객체로 외우지 마세요. <b>위치·개수·다음 Trigger</b>를 설명하기 위한 개념 모델입니다.</span>
+              <div class="jumbo__item fragment fade-in-then-out">
+                <span class="jumbo__n">3</span>
+                <span class="jumbo__t">병렬 준비</span>
+                <span class="jumbo__s">계정 · 장비 · 교육 — 1이 3이 된다</span>
+              </div>
+              <div class="jumbo__item fragment fade-in-then-out">
+                <span class="jumbo__n">1</span>
+                <span class="jumbo__t">입사일 대기</span>
+                <span class="jumbo__s">3이 다시 1로 합류</span>
+              </div>
+              <div class="jumbo__item fragment">
+                <span class="jumbo__n jumbo__n--ok">0</span>
+                <span class="jumbo__t">첫 출근 준비 완료</span>
+                <span class="jumbo__s">토큰이 끝에 도달해 소멸</span>
               </div>
             </div>
           </div>
 
-          <div class="slide__key">토큰 수를 세면 분기와 합류를 ‘느낌’이 아니라 규칙으로 설명할 수 있습니다.</div>
+          <div class="slide__key">토큰 수를 세면 분기와 합류를 느낌이 아니라 규칙으로 설명할 수 있습니다.</div>
+          <aside class="notes">
+            <p><b>대사</b> — 토큰을 DB 객체로 외우지 마세요. 지금 일이 어디까지 왔고 몇 갈래가 살아 있는지 설명하기 위한 사고 도구입니다. [다음] 서류 대기 1개 → [다음] 병렬 준비 3개 → [다음] 합류 후 1개 → [다음] 완료로 소멸.</p>
+          </aside>
         </div>
       </section>
 
       <!-- ============================================================= -->
-      <!-- 35 · 교착: XOR 분기 + Parallel 합류 (조각 모델 + 원장)         -->
+      <!-- 26 · 교착 — 다이어그램 전면 + 한 줄 원장                       -->
       <!-- ============================================================= -->
       <section data-steps="s-deadlock" data-plan="35">
         <div class="slide">
-          <div class="slide__eyebrow"><span class="cat">Gateway 집중</span></div>
+          <div class="slide__eyebrow">분기 — 토큰으로 세는 법</div>
           <h2 class="slide__title slide__title--sm">XOR 분기와 Parallel 합류가 멈출 수 있는 이유</h2>
           <div class="scene">
             <span class="scene__tag">현재 스토리 장면</span>
-            <span class="scene__text">근무 형태를 <b>하나만</b> 고르는 XOR 뒤에, 배송·좌석 <b>둘 다</b>를 기다리는 Parallel 합류를 붙인 <b>잘못된 모델</b>입니다.</span>
+            <span class="scene__text"><b>하나만</b> 고르는 XOR 뒤에, <b>둘 다</b> 기다리는 Parallel 합류를 붙였습니다.</span>
           </div>
 
-          <div class="cols cols--bpmn-left">
-            <div class="col" style="gap:12px">
-              <div class="card card--flat">
-                <div class="card__h">토큰 원장</div>
-                <table class="ledger">
-                  <thead><tr><th>경로</th><th>토큰</th><th>합류</th></tr></thead>
-                  <tbody>
-                    <tr class="fragment"><td>원격 배송</td><td class="made">생성됨</td><td>도착</td></tr>
-                    <tr class="fragment"><td>사무실 좌석</td><td class="none">생성 안 됨</td><td class="wait">영원히 대기</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="note note--warn fragment">
-                <span>Parallel 합류는 <b>모든 incoming</b>에 토큰이 와야 진행합니다. XOR이 하나만 만들었으니 합류는 오지 않을 토큰을 계속 기다립니다.</span>
-              </div>
-              <div class="note mt-a">
-                <span>엔진은 이를 <b>오류로 감지하지 않습니다</b>. 업무 한 건(Process Instance)이 멈춘 채로 계속 살아 있어, 화면상 오류 없이 진행만 안 됩니다.</span>
-              </div>
-            </div>
-            <div class="col">
-              <div class="bpmn" data-model="models/frag_deadlock_xor_parallel.bpmn" data-pad="46">
-                <div class="bpmn__cap">안티패턴 · XOR Split → Parallel Join</div>
-                <div class="bpmn__canvas"></div>
-              </div>
-            </div>
+          <div class="bpmn" data-model="models/frag_deadlock_xor_parallel.bpmn" data-pad="46">
+            <div class="bpmn__cap">안티패턴 · XOR Split → Parallel Join</div>
+            <div class="bpmn__canvas"></div>
+          </div>
+          <div class="dead-strip">
+            <span class="made fragment">원격 배송 — 토큰 생성됨</span>
+            <span class="none fragment">사무실 좌석 — 생성 안 됨</span>
+            <span class="wait fragment">합류는 영원히 대기, 엔진은 오류로 감지하지 않음</span>
           </div>
 
-          <div class="slide__key">‘선이 두 개’와 ‘토큰을 두 개 기다림’은 같은 말이 아닙니다. 분기에서 실제로 만든 토큰을 세지 않으면 멈추는 모델을 만들 수 있습니다.</div>
+          <div class="slide__key">‘선이 두 개’와 ‘토큰 두 개를 기다림’은 같은 말이 아닙니다.</div>
           <div class="slide__cite">출처: OMG BPMN 2.0.2 · Camunda 7 docs — parallel gateway (docs.camunda.org/manual/7.x)</div>
+          <aside class="notes">
+            <p><b>대사</b> — [다음] XOR이 원격을 골라 토큰 하나가 생깁니다. [다음] 사무실 경로의 토큰은 처음부터 존재하지 않습니다. [다음] Parallel 합류는 모든 incoming에 토큰이 와야 열립니다. 오지 않을 토큰을 기다리며 업무 한 건(Process Instance)이 멈춘 채 살아 있습니다 — 화면상 오류가 없어서 더 위험합니다.</p>
+            <p><b>교정</b> — 분기에서 실제로 만든 토큰 수를 세게 한다. 합류는 분기 모양과 짝을 맞춘다.</p>
+          </aside>
         </div>
       </section>
 
       <!-- ============================================================= -->
-      <!-- 42 · Async·Job·Retry·Incident (Camunda 실행 · 검증 반영)      -->
+      <!-- 45 · Async·Job·Retry·Incident — 가로 타임라인                  -->
       <!-- ============================================================= -->
       <section data-plan="42">
         <div class="slide">
-          <div class="slide__eyebrow"><span class="cat">Camunda 논리 실행 · 복구</span></div>
-          <h2 class="slide__title slide__title--sm">Async·Job·Retry·Incident를 복구 경계로 이해하기</h2>
+          <div class="slide__eyebrow">실행과 복구</div>
+          <h2 class="slide__title slide__title--sm">Async·Job·Retry·Incident — 복구의 경계</h2>
           <div class="scene">
             <span class="scene__tag">현재 스토리 장면</span>
-            <span class="scene__text"><b class="nowrap">IT</b>의 <b>계정 생성</b>이 외부 Identity Provider를 호출합니다. 일시 장애가 나면 무슨 일이 벌어질까요?</span>
+            <span class="scene__text"><b>계정 생성</b>이 외부 Identity Provider를 호출합니다. 일시 장애가 나면?</span>
           </div>
 
-          <div class="cols cols--bpmn-right">
-            <div class="col">
-              <div class="steps">
-                <div class="step step--ok"><div class="step__n">1</div><div class="step__t">사용자 응답 확정</div><div class="step__d">User Task 완료 시점에 트랜잭션 <b>Commit</b> — 여기까지는 안전하게 저장됨</div></div>
-                <div class="step"><div class="step__n">2</div><div class="step__t">async 경계 → Job 생성</div><div class="step__d"><b>asyncBefore</b>로 계정 생성을 별도 Job으로 분리. Job Executor가 실행</div></div>
-                <div class="step step--fail"><div class="step__n">3</div><div class="step__t">실패 → Retry</div><div class="step__d">External Task는 <b>Worker가 retries·retryTimeout을 설정</b> (예: 3회·5분 간격)</div></div>
-                <div class="step step--fail"><div class="step__n">4</div><div class="step__t">retries = 0 → Incident</div><div class="step__d">재시도 소진 시 <b>Incident</b> 생성 — 운영자가 원인 수정 후 재시도</div></div>
-              </div>
+          <div class="flow">
+            <div class="flow__step fragment">
+              <span class="flow__n flow__n--ok">1</span>
+              <span class="flow__t">응답 확정</span>
+              <span class="flow__d">User Task 완료 시점에 Commit — 여기까지는 저장됨</span>
             </div>
-            <div class="col" style="gap:12px">
-              <div class="card card--accent">
-                <div class="card__h">두 종류의 자동 작업</div>
-                <table class="ctable" style="font-size:16px">
-                  <tbody>
-                    <tr><td class="k" style="width:34%">일반 async Job</td><td>엔진 기본 <b>retries=3</b> (총 3회 시도)</td></tr>
-                    <tr><td class="k">External Task</td><td><b>Worker</b>가 재시도 횟수·간격을 직접 정함</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="note note--warn">
-                <span>Retry는 <b>멱등</b>(여러 번 실행해도 결과가 같음)하지 않으면 외부 부작용을 반복할 수 있습니다.</span>
-              </div>
+            <span class="flow__arrow">→</span>
+            <div class="flow__step fragment">
+              <span class="flow__n">2</span>
+              <span class="flow__t">Job 생성</span>
+              <span class="flow__d">asyncBefore가 계정 생성을 별도 Job으로 분리</span>
+            </div>
+            <span class="flow__arrow">→</span>
+            <div class="flow__step fragment">
+              <span class="flow__n flow__n--bad">3</span>
+              <span class="flow__t">Retry</span>
+              <span class="flow__d">External Task는 Worker가 횟수·간격을 정함</span>
+            </div>
+            <span class="flow__arrow">→</span>
+            <div class="flow__step fragment">
+              <span class="flow__n flow__n--bad">4</span>
+              <span class="flow__t">Incident</span>
+              <span class="flow__d">retries = 0 — 운영자가 원인 수정 후 재시도</span>
             </div>
           </div>
 
-          <div class="slide__key">Async를 성능 체크박스로 보지 않습니다. 사용자에게 완료를 확정할 지점과, 후속 실패를 다시 시도할 지점을 나누는 설계 선택입니다.</div>
-          <div class="slide__cite">출처: Camunda 7 docs — job executor / external tasks / transactions in processes (docs.camunda.org/manual/7.x)</div>
+          <p class="caveat fragment">Retry는 <em>멱등</em>(여러 번 실행해도 결과가 같음)이 아니면 외부 부작용을 반복합니다.</p>
+
+          <div class="slide__key">Async는 성능 옵션이 아니라, 완료를 확정할 지점을 나누는 설계입니다.</div>
+          <div class="slide__cite">출처: Camunda 7 docs — job executor / external tasks / transactions (docs.camunda.org/manual/7.x)</div>
+          <aside class="notes">
+            <p><b>대사</b> — [다음] 사용자에겐 완료를 확정해 줍니다. [다음] 후속 작업은 Job으로 분리되어 Job Executor가 실행합니다. [다음] 실패하면 재시도 — 일반 async Job은 엔진 기본 3회, External Task는 Worker가 handleFailure로 횟수와 간격을 직접 정합니다(예: 3회·5분). [다음] 소진되면 Incident가 남아 운영자가 개입합니다.</p>
+            <p><b>오해</b> — Async를 "빠르게 하는 옵션"으로 이해. <b>교정</b> — 응답 확정 지점과 실패 재시도 지점을 나누는 설계 선택.</p>
+          </aside>
         </div>
       </section>
 

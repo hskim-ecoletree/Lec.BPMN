@@ -382,6 +382,99 @@
   color: rgba(255,255,255,.42); letter-spacing: .08em;
 }
 
+/* =========================================================================
+   구도 컴포넌트 — 슬라이드마다 다른 형태를 만든다
+   ========================================================================= */
+
+/* 대형 매핑 (도구 비교) — 텍스트 자체가 그래픽 */
+.vs { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 36px; min-height: 0; }
+.vs__head {
+  display: grid; grid-template-columns: 1fr 110px 1fr;
+  margin-bottom: 2px;
+}
+.vs__side {
+  font-size: 13.5px; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.vs__side--os   { text-align: right; color: #c2410c; }
+.vs__side--bpmn { text-align: left;  color: var(--brand-dark); }
+.vs__group {}
+.vs__cat {
+  text-align: center;
+  font-size: 12.5px; font-weight: 750;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.vs__pair {
+  display: grid; grid-template-columns: 1fr 110px 1fr;
+  align-items: baseline;
+}
+.vs__pair .os { text-align: right; font-size: 31px; font-weight: 760; color: #c2410c; letter-spacing: -0.02em; }
+.vs__pair .bp { text-align: left;  font-size: 31px; font-weight: 760; color: var(--brand-dark); letter-spacing: -0.02em; }
+.vs__x { text-align: center; font-size: 22px; color: var(--hair-mid); }
+
+/* 한 줄 주의 문장 */
+.caveat {
+  padding: 2px 0 2px 16px;
+  border-left: 2px solid var(--bad);
+  font-size: 17px; color: var(--ink-soft); line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* 다이어그램 전면 슬라이드의 하단 정보줄 */
+.hero-foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 24px; padding: 14px 2px 0;
+}
+.hero-foot__hint { font-size: 14px; color: var(--ink-mute); white-space: nowrap; }
+
+/* 초대형 토큰 수 */
+.cols--jumbo { grid-template-columns: 1.65fr 1fr; }
+.jumbo { display: grid; align-content: center; }
+.jumbo__item {
+  grid-area: 1 / 1;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.jumbo__n {
+  font-family: var(--mono);
+  font-size: 150px; font-weight: 800; line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--token);
+}
+.jumbo__n--ok { color: var(--ok); }
+.jumbo__t { font-size: 22px; font-weight: 720; color: var(--ink); }
+.jumbo__s { font-size: 15.5px; color: var(--ink-mute); }
+
+/* 교착 — 다이어그램 아래 한 줄 원장 */
+.dead-strip {
+  display: flex; flex-wrap: wrap; gap: 8px 36px;
+  padding: 16px 2px 0;
+  font-size: 17.5px; font-weight: 620;
+}
+.dead-strip .made { color: var(--ok); }
+.dead-strip .none { color: var(--bad); }
+.dead-strip .wait { color: var(--warn); }
+
+/* 가로 타임라인 (실행 단계) */
+.flow {
+  flex: 1; min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 34px 1fr 34px 1fr 34px 1fr;
+  align-items: center; gap: 0 10px;
+}
+.flow__step { display: flex; flex-direction: column; gap: 9px; }
+.flow__n {
+  font-family: var(--mono);
+  font-size: 52px; font-weight: 275; line-height: 1;
+  color: #9aa3af;
+}
+.flow__n--ok  { color: var(--ok); }
+.flow__n--bad { color: var(--bad); }
+.flow__t { font-size: 21.5px; font-weight: 750; color: var(--ink); }
+.flow__d { font-size: 15px; color: var(--ink-mute); line-height: 1.5; }
+.flow__arrow { font-size: 22px; color: var(--hair-mid); text-align: center; padding-bottom: 40px; }
+
 /* 유틸 */
 .mt-a { margin-top: auto; }
 .muted { color: var(--ink-mute); }
