@@ -8,6 +8,7 @@
 - [x] 교착 안티패턴 조각 모델 + 토큰 원장
 - [x] 내용 검증: OutSystems(공식 문서), Camunda 7 실행 의미 → `verification-notes.md`
 - [x] 대표 6장 구현·브라우저 렌더 검증(콘솔 오류 0)
+- [x] 제작 하네스: `CLAUDE.md`(규칙 원천·흐름) + `slide-author`/`script-author` 스킬 + `slide-reviewer` 서브에이전트. 설계안 정본을 `docs/course-plan.md`로 레포에 편입
 
 ## 남은 작업 (전체 52장으로 확장)
 
