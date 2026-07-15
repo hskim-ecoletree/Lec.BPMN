@@ -26,12 +26,19 @@
 
 - [x] **3교시(16~21) 완성 (2026-07-15)**: 16 Start/End Event(전체 모델+s-startend, Process Instance 첫 등장)·17 Pool/Lane/Message Flow(s-lanes, beat 캡션)·18 User Task(검토 태스크 줌+s-usertask, 일·대기)·19 Service/External Task(vs, Worker 첫 등장)·20 Activity 이름(신규 rename)·21 회수(qgrid). 전 장 slide-reviewer PASS + **deck-reviewer 3교시 마일스톤 PASS**(재판정, 1회차 FAIL은 17 notes "순서 흐름"→"Sequence Flow"). 신규 컴포넌트 beat·rename. §7에 Event·Activity·Sequence Flow·Pool·Lane·Message Flow·Tasklist 등재, verification-notes §2-12·13 추가.
 
+- [x] **4교시(22~27) 완성 (2026-07-15)**: 22 재판정 PASS(cite·역할 보강)·23 Gateway 규칙(M3, frag_gateway_rule.bpmn+s-gateway)·24 Exclusive(s-xor, 토큰 1·사무실 ghost·Default 스텝)·25 Parallel(s-parallel, 1→3→1·부분도착 대기로 26 교착 예고)·26 재판정 통과·27 회수(rows). 전 장 slide-reviewer PASS(24·25는 caveat 5번째 STEPS 스텝 추가로 FAIL 해소) + **deck-reviewer 4교시 마일스톤 PASS**. §7에 교착 등재. deck.js STEPS s-gateway·s-xor·s-parallel.
+
 ## 다음 세션이 할 일 (순서대로)
 
-1. **4교시(22~27) 제작** — 22는 이미 있음(재활용, 검증 상태): 4교시 작업 시 재판정 + cite 추가(deck-reviewer 이월). 23 Gateway 규칙(M3)·24 Exclusive·25 Parallel·26(재활용 통과)·27 회수 순. `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
-   - 23이 M3(Gateway는 마름모가 아니라 규칙) 확립 장표. 24·25는 병합·단계 노출(분기→합류).
-2. 4교시 완성 시 deck-reviewer.
-3. 이후 5교시(28~34) → 6교시(35~41, 37 재검토 포함) → 7·8교시 순.
+1. **5교시(28~34) 제작** — 28 Inclusive 분기·29 Inclusive 합류(복잡 모델 경고)·30 Event-based(Camunda 7=Catch Event만, §2-1)·31 Gateway 선택 기준·32 Wait State+Timer·33 Message Correlation+Business Key·34 회수. `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
+   - 30은 검증노트 §2-1 교정 필수(Event-based 뒤 Receive Task 불가, Intermediate Catch Event만).
+2. 5교시 완성 시 deck-reviewer.
+3. 이후 6교시(35~41, 37 재검토·M4 확립 포함) → 7교시(실습 42~46) → 8교시(47~50, M1 최종 회수) 순.
+
+### 이월 WARN (해당 교시에서 처리)
+- M4(Camunda=확대경) 화면 미등장 — 6교시(35 Cockpit 등)에서 확립.
+- M1 정확 문장 — 49(8교시) 최종 회수에서.
+- `↔` 글리프: DESIGN.md vs 컴포넌트에 이미 명시됨(중앙 ↔). CLAUDE.md 허용 목록 명문화는 사용자 판단(비차단).
 
 ### 이월 WARN (해당 교시에서 처리)
 - 05 msg "유행은 오갔지만" — 해석 서사 잔존(§3-5). 5번 재방문 시 재검토.
@@ -49,7 +56,7 @@
 
 ## 미해결
 
-- [ ] 4~8교시 제작 (22~50, 26장). 진행: 01~21 통과(1·2·3교시 완료), 22·26·37 재활용 존재.
+- [ ] 5~8교시 제작 (28~50, 23장). 진행: 01~27 통과(1~4교시 완료), 37 재활용 통과 존재.
 - [ ] ditto `/plugin` 비활성 (사용자 직접)
 - [ ] 구성안 v2: 명시적 "승인" 절차 없이 표지부터 제작 착수됨.
 - [ ] 브랜드 정확한 hex 미확보 — 현재 `#457075` 유지.
