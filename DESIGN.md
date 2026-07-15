@@ -4,9 +4,9 @@
 
 디자인 언어는 **에디토리얼(keynote) 스타일**이다: **박스가 아니라 여백·정렬·hairline으로 구조화**하고, 강조는 배경색 칠하기가 아니라 **크기·무게·색의 대비**로 만든다. 카드 테두리·칩·배지 같은 UI 크롬을 걷어내 대시보드가 아닌 "강연 화면"으로 읽히게 한다.
 
-색의 중심은 **ecoletree 브랜드 teal** `{colors.primary}` (`#1aa6c9`) — 제목 하이라이트·장면 태그·핵심 문장 바·BPMN 경로 강조에만 아껴 쓴다. 본문은 흰 종이 위 `{colors.ink}` (`#111827`, 순흑 아님). 표지·전환 슬라이드는 **딥 teal 단일 면** `{colors.primary-deep}` (`#0e5e73`)으로 반전한다.
+확정된 아이덴티티는 **스위스 타이포 포스터**다: 백지 위 초대형 잉크 활자, **2px 잉크 룰**(표지 상단 밴드 = 본문 eyebrow 밴드), 그리고 슬라이드당 **teal 한 점**(표지의 마침표·bar, 본문의 핵심 문장 bar). teal `{colors.primary}`(`#1aa6c9`)은 이 "한 점" 외에 장면 태그·BPMN 경로 강조 정도로만 아껴 쓴다. 본문은 `{colors.ink}`(`#111827`, 순흑 아님).
 
-표면은 세 가지뿐이다: **흰 종이**(콘텐츠) / **딥 teal 면**(표지·전환) / **hairline 테두리의 BPMN 캔버스**(모델 작업면). 이 셋 이상 늘리지 않는다.
+표면은 두 가지뿐이다: **흰 종이**(표지 포함 전체) / **hairline 테두리의 BPMN 캔버스**(모델 작업면). 어두운 면·색 면을 새로 들이지 않는다.
 
 **핵심 특징**
 - **박스 최소화**: 그룹은 12.5px 대문자 라벨 + 여백으로. 진짜 컨테이너가 필요할 때만 소프트 배경(`{colors.paper-2}`, 테두리 없음).
@@ -77,7 +77,7 @@
 ### 11. 연결과 회수 — 장표는 이야기의 한 장면
 - 앞 장면을 잇고 다음을 예고. 교시 회수는 핵심 메시지·여섯 질문에서.
 - 처음부터 완성 모델을 보여 주지 않는다.
-- 반영: `data-plan`(비가시)·`docs/inventory.md`가 추적, 표지의 여섯 질문(`.cover__qs`)이 회수 기준점.
+- 반영: `data-plan`(비가시)·`docs/inventory.md`가 추적. 여섯 질문은 표지가 아니라 전용 장표(구성안 07·10)가 회수 기준점.
 
 ### 슬라이드 자가 점검 체크리스트
 1. 제목만 읽고 내용을 예상할 수 있는가?
@@ -97,8 +97,8 @@
 
 ### Brand & Accent
 - **Primary Teal** (`{colors.primary}` — `#1aa6c9`, `--brand`): 장면 태그, 핵심 문장 바, BPMN 경로 하이라이트, progress 바.
-- **Teal Dark** (`{colors.primary-dark}` — `#147e9b`, `--brand-dark`): eyebrow, `em` 강조, 비교표 BPMN 열.
-- **Teal Deep** (`{colors.primary-deep}` — `#0e5e73`, `--brand-deep`): 표지·전환 슬라이드 배경.
+- **Teal Dark** (`{colors.primary-dark}` — `#147e9b`, `--brand-dark`): `em` 강조, 비교표 BPMN 열, vs 매핑 우측 열.
+- **Teal Deep** (`{colors.primary-deep}` — `#0e5e73`, `--brand-deep`): 예비(현재 미사용 — 표면은 백지만).
 - **Teal Tint / Line** (`#e8f6fa` / `#c3e5ee`): 절제해서 사용(현재 기본 컴포넌트에는 미사용).
 - **Brand Gray** (`#6e7073`, `--brand-gray`): 중립 라벨 예비.
 
@@ -121,7 +121,7 @@ Token `#f59e0b` 앰버 · OK `#059669` · Warn `#d97706` · Bad `#dc2626`
 ### Hierarchy
 | Token | Size | Weight | Use |
 |---|---|---|---|
-| `{type.cover}` | 58px | 800 | 표지 제목 (`.cover h1`) |
+| `{type.cover}` | 108px | 870 | 표지 제목 (`.cover h1`) |
 | `{type.title}` | 46px | 800 | 슬라이드 제목 (`.slide__title`) |
 | `{type.title-sm}` | 39px | 800 | 긴 제목 (`--sm`) |
 | `{type.key}` | 23px | 720 | 핵심 문장 (`.slide__key`) |
@@ -142,7 +142,7 @@ Token `#f59e0b` 앰버 · OK `#059669` · Warn `#d97706` · Bad `#dc2626`
 - 캔버스 **1280×720 고정**, reveal 스케일. 콘텐츠 패딩 `58px 72px 44px`.
 - 세로 구조: eyebrow → title → **scene 한 줄(hairline로 헤더 마감)** → 본문(cols) → **핵심 문장(하단 고정)**. 출처는 우하단 absolute.
 - 그리드: `.cols--2`(1:1), `.cols--bpmn-right`(1.6:1), `.cols--bpmn-left`(1:1.5). 열 간격 44px — 여백이 구분선이다.
-- 표지: 딥 teal 단일 면, 상단 좌측 kicker+제목+부제, 하단 3×2 여섯 질문 그리드(`.cover__qs`).
+- 표지: 백지 포스터 — 상단 밴드(2px 잉크 룰) → 108px 제목 → 하단 teal bar+한 줄. 콘텐츠 헤더도 같은 밴드 문법.
 
 ## Elevation & Depth
 **그림자 없음. 평면 + hairline.** 구분이 필요하면 ① 여백, ② 1px hairline(`#ebedf1`), ③ 소프트 배경(`#f7f8fa`, 테두리 없음) 순으로 약한 수단부터. BPMN 캔버스도 hairline 테두리만.
@@ -155,13 +155,13 @@ Token `#f59e0b` 앰버 · OK `#059669` · Warn `#d97706` · Bad `#dc2626`
 
 ### `slide` / `cover`
 **`slide`** — 흰 종이 콘텐츠 슬라이드. eyebrow → title → scene → cols → key(+cite).
-**`cover`** — 표지·전환. 딥 teal 단일 면 + 우상단 teal 후광 radial. 제목 58px 흰색(`.hl`=`#7fd8ee`), 하단 hairline(반투명 흰) 위 **여섯 질문 3×2 그리드**. 운영 정보(대상·전제·교시) 없음.
+**`cover`** — 표지(스위스 포스터). 백지, 상단 밴드(캡스 kicker 좌 + "ecoletree" 우, **2px 잉크 룰**), 108px/870 잉크 제목 + **teal 마침표**(`.q`), 하단 `cover__sub`(44×5px teal bar + 한 줄). 여섯 질문·운영 정보 없음 — 포스터는 선언만 한다.
 
 ### `slide__eyebrow`
-13.5px 대문자, 자간 .14em, teal-dark. **카테고리만** — 번호·교시 표시 금지(`data-plan`으로 추적).
+13.5px 잉크 캡스 + **하단 2px 잉크 룰**(표지 상단 밴드와 같은 문법 — 덱을 하나로 묶는 장치). **카테고리만** — 번호·교시 표시 금지(`data-plan`으로 추적).
 
 ### `scene` (스토리 장면 — 한 줄)
-배너·배경 없음. `scene__tag`("현재 스토리 장면", 12.5px teal 대문자) + `scene__text`(18px). 아래 hairline으로 헤더를 마감 — 이 선이 슬라이드의 유일한 상단 구조선.
+배너·배경 없음. `scene__tag`("현재 스토리 장면", 12.5px teal 대문자) + `scene__text`(18px). 아래 hairline으로 헤더를 마감 — 상단 2px 잉크 룰(강) → scene hairline(약)의 두 단계 위계.
 
 ### `slide__key` (핵심 문장)
 하단 고정. **36×4px teal 바** + 23px/720 문장. 배지·테두리 없음. `max-width: 88%`로 출처와 겹침 방지. 가급적 한 줄.

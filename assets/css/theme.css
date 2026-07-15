@@ -88,13 +88,16 @@
   background: var(--paper);
 }
 
+/* 헤더 — 표지와 같은 문법: 잉크 캡스 + 2px 잉크 룰 */
 .slide__eyebrow {
   font-size: 13.5px;
   font-weight: 750;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--brand-dark);
-  margin-bottom: 14px;
+  color: var(--ink);
+  padding-bottom: 13px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 24px;
 }
 .slide__eyebrow .pg { display: none; } /* 운영 정보는 화면에 없다 */
 
@@ -338,49 +341,43 @@
 .tok--ghost { background: transparent; color: var(--bad); border: 2px dashed var(--bad); box-shadow: none; }
 
 /* =========================================================================
-   표지 (cover) — 딥 teal 단일 면
+   표지 (cover) — 스위스 타이포 포스터: 백지, 잉크 룰, 초대형 활자, teal 한 점
    ========================================================================= */
 .cover {
   box-sizing: border-box;
   width: 100%; height: 100%;
-  padding: 84px 88px 64px;
+  padding: 56px 64px;
   display: flex; flex-direction: column;
-  background:
-    radial-gradient(900px 480px at 108% -18%, rgba(26,166,201,.32) 0%, transparent 60%),
-    linear-gradient(160deg, #0e5e73 0%, #0a4657 100%);
-  color: #fff;
+  background: var(--paper);
+  color: var(--ink);
 }
-.cover__kicker {
+.cover__top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--ink);
+}
+.cover__top .l {
   font-size: 14px; font-weight: 750;
-  letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.55);
-  margin-bottom: 30px;
+  letter-spacing: .18em; text-transform: uppercase;
 }
+.cover__top .r { font-size: 14px; font-weight: 550; color: var(--ink-mute); }
 .cover h1 {
-  font-size: 58px; line-height: 1.14; color: #fff;
-  margin-bottom: 22px; max-width: 20ch;
+  margin-top: 64px;
+  font-size: 108px; font-weight: 870;
+  line-height: 1.04; letter-spacing: -0.045em;
+  color: var(--ink);
 }
-.cover h1 .hl { color: #7fd8ee; }
+.cover h1 .q { color: var(--brand); }
 .cover__sub {
-  font-size: 21px; color: rgba(255,255,255,.72);
-  max-width: 46ch; line-height: 1.55;
-}
-.cover__qs {
   margin-top: auto;
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  gap: 26px 40px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255,255,255,.16);
+  display: flex; align-items: baseline; gap: 18px;
 }
-.cover__qs .q {
-  display: flex; flex-direction: column; gap: 7px;
-  font-size: 16.5px; font-weight: 550; color: rgba(255,255,255,.92);
-  line-height: 1.4;
+.cover__sub .bar {
+  flex: none; width: 44px; height: 5px;
+  background: var(--brand);
+  transform: translateY(-6px);
 }
-.cover__qs .q span {
-  font-family: var(--mono); font-size: 13px; font-weight: 400;
-  color: rgba(255,255,255,.42); letter-spacing: .08em;
-}
+.cover__sub p { font-size: 19px; color: var(--ink-soft); font-weight: 480; }
 
 /* =========================================================================
    구도 컴포넌트 — 슬라이드마다 다른 형태를 만든다
