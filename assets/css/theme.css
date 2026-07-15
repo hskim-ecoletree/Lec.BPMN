@@ -163,6 +163,26 @@
   font-family: var(--mono);
 }
 
+/* ---------- 강사 소개 ---------- */
+.bio__meta {
+  display: flex; flex-wrap: wrap; gap: 12px 34px;
+  margin-top: 22px; font-size: 16px; color: var(--ink-soft);
+}
+.bio__meta b { color: var(--ink-deep); font-weight: 700; }
+.bio__meta a { color: var(--accent); text-decoration: none; font-family: var(--mono); }
+.bio__cap {
+  margin-top: 38px; margin-bottom: 14px;
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-mute); font-weight: 700;
+}
+.bio__proj {
+  display: grid; grid-template-columns: 190px 1fr; align-items: baseline;
+  gap: 20px; padding: 0 0 11px; margin-bottom: 11px;
+  border-bottom: 1px solid var(--line); font-size: 17px;
+}
+.bio__proj .who { color: var(--accent); font-weight: 700; }
+.bio__proj .what { color: var(--ink-soft); }
+
 /* ---------- 콘텐츠 요소 ---------- */
 
 /* 대형 매핑 (도구 비교) — 텍스트가 그래픽 */

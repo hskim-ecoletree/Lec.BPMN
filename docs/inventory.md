@@ -23,93 +23,94 @@
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
 | 01 | #/0 | Workflow를 구조적으로 생각하는 BPMN·Camunda 7 과정 (표지) | 전체 | 3 | 대본 | — | 재활용. A안 "구조로 읽는 법" 확정, 리뷰 PASS |
-| 02 | #/1 | Workflow의 구조 — 시작·일·분기·대기·결과 | Q1~Q5 | 8 | 통과 | — | 신규(스토리 개막). frag_structure_overview.bpmn, relist/facet-row 구도, 대본 초안 내장 |
-| 03 | #/2 | Workflow 표현 도구들 | Q6 | 6 | 통과 | OMG BPMN 2.0.2 (검증노트 §2-11) | 신규. rows 구도, 대본 초안 내장 |
-| 04 | #/3 | ODC도 흐름으로 개발한다 — BPMN은 같은 문법·다른 층위 | Q6 | 3 | 통과 | ODC docs | 2026-07-16 재작성: 옛 BPT 요소매핑 → ODC action flow vs BPMN 층위 대비. chain 컴포넌트 추가(theme v9). 검증노트 §1 ODC절 반영, 용어사전 등재(action flow·Aggregate·Run Server Action). slide-reviewer 재판정 PASS |
-| 05 | #/4 | BPMN의 부침과 남은 가치 | Q6 | 8 | 통과 | OMG·ISO (검증노트 §3) | 신규(병합). flow 타임라인, M5 caveat, 대본 초안 내장 |
-| 06 | #/5 | AI 에이전트와 프로세스의 경계 | Q2·Q5 | 6 | 통과 | — | 신규. rows 구도, 대본 초안 내장 |
-| 07 | #/6 | 흐름을 읽는 여섯 관점 | 전체 | 4 | 통과 | — | 신규(회수). qgrid 구도, 대본 초안 내장 |
+| 01b | #/1 | 강사 소개 — 김형석 (이콜트리) | 전체 | 1 | 대본 | — | 신규(메타). 표지 뒤 강사 이력, bio 구도(theme v12), 참여 프로젝트 6건. 콘솔 0·겹침 없음 확인 |
+| 02 | #/2 | Workflow의 구조 — 시작·일·분기·대기·결과 | Q1~Q5 | 8 | 통과 | — | 신규(스토리 개막). frag_structure_overview.bpmn, relist/facet-row 구도, 대본 초안 내장 |
+| 03 | #/3 | Workflow 표현 도구들 | Q6 | 6 | 통과 | OMG BPMN 2.0.2 (검증노트 §2-11) | 신규. rows 구도, 대본 초안 내장 |
+| 04 | #/4 | ODC도 흐름으로 개발한다 — BPMN은 같은 문법·다른 층위 | Q6 | 3 | 통과 | ODC docs | 2026-07-16 재작성: 옛 BPT 요소매핑 → ODC action flow vs BPMN 층위 대비. chain 컴포넌트 추가(theme v9). 검증노트 §1 ODC절 반영, 용어사전 등재(action flow·Aggregate·Run Server Action). slide-reviewer 재판정 PASS |
+| 05 | #/5 | BPMN의 부침과 남은 가치 | Q6 | 8 | 통과 | OMG·ISO (검증노트 §3) | 신규(병합). flow 타임라인, M5 caveat, 대본 초안 내장 |
+| 06 | #/6 | AI 에이전트와 프로세스의 경계 | Q2·Q5 | 6 | 통과 | — | 신규. rows 구도, 대본 초안 내장 |
+| 07 | #/7 | 흐름을 읽는 여섯 관점 | 전체 | 4 | 통과 | — | 신규(회수). qgrid 구도, 대본 초안 내장 |
 
 ### 2교시 — 여섯 질문과 BPMN이라는 언어 (합 44분)
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 08 | #/7 | BPMN이란 무엇인가 | Q6 | 6 | 통과 | — | 신규, M2. src+rows 구도(프로즈 모호성), 대본 초안 내장 |
-| 09 | #/8 | 지민의 온보딩 전체 흐름 | Q1·Q2 | 6 | 통과 | — | 재활용(구 data-plan 08). 지도 훑기로 msg 개정, 재판정 PASS(2026-07-15) |
-| 10 | #/9 | 다이어그램 없이 흐름 정리하기 | 전체 | 7 | 통과 | — | 신규. qa 워크시트 구도, 대본 초안 내장 |
-| 11 | #/10 | Workflow의 범위 — 시작과 끝 | Q1 | 5 | 통과 | — | 신규. frag_scope_startend.bpmn(시작 1·결말 3), s-scope STEPS, 대본 초안 내장 |
-| 12 | #/11 | 역할과 인계 지점 | Q2 | 5 | 통과 | — | 신규. handoff 구도(역할↔정보), 대본 초안 내장 |
-| 13 | #/12 | 정상 경로와 예외 경로 | Q5 | 6 | 통과 | — | 신규. 전체 모델 + dead-strip, s-paths STEPS, 대본 초안 내장 |
-| 14 | #/13 | BPMN 요소의 네 갈래 | Q1~Q5 | 5 | 통과 | — | 신규. qgrid 4분류, 대본 초안 내장 |
-| 15 | #/14 | 질문과 요소 연결 | 전체 | 4 | 통과 | — | 신규. rows Q↔요소 매핑, 대본 초안 내장 |
+| 08 | #/8 | BPMN이란 무엇인가 | Q6 | 6 | 통과 | — | 신규, M2. src+rows 구도(프로즈 모호성), 대본 초안 내장 |
+| 09 | #/9 | 지민의 온보딩 전체 흐름 | Q1·Q2 | 6 | 통과 | — | 재활용(구 data-plan 08). 지도 훑기로 msg 개정, 재판정 PASS(2026-07-15) |
+| 10 | #/10 | 다이어그램 없이 흐름 정리하기 | 전체 | 7 | 통과 | — | 신규. qa 워크시트 구도, 대본 초안 내장 |
+| 11 | #/11 | Workflow의 범위 — 시작과 끝 | Q1 | 5 | 통과 | — | 신규. frag_scope_startend.bpmn(시작 1·결말 3), s-scope STEPS, 대본 초안 내장 |
+| 12 | #/12 | 역할과 인계 지점 | Q2 | 5 | 통과 | — | 신규. handoff 구도(역할↔정보), 대본 초안 내장 |
+| 13 | #/13 | 정상 경로와 예외 경로 | Q5 | 6 | 통과 | — | 신규. 전체 모델 + dead-strip, s-paths STEPS, 대본 초안 내장 |
+| 14 | #/14 | BPMN 요소의 네 갈래 | Q1~Q5 | 5 | 통과 | — | 신규. qgrid 4분류, 대본 초안 내장 |
+| 15 | #/15 | 질문과 요소 연결 | 전체 | 4 | 통과 | — | 신규. rows Q↔요소 매핑, 대본 초안 내장 |
 
 ### 3교시 — 시작·종료와 역할·일 (합 36분, 버퍼 포함 목표 38)
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 16 | #/15 | Start Event와 End Event | Q1 | 8 | 통과 | BPMN 2.0.2·Camunda 7 (검증노트 §2-12) | 신규(병합). 전체 모델 + s-startend, Process Instance 첫 등장, 대본 |
-| 17 | #/16 | Pool·Lane·Message Flow | Q2 | 7 | 통과 | OMG BPMN 2.0.2 (검증노트 §2-13) | 신규. 전체 모델 + s-lanes, beat 캡션, 대본 |
-| 18 | #/17 | User Task — 사람의 일과 대기 | Q2·Q4 | 6 | 통과 | Camunda 7 docs (§2-8) | 신규. 검토 태스크 줌 + s-usertask, 대본 |
-| 19 | #/18 | Service Task와 External Task | Q2 | 6 | 통과 | Camunda 7 docs (§2-7) | 신규(개념만). vs 구도, External Task·Worker 첫 등장 |
-| 20 | #/19 | Activity 이름 짓기 | Q2 | 5 | 통과 | — | 신규. rename 구도(before→after), 대본 |
-| 21 | #/20 | 시작·끝·역할·일 정리 | Q1·Q2 | 4 | 통과 | — | 신규(회수). qgrid 4정리, 4교시 예고 |
+| 16 | #/16 | Start Event와 End Event | Q1 | 8 | 통과 | BPMN 2.0.2·Camunda 7 (검증노트 §2-12) | 신규(병합). 전체 모델 + s-startend, Process Instance 첫 등장, 대본 |
+| 17 | #/17 | Pool·Lane·Message Flow | Q2 | 7 | 통과 | OMG BPMN 2.0.2 (검증노트 §2-13) | 신규. 전체 모델 + s-lanes, beat 캡션, 대본 |
+| 18 | #/18 | User Task — 사람의 일과 대기 | Q2·Q4 | 6 | 통과 | Camunda 7 docs (§2-8) | 신규. 검토 태스크 줌 + s-usertask, 대본 |
+| 19 | #/19 | Service Task와 External Task | Q2 | 6 | 통과 | Camunda 7 docs (§2-7) | 신규(개념만). vs 구도, External Task·Worker 첫 등장 |
+| 20 | #/20 | Activity 이름 짓기 | Q2 | 5 | 통과 | — | 신규. rename 구도(before→after), 대본 |
+| 21 | #/21 | 시작·끝·역할·일 정리 | Q1·Q2 | 4 | 통과 | — | 신규(회수). qgrid 4정리, 4교시 예고 |
 
 ### 4교시 — 분기: 토큰으로 세는 법 (합 41분)
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 22 | #/21 | 토큰 — 진행 위치를 세는 도구 | Q3·Q4 | 7 | 통과 | BPMN 2.0.2·Camunda 7 (§2-3) | 재활용(구 38). cite 추가·역할 notes 보강, 재판정 PASS |
-| 23 | #/22 | Gateway의 규칙 — 분기와 합류 | Q3 | 5 | 통과 | — | 신규. frag_gateway_rule.bpmn + s-gateway, M3, beat+caveat |
-| 24 | #/23 | Exclusive Gateway — 하나를 고르는 분기와 합류 | Q3 | 9 | 통과 | BPMN 2.0.2·Camunda 7 (§2-2) | 신규. 근무형태 줌 + s-xor(토큰 1·사무실 ghost·Default), §2-2 |
-| 25 | #/24 | Parallel Gateway — 모두 실행하는 분기와 합류 | Q3 | 9 | 통과 | BPMN 2.0.2·Camunda 7 (§2-3) | 신규. 필수준비 줌 + s-parallel(토큰 1→3→1·부분도착 대기), §2-3 |
-| 26 | #/25 | XOR 분기와 Parallel 합류의 교착 | Q3 | 7 | 통과 | BPMN 2.0.2·Camunda 7 | 재활용(구 data-plan 35). 재판정 PASS(2026-07-15), 대본 초안 내장 |
-| 27 | #/26 | 분기 선택과 토큰 세기 | Q3 | 4 | 통과 | — | 신규. rows(Exclusive·Parallel·교착), 5교시 예고 |
+| 22 | #/22 | 토큰 — 진행 위치를 세는 도구 | Q3·Q4 | 7 | 통과 | BPMN 2.0.2·Camunda 7 (§2-3) | 재활용(구 38). cite 추가·역할 notes 보강, 재판정 PASS |
+| 23 | #/23 | Gateway의 규칙 — 분기와 합류 | Q3 | 5 | 통과 | — | 신규. frag_gateway_rule.bpmn + s-gateway, M3, beat+caveat |
+| 24 | #/24 | Exclusive Gateway — 하나를 고르는 분기와 합류 | Q3 | 9 | 통과 | BPMN 2.0.2·Camunda 7 (§2-2) | 신규. 근무형태 줌 + s-xor(토큰 1·사무실 ghost·Default), §2-2 |
+| 25 | #/25 | Parallel Gateway — 모두 실행하는 분기와 합류 | Q3 | 9 | 통과 | BPMN 2.0.2·Camunda 7 (§2-3) | 신규. 필수준비 줌 + s-parallel(토큰 1→3→1·부분도착 대기), §2-3 |
+| 26 | #/26 | XOR 분기와 Parallel 합류의 교착 | Q3 | 7 | 통과 | BPMN 2.0.2·Camunda 7 | 재활용(구 data-plan 35). 재판정 PASS(2026-07-15), 대본 초안 내장 |
+| 27 | #/27 | 분기 선택과 토큰 세기 | Q3 | 4 | 통과 | — | 신규. rows(Exclusive·Parallel·교착), 5교시 예고 |
 
 ### 5교시 — 하나 이상, 먼저 온 사건, 대기 (합 42분)
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 28 | #/27 | Inclusive Gateway 분기 — 조건에 맞는 하나 이상 | Q3 | 6 | 통과 | BPMN 2.0.2·Camunda 7 (§2-5) | 신규. 권한선택 줌 + s-inclusive(VPN·개발도구 O, 관리자 ghost) |
-| 29 | #/28 | Inclusive Gateway 합류 — 활성 경로 대기 | Q3 | 6 | 통과 | Camunda 7 docs (§2-5) | 신규. s-inclusive-join(활성 둘만 대기), 복잡 모델 경고 |
-| 30 | #/29 | Event-based Gateway — 먼저 도착한 사건 | Q3·Q4 | 7 | 통과 | Camunda 7 docs (§2-1) | 신규. 서류대기 줌 + s-eventbased(제출 win·기한 취소), Catch Event만 |
-| 31 | #/30 | Gateway 선택 기준 | Q3 | 5 | 통과 | — | 신규. qgrid 4 Gateway(문장→기호) |
-| 32 | #/31 | Wait State — 상태 저장과 재개 | Q4 | 8 | 통과 | Camunda 7 docs (§2-8) | 신규. flow(도달·저장·대기·재개), Timer 포함 |
-| 33 | #/32 | Message Correlation과 Business Key | Q4 | 6 | 통과 | Camunda 7 docs (§2-9) | 신규. src+rows(이름·Business Key) |
-| 34 | #/33 | 분기와 대기 정리 | Q3·Q4 | 4 | 통과 | — | 신규(회수). rows(Gateway·Wait·Correlation), 6교시 예고 |
+| 28 | #/28 | Inclusive Gateway 분기 — 조건에 맞는 하나 이상 | Q3 | 6 | 통과 | BPMN 2.0.2·Camunda 7 (§2-5) | 신규. 권한선택 줌 + s-inclusive(VPN·개발도구 O, 관리자 ghost) |
+| 29 | #/29 | Inclusive Gateway 합류 — 활성 경로 대기 | Q3 | 6 | 통과 | Camunda 7 docs (§2-5) | 신규. s-inclusive-join(활성 둘만 대기), 복잡 모델 경고 |
+| 30 | #/30 | Event-based Gateway — 먼저 도착한 사건 | Q3·Q4 | 7 | 통과 | Camunda 7 docs (§2-1) | 신규. 서류대기 줌 + s-eventbased(제출 win·기한 취소), Catch Event만 |
+| 31 | #/31 | Gateway 선택 기준 | Q3 | 5 | 통과 | — | 신규. qgrid 4 Gateway(문장→기호) |
+| 32 | #/32 | Wait State — 상태 저장과 재개 | Q4 | 8 | 통과 | Camunda 7 docs (§2-8) | 신규. flow(도달·저장·대기·재개), Timer 포함 |
+| 33 | #/33 | Message Correlation과 Business Key | Q4 | 6 | 통과 | Camunda 7 docs (§2-9) | 신규. src+rows(이름·Business Key) |
+| 34 | #/34 | 분기와 대기 정리 | Q3·Q4 | 4 | 통과 | — | 신규(회수). rows(Gateway·Wait·Correlation), 6교시 예고 |
 
 ### 6교시 — 실행과 복구 (합 43분)
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 35 | #/34 | Process Definition·Instance·Cockpit | Q5·Q4 | 8 | 통과 | Camunda 7 docs (§2-14) | 신규(병합). s-instances(세 건 위치), M4 화면 확립, 리뷰 PASS(2026-07-15). 예시 인스턴스 영수·아라 §6 등재 |
-| 36 | #/35 | 저장 지점과 롤백 범위 | Q5 | 6 | 통과 | Camunda 7 docs (§2-8) | 신규. s-savepoint(계정 실패 롤백), asyncBefore, 리뷰 PASS(2026-07-15) |
-| 37 | #/36 | Async·Job·Retry·Incident — 복구 경계 | Q5 | 7 | 통과 | Camunda 7 docs | 재활용(구 data-plan 42). 검증노트 §2-6·7 반영, 재판정 PASS(2026-07-15), 대본 초안 내장 |
-| 38 | #/37 | Boundary Event — 중단과 비중단 | Q5 | 6 | 통과 | BPMN 2.0.2·Camunda 7 (§2-10) | 신규. s-boundary(4시간 비중단 곁길), 리뷰 PASS(2026-07-15) |
-| 39 | #/38 | 업무상 다른 결과와 기술 실패 | Q5 | 6 | 통과 | — | 신규. vs(부적합↔503), 복구는 실행 계층, 리뷰 PASS(2026-07-15). End→End Event 표기 |
-| 40 | #/39 | 채용 취소와 Event Subprocess | Q5 | 6 | 통과 | BPMN 2.0.2·Camunda 7 (§2-15) | 신규. s-eventsub(취소가 전체 중단), 리뷰 PASS(2026-07-15) |
-| 41 | #/40 | 복구 지점 — 저장·재시도·운영 | Q5 | 4 | 통과 | — | 신규(회수), M4. rows 4정리, 7교시 예고, 리뷰 PASS(2026-07-15). Commit §7 등재·async→Async |
+| 35 | #/35 | Process Definition·Instance·Cockpit | Q5·Q4 | 8 | 통과 | Camunda 7 docs (§2-14) | 신규(병합). s-instances(세 건 위치), M4 화면 확립, 리뷰 PASS(2026-07-15). 예시 인스턴스 영수·아라 §6 등재 |
+| 36 | #/36 | 저장 지점과 롤백 범위 | Q5 | 6 | 통과 | Camunda 7 docs (§2-8) | 신규. s-savepoint(계정 실패 롤백), asyncBefore, 리뷰 PASS(2026-07-15) |
+| 37 | #/37 | Async·Job·Retry·Incident — 복구 경계 | Q5 | 7 | 통과 | Camunda 7 docs | 재활용(구 data-plan 42). 검증노트 §2-6·7 반영, 재판정 PASS(2026-07-15), 대본 초안 내장 |
+| 38 | #/38 | Boundary Event — 중단과 비중단 | Q5 | 6 | 통과 | BPMN 2.0.2·Camunda 7 (§2-10) | 신규. s-boundary(4시간 비중단 곁길), 리뷰 PASS(2026-07-15) |
+| 39 | #/39 | 업무상 다른 결과와 기술 실패 | Q5 | 6 | 통과 | — | 신규. vs(부적합↔503), 복구는 실행 계층, 리뷰 PASS(2026-07-15). End→End Event 표기 |
+| 40 | #/40 | 채용 취소와 Event Subprocess | Q5 | 6 | 통과 | BPMN 2.0.2·Camunda 7 (§2-15) | 신규. s-eventsub(취소가 전체 중단), 리뷰 PASS(2026-07-15) |
+| 41 | #/41 | 복구 지점 — 저장·재시도·운영 | Q5 | 4 | 통과 | — | 신규(회수), M4. rows 4정리, 7교시 예고, 리뷰 PASS(2026-07-15). Commit §7 등재·async→Async |
 
 ### 7교시 — 실습: 이야기를 모델로 (합 50분)
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 42 | #/41 | 실습 안내 — 범위와 역할 찾기 | 전체 | 8 | 통과 | — | 신규. lab 워크시트(시작·끝·역할 슬롯), 온보딩 사례 구성, 리뷰 PASS(2026-07-15). 신규 컴포넌트 lab·tasks |
-| 43 | #/42 | 실습 1 — 정상 경로 최소 모델 | Q1·Q2 | 10 | 통과 | — | 신규. tasks 4단계(Start·User Task 동사·End·Sequence Flow), 리뷰 PASS(2026-07-15) |
-| 44 | #/43 | 실습 2 — 분기와 병렬 판단 | Q3 | 14 | 통과 | — | 신규. lab 판단 슬롯(근무형태 XOR·준비 Parallel·합류 점검) + 교착 caveat, 리뷰 PASS(2026-07-15) |
-| 45 | #/44 | 실습 3 — 대기·기한·실패 추가 | Q4·Q5 | 14 | 통과 | — | 신규. tasks 3단계(Wait State·Timer 초과·Retry/Incident), 리뷰 PASS(2026-07-15) |
-| 46 | #/45 | 모델 리뷰 체크리스트 | 전체 | 4 | 통과 | — | 신규(회수), M2. qgrid 6점검(여섯 질문+이름), 상호 리뷰, 리뷰 PASS(2026-07-15) |
+| 42 | #/42 | 실습 안내 — 범위와 역할 찾기 | 전체 | 8 | 통과 | — | 신규. lab 워크시트(시작·끝·역할 슬롯), 온보딩 사례 구성, 리뷰 PASS(2026-07-15). 신규 컴포넌트 lab·tasks |
+| 43 | #/43 | 실습 1 — 정상 경로 최소 모델 | Q1·Q2 | 10 | 통과 | — | 신규. tasks 4단계(Start·User Task 동사·End·Sequence Flow), 리뷰 PASS(2026-07-15) |
+| 44 | #/44 | 실습 2 — 분기와 병렬 판단 | Q3 | 14 | 통과 | — | 신규. lab 판단 슬롯(근무형태 XOR·준비 Parallel·합류 점검) + 교착 caveat, 리뷰 PASS(2026-07-15) |
+| 45 | #/45 | 실습 3 — 대기·기한·실패 추가 | Q4·Q5 | 14 | 통과 | — | 신규. tasks 3단계(Wait State·Timer 초과·Retry/Incident), 리뷰 PASS(2026-07-15) |
+| 46 | #/46 | 모델 리뷰 체크리스트 | 전체 | 4 | 통과 | — | 신규(회수), M2. qgrid 6점검(여섯 질문+이름), 상호 리뷰, 리뷰 PASS(2026-07-15) |
 
 ### 8교시 — 덜어내기, 그리고 판단 (합 45분)
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 47 | #/46 | 실습 4 — 그리지 않을 것 정하기 | Q6 | 18 | 통과 | — | 신규, M5. vs(모델에 남긴다↔모델 밖에 둔다: 알림·검증·입력) + caveat, 리뷰 PASS(2026-07-15) |
-| 48 | #/47 | BPMN 적용 판단 기준 | Q6 | 10 | 통과 | — | 신규. matrix(상황×도구: BPMN/Flowchart/State Machine/Checklist), 신규 컴포넌트, 리뷰 PASS(2026-07-15) |
-| 49 | #/48 | 여섯 관점 다시 보기 | 전체 | 12 | 통과 | — | 신규(최종 회수), **M1 화면 확립**. qgrid 여섯 질문(07 북엔드), 리뷰 PASS(2026-07-15) |
-| 50 | #/49 | 내 업무에서 BPMN을 쓰지 않을 곳 | Q6 | 5 | 통과 | — | 신규(클로징), M5. rows 3신호(역할 하나·대기/예외 없음·세부 규칙), 열린 질문, 리뷰 PASS(2026-07-15) |
+| 47 | #/47 | 실습 4 — 그리지 않을 것 정하기 | Q6 | 18 | 통과 | — | 신규, M5. vs(모델에 남긴다↔모델 밖에 둔다: 알림·검증·입력) + caveat, 리뷰 PASS(2026-07-15) |
+| 48 | #/48 | BPMN 적용 판단 기준 | Q6 | 10 | 통과 | — | 신규. matrix(상황×도구: BPMN/Flowchart/State Machine/Checklist), 신규 컴포넌트, 리뷰 PASS(2026-07-15) |
+| 49 | #/49 | 여섯 관점 다시 보기 | 전체 | 12 | 통과 | — | 신규(최종 회수), **M1 화면 확립**. qgrid 여섯 질문(07 북엔드), 리뷰 PASS(2026-07-15) |
+| 50 | #/50 | 내 업무에서 BPMN을 쓰지 않을 곳 | Q6 | 5 | 통과 | — | 신규(클로징), M5. rows 3신호(역할 하나·대기/예외 없음·세부 규칙), 열린 질문, 리뷰 PASS(2026-07-15) |
 
 ## 검산
 
 - 교시별 시간 합(장표 배정 기준): 41 / 44 / 36 / 41 / 42 / 43 / 50 / 45 — 전 교시 50분 이내(잔여는 질문·전환 버퍼).
 - 여섯 질문 커버리지: curriculum.md "커버리지 검산" 절과 일치(02는 Q1~Q5 도입부).
-- 제작 현황: 대본 1 (01) · 통과 49 (02~50) — **제작 50장 전량 완료·전 장표 slide-reviewer PASS**. 계획 0장. 남은 일: 8교시 deck-reviewer(최종 마일스톤) → 대본 정식화·PDF export.
+- 제작 현황: 대본 2 (01·01b) · 통과 49 (02~50) — **커리큘럼 50장 전량 완료·전 장표 slide-reviewer PASS**. 메타 장표 1(01b 강사 소개)은 커리큘럼 50장 외. 계획 0장. 남은 일: 8교시 deck-reviewer(최종 마일스톤) → 대본 정식화·PDF export.
