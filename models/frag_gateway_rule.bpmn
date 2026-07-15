@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_GatewayRule"
+  targetNamespace="https://example.org/camunda7/training/fragments">
+  <bpmn:process id="Process_GatewayRule" name="게이트웨이 규칙" isExecutable="false">
+    <bpmn:startEvent id="Gr_Start" name="계기">
+      <bpmn:outgoing>Gr_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gr_Split" name="조건 판단">
+      <bpmn:incoming>Gr_f1</bpmn:incoming>
+      <bpmn:outgoing>Gr_fA</bpmn:outgoing>
+      <bpmn:outgoing>Gr_fB</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Gr_TaskA" name="경로 A 처리">
+      <bpmn:incoming>Gr_fA</bpmn:incoming>
+      <bpmn:outgoing>Gr_fAj</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Gr_TaskB" name="경로 B 처리">
+      <bpmn:incoming>Gr_fB</bpmn:incoming>
+      <bpmn:outgoing>Gr_fBj</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gr_Merge" name="합류">
+      <bpmn:incoming>Gr_fAj</bpmn:incoming>
+      <bpmn:incoming>Gr_fBj</bpmn:incoming>
+      <bpmn:outgoing>Gr_f2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Gr_End" name="완료">
+      <bpmn:incoming>Gr_f2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Gr_f1" sourceRef="Gr_Start" targetRef="Gr_Split" />
+    <bpmn:sequenceFlow id="Gr_fA" name="조건 A" sourceRef="Gr_Split" targetRef="Gr_TaskA" />
+    <bpmn:sequenceFlow id="Gr_fB" name="조건 B" sourceRef="Gr_Split" targetRef="Gr_TaskB" />
+    <bpmn:sequenceFlow id="Gr_fAj" sourceRef="Gr_TaskA" targetRef="Gr_Merge" />
+    <bpmn:sequenceFlow id="Gr_fBj" sourceRef="Gr_TaskB" targetRef="Gr_Merge" />
+    <bpmn:sequenceFlow id="Gr_f2" sourceRef="Gr_Merge" targetRef="Gr_End" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_GatewayRule">
+    <bpmndi:BPMNPlane id="BPMNPlane_GatewayRule" bpmnElement="Process_GatewayRule">
+      <bpmndi:BPMNShape id="Gr_Start_di" bpmnElement="Gr_Start">
+        <dc:Bounds x="160" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="167" y="245" width="24" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gr_Split_di" bpmnElement="Gr_Split" isMarkerVisible="true">
+        <dc:Bounds x="270" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="258" y="252" width="74" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gr_TaskA_di" bpmnElement="Gr_TaskA">
+        <dc:Bounds x="400" y="90" width="140" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gr_TaskB_di" bpmnElement="Gr_TaskB">
+        <dc:Bounds x="400" y="280" width="140" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gr_Merge_di" bpmnElement="Gr_Merge" isMarkerVisible="true">
+        <dc:Bounds x="620" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="628" y="252" width="34" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gr_End_di" bpmnElement="Gr_End">
+        <dc:Bounds x="740" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="747" y="245" width="24" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Gr_f1_di" bpmnElement="Gr_f1">
+        <di:waypoint x="196" y="220" /><di:waypoint x="270" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Gr_fA_di" bpmnElement="Gr_fA">
+        <di:waypoint x="295" y="195" /><di:waypoint x="295" y="125" /><di:waypoint x="400" y="125" />
+        <bpmndi:BPMNLabel><dc:Bounds x="305" y="150" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Gr_fB_di" bpmnElement="Gr_fB">
+        <di:waypoint x="295" y="245" /><di:waypoint x="295" y="315" /><di:waypoint x="400" y="315" />
+        <bpmndi:BPMNLabel><dc:Bounds x="305" y="290" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Gr_fAj_di" bpmnElement="Gr_fAj">
+        <di:waypoint x="540" y="125" /><di:waypoint x="645" y="125" /><di:waypoint x="645" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Gr_fBj_di" bpmnElement="Gr_fBj">
+        <di:waypoint x="540" y="315" /><di:waypoint x="645" y="315" /><di:waypoint x="645" y="245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Gr_f2_di" bpmnElement="Gr_f2">
+        <di:waypoint x="670" y="220" /><di:waypoint x="740" y="220" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -200,6 +200,38 @@
       .mark(["Gateway_DocumentsComplete", "Task_RequestCorrections", "Gateway_RequirementsMerge"], "dim-el"),
   ];
 
+  // 슬라이드 23: Gateway 규칙 — 분기 강조 → 합류 → 일은 Task
+  STEPS["s-gateway"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().mark("Gr_Split", "active-el"),
+    (a) => a.clear().mark(["Gr_Split", "Gr_Merge"], "active-el"),
+    (a) => a.clear().mark(["Gr_TaskA", "Gr_TaskB"], "active-el"),
+  ];
+
+  // 슬라이드 24: Exclusive Gateway — 분기(토큰 1) → 한 경로 → 합류 통과
+  var WM = ["Gateway_WorkMode", "Task_PrepareRemoteShipping",
+            "Task_PrepareOfficeSeat", "Gateway_WorkModeMerge"];
+  STEPS["s-xor"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().focus(WM, 60).mark("Gateway_WorkMode", "active-el").token("Gateway_WorkMode"),
+    (a) => a.clear().focus(WM, 60)
+      .mark("Task_PrepareRemoteShipping", "active-el").token("Task_PrepareRemoteShipping")
+      .mark("Task_PrepareOfficeSeat", "dim-el").token("Task_PrepareOfficeSeat", null, "tok--ghost"),
+    (a) => a.clear().focus(WM, 60).mark("Gateway_WorkModeMerge", "active-el").token("Gateway_WorkModeMerge"),
+  ];
+
+  // 슬라이드 25: Parallel Gateway — 분기(1) → 셋(3) → 합류 대기
+  var PREP = ["Gateway_PreparationSplit", "Task_CreateAccount", "Task_PrepareEquipment",
+              "Task_RegisterTraining", "Gateway_PreparationJoin"];
+  STEPS["s-parallel"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().focus(PREP, 55).mark("Gateway_PreparationSplit", "active-el").token("Gateway_PreparationSplit"),
+    (a) => a.clear().focus(PREP, 55)
+      .mark(["Task_CreateAccount", "Task_PrepareEquipment", "Task_RegisterTraining"], "active-el")
+      .token("Task_CreateAccount").token("Task_PrepareEquipment").token("Task_RegisterTraining"),
+    (a) => a.clear().focus(PREP, 55).mark("Gateway_PreparationJoin", "active-el").token("Gateway_PreparationJoin"),
+  ];
+
   // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
   // 슬라이드 22: 토큰으로 진행 위치 읽기
   STEPS["s-token"] = [
