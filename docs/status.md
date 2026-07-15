@@ -24,12 +24,14 @@
 
 - [x] **2교시(08~15) 완성 (2026-07-15)**: 08 BPMN 정의(M2, src+rows)·10 무-다이어그램 정리(qa)·11 범위 시작·끝(frag_scope_startend.bpmn, s-scope)·12 역할·인계(handoff)·13 정상·예외 경로(전체 모델+dead-strip, s-paths)·14 요소 네 갈래(qgrid)·15 질문↔요소 회수(rows) 신규, 09 재활용 개정(지도 훑기·M2 중복 제거·능력 부정 완화·채용 매니저). 전 장표 slide-reviewer PASS + **deck-reviewer 2교시 마일스톤 PASS**. 신규 컴포넌트 src·qa·handoff, qgrid 등재 확장. COURSE §7에 Event·Activity·Sequence Flow 등재, Retry 읽기형 '재시도' 허용.
 
+- [x] **3교시(16~21) 완성 (2026-07-15)**: 16 Start/End Event(전체 모델+s-startend, Process Instance 첫 등장)·17 Pool/Lane/Message Flow(s-lanes, beat 캡션)·18 User Task(검토 태스크 줌+s-usertask, 일·대기)·19 Service/External Task(vs, Worker 첫 등장)·20 Activity 이름(신규 rename)·21 회수(qgrid). 전 장 slide-reviewer PASS + **deck-reviewer 3교시 마일스톤 PASS**(재판정, 1회차 FAIL은 17 notes "순서 흐름"→"Sequence Flow"). 신규 컴포넌트 beat·rename. §7에 Event·Activity·Sequence Flow·Pool·Lane·Message Flow·Tasklist 등재, verification-notes §2-12·13 추가.
+
 ## 다음 세션이 할 일 (순서대로)
 
-1. **3교시(16~21) 제작** — 16 Start/End Event(병합·단계 노출)부터 1장씩. `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
-   - 19 Service Task/External Task 제작 시 Service Task·Form 첫 등장 풀이 배치 확정(deck-reviewer 이월).
-2. 3교시 완성 시 deck-reviewer.
-3. 이후 4교시(22 재판정·cite 추가 포함) → 5·6교시 순. 6교시에서 37 재검토(현 화면 desc "재시도"는 §7 읽기형 허용으로 정합됨).
+1. **4교시(22~27) 제작** — 22는 이미 있음(재활용, 검증 상태): 4교시 작업 시 재판정 + cite 추가(deck-reviewer 이월). 23 Gateway 규칙(M3)·24 Exclusive·25 Parallel·26(재활용 통과)·27 회수 순. `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
+   - 23이 M3(Gateway는 마름모가 아니라 규칙) 확립 장표. 24·25는 병합·단계 노출(분기→합류).
+2. 4교시 완성 시 deck-reviewer.
+3. 이후 5교시(28~34) → 6교시(35~41, 37 재검토 포함) → 7·8교시 순.
 
 ### 이월 WARN (해당 교시에서 처리)
 - 05 msg "유행은 오갔지만" — 해석 서사 잔존(§3-5). 5번 재방문 시 재검토.
@@ -47,7 +49,7 @@
 
 ## 미해결
 
-- [ ] 3~8교시 제작 (16~50, 재활용 22 포함 32장). 진행: 01~15 통과(1·2교시 완료).
+- [ ] 4~8교시 제작 (22~50, 26장). 진행: 01~21 통과(1·2·3교시 완료), 22·26·37 재활용 존재.
 - [ ] ditto `/plugin` 비활성 (사용자 직접)
 - [ ] 구성안 v2: 명시적 "승인" 절차 없이 표지부터 제작 착수됨.
 - [ ] 브랜드 정확한 hex 미확보 — 현재 `#457075` 유지.
