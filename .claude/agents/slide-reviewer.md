@@ -24,9 +24,11 @@ tools: Read, Grep, Glob
 - 10번(1280×720 겹침 없음)은 정적으로 판정 불가 — `MAIN-VERIFY`로 표시하고 메인 세션의 브라우저 검증 대상임을 명시한다.
 
 ### B. 정적 시각 규칙 (grep으로 확인)
-- **이모지·픽토그램**: 해당 section 텍스트에 픽토그램 글리프(✓ ✗ ✎ ⛔ ↻ ①… 등 U+2460–27BF, U+1F000–1FAFF, U+2600–26FF)가 있으면 FAIL. 화살표 `→`와 `≠` 같은 수학 기호는 허용.
-- **색 하드코딩**: 인라인 style의 raw hex는 FAIL. 예외: OutSystems 주황 계열(`#c2410c` 등, 도구 구분용)과 `var(--…)` 참조.
-- **필수 요소**: 콘텐츠 슬라이드에 `.slide__key` 없으면 FAIL. 개념 장표에 `.scene` 없으면 FAIL(타이틀·전환·실습 안내 등은 N/A 판단). 사실 주장이 있는데 `.slide__cite` 없으면 FAIL.
+- **이모지·픽토그램**: 해당 section 텍스트에 픽토그램 글리프(✓ ✗ ✎ ⛔ ↻ ①… 등 U+2460–27BF, U+1F000–1FAFF, U+2600–26FF)가 있으면 FAIL. 화살표 `→`·`↔`와 `≠` 같은 수학 기호는 허용.
+- **색 하드코딩**: 인라인 style의 raw hex는 FAIL(`var(--…)` 참조와 여백용 수치는 허용). 의미색 4종(accent/err/ok/wait) 외의 새 색 사용도 FAIL.
+- **필수 요소 (v3)**: 콘텐츠 슬라이드에 `.slide__shade`+`.slide__label`+`.slide__q`+`.slide__msg`가 없으면 FAIL. `.slide__msg`가 화면에서 가장 큰 텍스트가 아니면 FAIL. 사실 주장이 있는데 `.slide__cite` 없으면 FAIL. `aside.notes`(대사, [다음] 동기화) 없으면 FAIL.
+- **텍스트 예산**: 화면에 보이는 텍스트(notes 제외)가 대략 60단어를 크게 넘으면 FAIL — 초과분은 notes로 옮기라고 지시.
+- **무의미한 장식**: 의미를 나르지 않는 바·배지·칩·박스가 있으면 FAIL (그림자·광선은 정체성 요소로 허용 — 단 각 1개, 정위치).
 - **fragment/STEPS 정합**: `data-steps`가 있으면 `assets/js/deck.js`의 해당 STEPS 배열 길이가 (section 내 `.fragment` 수 + 1)과 일치하는지 확인. 불일치는 FAIL.
 - **bpmn 요소 id**: `data-focus`나 STEPS가 참조하는 id가 해당 `models/*.bpmn`에 실제 존재하는지 grep으로 확인. 없는 id는 FAIL.
 - **강사·운영 컨텍스트 노출**: 화면 텍스트(aside.notes 제외)에 교시 수·시간표·배정 시간·"설계안 N"·수강 대상·전제 조건 등 과정 운영·제작 정보가 보이면 FAIL. 제작 추적은 section의 `data-plan` 속성(비가시)만 허용.

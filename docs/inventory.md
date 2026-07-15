@@ -22,7 +22,7 @@
 | 03 | #/1 | OutSystems와 BPMN은 Workflow를 어떻게 표현하는가 | Q6 | 검증 | OutSystems 11 docs | 검증노트 §1 반영 |
 | 08 | #/2 | BPMN이란 무엇인가 — 온보딩 전체 이야기 | Q1·Q2 | 검증 | — | 전체 모델 가독성 개선 예정 |
 | 38 | #/3 | 토큰은 현재 진행 위치를 생각하는 도구다 | Q3·Q4 | 검증 | — | 토큰 재생 4단계 |
-| 35 | #/4 | XOR 분기와 Parallel 합류가 멈출 수 있는 이유 | Q3 | 통과 | BPMN 2.0.2·Camunda 7 | slide-reviewer 판정 완료 |
+| 35 | #/4 | XOR 분기와 Parallel 합류가 멈출 수 있는 이유 | Q3 | 검증 | BPMN 2.0.2·Camunda 7 | v3 재작성으로 재판정 필요 |
 | 42 | #/5 | Async·Job·Retry·Incident를 복구 경계로 이해하기 | Q5 | 검증 | Camunda 7 docs | 검증노트 §2-6·7 반영 |
 
 ## 재구성 후
