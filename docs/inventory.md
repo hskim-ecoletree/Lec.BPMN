@@ -25,7 +25,7 @@
 | 01 | #/0 | Workflow를 구조적으로 생각하는 BPMN·Camunda 7 과정 (표지) | 전체 | 3 | 대본 | — | 재활용. A안 "구조로 읽는 법" 확정, 리뷰 PASS |
 | 02 | #/1 | Workflow의 구조 — 시작·일·분기·대기·결과 | Q1~Q5 | 8 | 통과 | — | 신규(스토리 개막). frag_structure_overview.bpmn, relist/facet-row 구도, 대본 초안 내장 |
 | 03 | #/2 | Workflow 표현 도구들 | Q6 | 6 | 통과 | OMG BPMN 2.0.2 (검증노트 §2-11) | 신규. rows 구도, 대본 초안 내장 |
-| 04 | #/3 | OutSystems와 BPMN의 Workflow 표현 | Q6 | 6 | 통과 | OutSystems 11 docs | 재활용(구 data-plan 03). 검증노트 §1 반영, 재판정 PASS(2026-07-15), 대본 초안 내장 |
+| 04 | #/3 | ODC도 흐름으로 개발한다 — BPMN은 같은 문법·다른 층위 | Q6 | 3 | 통과 | ODC docs | 2026-07-16 재작성: 옛 BPT 요소매핑 → ODC action flow vs BPMN 층위 대비. chain 컴포넌트 추가(theme v9). 검증노트 §1 ODC절 반영, 용어사전 등재(action flow·Aggregate·Run Server Action). slide-reviewer 재판정 PASS |
 | 05 | #/4 | BPMN의 부침과 남은 가치 | Q6 | 8 | 통과 | OMG·ISO (검증노트 §3) | 신규(병합). flow 타임라인, M5 caveat, 대본 초안 내장 |
 | 06 | #/5 | AI 에이전트와 프로세스의 경계 | Q2·Q5 | 6 | 통과 | — | 신규. rows 구도, 대본 초안 내장 |
 | 07 | #/6 | 흐름을 읽는 여섯 관점 | 전체 | 4 | 통과 | — | 신규(회수). qgrid 구도, 대본 초안 내장 |

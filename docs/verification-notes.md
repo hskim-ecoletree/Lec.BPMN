@@ -38,6 +38,17 @@
 - ⚠️ **"Screen = User Task"로 치환 금지.** User Task에 대응하는 것은 **Human Activity**이고, Screen/Form은 그 작업의 **사용자 접점**일 뿐이다. (슬라이드 주의 띠에 명시)
 - "주된 관심: 앱 구현 vs 업무 의미" 같은 단정은 완화했다 — BPT도 비즈니스 프로세스를 모델링한다. "앱에 내장되어 실행되는 프로세스(고유 표기)" vs "표준 표기 기반 프로세스 모델"로 표현.
 
+### ODC 개발 방식 — action flow (설계안 04 재작성, 2026-07-16)
+
+출처: OutSystems Developer Cloud 공식 문서 (success.outsystems.com)
+- Server Action: `/documentation/outsystems_developer_cloud/outsystems_language_and_elements/logic_actions/server_action/`
+- Workflows in ODC: `/documentation/outsystems_developer_cloud/building_apps/about_business_processes/workflows_in_odc/`
+
+- **ODC의 로직은 visual flow로 만든다.** Server Action을 **action flow**에 끌어다 놓고 **Run Server Action** 요소로 실행하며, 출력 파라미터를 이후 흐름에서 쓴다. 즉 화면 로직·서버 액션 자체가 흐름 편집이다. (공식 문서 "Run Server Action" 설명)
+- **ODC Workflows**는 별개의 **workflow 편집기**(시각 캔버스)로, 노드는 `Start / Conditional start / Human activity / Automatic activity / Decision` 등. **BPT의 후속 '프로세스 기능'**이며, 평소 개발하는 action flow와는 다른 층위(오래 실행되는 비즈니스 프로세스)다.
+- **설계안 04 재작성 근거**: 비교의 왼쪽을 옛 BPT 요소 매핑이 아니라 **"ODC는 이미 흐름으로 개발한다"**로 잡는다. 화면에는 요소 1:1 대응을 주장하지 **않는다** — action flow와 BPMN 프로세스는 **같은 흐름 문법**(시작·단계·분기·끝)을 공유하되 **층위가 다르다**(action flow=한 요청 안 즉시 실행 / BPMN=사람·시스템·시간에 걸친 대기를 품은 오케스트레이션). "If ↔ Gateway, Server Action ↔ Service Task" 같은 1:1 치환은 오해이므로 화면·대본에서 금지.
+- 화면에 쓴 노드명은 근거 있는 것만: ODC 쪽 `Start / Aggregate / If / Run Server Action / End` — Aggregate(조회)·Run Server Action은 공식 문서 확인, If·Start·End는 OutSystems 로직 편집 기본 요소.
+
 ---
 
 ## 2. BPMN 2.0 + Camunda 7 (docs.camunda.org)

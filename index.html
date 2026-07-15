@@ -133,36 +133,42 @@
           <div class="slide__label">업무를 흐름으로 보는 눈</div>
           <div class="slide__q">Q6</div>
           <div class="slide__inner">
-            <h2 class="slide__msg">OutSystems를 배운 여러분에게,<br />BPMN은 낯선 세계가 아닙니다.</h2>
+            <h2 class="slide__msg">여러분은 이미 흐름으로 개발합니다.<br />BPMN도 흐름입니다 — 한 층 위에서.</h2>
 
-            <div class="vs">
-              <div class="vs__head">
-                <span class="vs__side vs__side--os">OutSystems 11 · BPT</span>
-                <span></span>
-                <span class="vs__side vs__side--bpmn">BPMN · Camunda 7</span>
+            <div class="chains">
+              <div class="chain chain--os fragment">
+                <div class="chain__head">ODC · Action flow</div>
+                <div class="chain__row">
+                  <span class="chain__node">Start</span><span class="chain__arw">→</span>
+                  <span class="chain__node">Aggregate</span><span class="chain__arw">→</span>
+                  <span class="chain__node">If</span><span class="chain__arw">→</span>
+                  <span class="chain__node">Run Server Action</span><span class="chain__arw">→</span>
+                  <span class="chain__node">End</span>
+                </div>
+                <div class="chain__note">한 요청 안에서 즉시 실행됩니다.</div>
               </div>
-              <div class="fragment">
-                <div class="vs__cat">사람의 작업</div>
-                <div class="vs__pair"><span class="os">Human Activity</span><span class="vs__x">↔</span><span class="bp">User Task</span></div>
-              </div>
-              <div class="fragment">
-                <div class="vs__cat">자동 처리</div>
-                <div class="vs__pair"><span class="os">Automatic Activity</span><span class="vs__x">↔</span><span class="bp">Service Task</span></div>
-              </div>
-              <div class="fragment">
-                <div class="vs__cat">사용자 접점</div>
-                <div class="vs__pair"><span class="os">Destination Screen</span><span class="vs__x">↔</span><span class="bp">Form</span></div>
+              <div class="chain chain--bpmn fragment">
+                <div class="chain__head">BPMN · Camunda 7</div>
+                <div class="chain__row">
+                  <span class="chain__node">Start</span><span class="chain__arw">→</span>
+                  <span class="chain__node">User Task</span><span class="chain__arw">→</span>
+                  <span class="chain__node">Service Task</span><span class="chain__arw">→</span>
+                  <span class="chain__node">Gateway</span><span class="chain__arw">→</span>
+                  <span class="chain__node">End</span>
+                </div>
+                <div class="chain__note">사람·시스템·시간에 걸쳐, 대기를 품고 실행됩니다.</div>
               </div>
             </div>
 
-            <p class="caveat fragment" style="margin-bottom:110px">다만 1:1 치환은 아닙니다 — Screen은 화면이고, <em>User Task는 일과 그 대기 상태</em>입니다.</p>
+            <p class="caveat fragment" style="margin-bottom:96px">문법은 같습니다 — 시작·단계·분기·끝. 다른 건 <em>층위</em>입니다.</p>
 
-            <div class="slide__support">BPT(Business Process Technology)는 OutSystems 11의 프로세스 기능입니다 — ODC에서는 Workflows로 대체됩니다.</div>
-            <div class="slide__cite">OutSystems 11 — Notation Reference for BPMN Practitioners (success.outsystems.com)</div>
+            <div class="slide__support">ODC에서도 화면 로직·서버 액션을 모두 flow로 그립니다.</div>
+            <div class="slide__cite">OutSystems Developer Cloud — Logic (success.outsystems.com)</div>
           </div>
           <aside class="notes">
-            <p><b>대사</b> — 수진이 입사 서류를 검토하는 같은 장면을 두 도구로 그려 봅니다. [다음]×3 여러분이 쓰던 Human Activity가 BPMN의 User Task이고, Automatic Activity가 Service Task, Destination Screen이 Form의 자리입니다. [다음] 다만 치환은 아닙니다 — User Task는 화면이 아니라 "사람이 완료해야 할 일과 그 대기"입니다.</p>
-            <p><b>오해</b> — "화면 하나 = User Task 하나". <b>교정</b> — 대응되는 것은 Human Activity. Screen/Form은 접점일 뿐.</p>
+            <p><b>대사</b> — 여러분이 ODC에서 서버 액션 하나를 만들 때, 사실 이미 흐름을 그리고 있습니다 — Start에서 시작해 데이터를 조회하고(Aggregate), 조건으로 갈라지고(If), 다른 액션을 부르고, End로 끝나죠. [다음] BPMN도 똑같은 문법입니다 — 시작·단계·분기·끝을 화살표로 잇습니다. [다음] 다만 한 층 위에서 그립니다. action flow가 한 요청 안에서 눈 깜짝할 새 끝난다면, BPMN 프로세스는 사람이 며칠 뒤에 승인하고 시스템이 응답을 기다리는 — 그 "대기"까지 그림 안에 담습니다. 낯선 게 아니라, 익숙한 흐름을 더 긴 시간에 걸쳐 그리는 일입니다.</p>
+            <p><b>오해</b> — "ODC의 If가 BPMN Gateway, Server Action이 Service Task처럼 1:1로 대응된다." <b>교정</b> — 대응이 아니라 같은 문법을 공유할 뿐입니다. 진짜 차이는 요소가 아니라 층위 — action flow는 즉시 끝나는 로직, BPMN은 기다림을 품은 오케스트레이션입니다.</p>
+            <p><b>예상 질문</b> — "그럼 ODC Workflows(옛 BPT)는?" 그건 ODC 안의 '프로세스 기능'으로, 오히려 BPMN 쪽에 가까운 층위입니다. 오늘 대비는 '평소 개발하는 로직 흐름'과 BPMN을 나란히 놓은 것입니다.</p>
           </aside>
         </div>
       </section>

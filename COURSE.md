@@ -144,6 +144,9 @@
 | 안티패턴 | 문법상 가능하지만 의도와 다르게 움직이는 잘못된 모델 조합 | 앤티패턴 |
 | 교착 | 서로 오지 않을 것을 기다려 아무도 진행하지 못하는 멈춤 상태 | 데드락 |
 | AI 에이전트 | 목표를 주면 판단과 행동을 스스로 이어 가는 소프트웨어 | 에이전트(단독 첫 등장), AI봇 |
+| Action flow | ODC에서 로직(화면·서버 액션)을 시작·단계·분기·끝으로 그리는 시각 흐름 | 액션 플로우 |
+| Aggregate | ODC action flow에서 데이터를 조회하는 요소 | 애그리게이트 |
+| Run Server Action | action flow 안에서 다른 Server Action을 호출하는 요소 | 런 서버 액션 |
 
 스토리 고유명(`OfferAccepted`, `DocumentsSubmitted`, `FirstDayReady`, 인물 이름)은 철자·표기를 바꾸지 않는다. 새 용어가 필요하면 **이 표에 먼저 등재**하고 쓴다.
 
