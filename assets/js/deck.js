@@ -241,6 +241,49 @@
       .token("Gateway_PreparationJoin", null, "tok--wait"),
   ];
 
+  // 슬라이드 28: Inclusive 분기 — 조건에 맞는 경로만 (VPN·개발도구 O, 관리자 X)
+  var ACC = ["Gateway_AccessSplit", "Task_ProvisionVpn", "Task_ProvisionDevTools",
+             "Task_ApproveAdminAccess", "Gateway_AccessJoin"];
+  STEPS["s-inclusive"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().focus(ACC, 55).mark("Gateway_AccessSplit", "active-el").token("Gateway_AccessSplit"),
+    (a) => a.clear().focus(ACC, 55)
+      .mark(["Task_ProvisionVpn", "Task_ProvisionDevTools"], "active-el")
+      .token("Task_ProvisionVpn").token("Task_ProvisionDevTools")
+      .mark("Task_ApproveAdminAccess", "dim-el").token("Task_ApproveAdminAccess", null, "tok--ghost"),
+    (a) => a.clear().focus(ACC, 55)
+      .mark(["Task_ProvisionVpn", "Task_ProvisionDevTools"], "active-el")
+      .token("Task_ProvisionVpn").token("Task_ProvisionDevTools")
+      .mark("Task_ApproveAdminAccess", "dim-el").token("Task_ApproveAdminAccess", null, "tok--ghost"),
+  ];
+
+  // 슬라이드 29: Inclusive 합류 — 활성 경로(둘)만 대기, 관리자 경로는 대상 아님
+  STEPS["s-inclusive-join"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().focus(ACC, 55).mark("Gateway_AccessJoin", "active-el")
+      .token("Task_ProvisionVpn").token("Task_ProvisionDevTools")
+      .mark("Task_ApproveAdminAccess", "dim-el"),
+    (a) => a.clear().focus(ACC, 55).mark("Gateway_AccessJoin", "active-el").token("Gateway_AccessJoin")
+      .mark("Task_ApproveAdminAccess", "dim-el"),
+    (a) => a.clear().focus(ACC, 55).mark("Gateway_AccessJoin", "active-el").token("Gateway_AccessJoin")
+      .mark("Task_ApproveAdminAccess", "dim-el"),
+  ];
+
+  // 슬라이드 30: Event-based — 두 사건 경쟁 → 제출이 먼저(기한 취소)
+  var EVT = ["Gateway_WaitForDocuments", "CatchEvent_DocumentsSubmitted",
+             "CatchEvent_DocumentsDeadline", "Task_ReviewDocuments"];
+  STEPS["s-eventbased"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().focus(EVT, 55).mark("Gateway_WaitForDocuments", "active-el")
+      .mark(["CatchEvent_DocumentsSubmitted", "CatchEvent_DocumentsDeadline"], "highlight-flow"),
+    (a) => a.clear().focus(EVT, 55)
+      .mark("CatchEvent_DocumentsSubmitted", "active-el").token("CatchEvent_DocumentsSubmitted")
+      .mark("CatchEvent_DocumentsDeadline", "dead-el").token("CatchEvent_DocumentsDeadline", null, "tok--ghost"),
+    (a) => a.clear().focus(EVT, 55)
+      .mark("CatchEvent_DocumentsSubmitted", "active-el").token("CatchEvent_DocumentsSubmitted")
+      .mark("CatchEvent_DocumentsDeadline", "dead-el").token("CatchEvent_DocumentsDeadline", null, "tok--ghost"),
+  ];
+
   // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
   // 슬라이드 22: 토큰으로 진행 위치 읽기
   STEPS["s-token"] = [
