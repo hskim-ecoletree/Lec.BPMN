@@ -113,7 +113,7 @@
 
             <p class="caveat fragment" style="margin-bottom:96px">다섯 중 정답은 없습니다 — <em>답해야 할 질문</em>이 도구를 고릅니다.</p>
 
-            <div class="slide__cite">OMG BPMN 2.0.2 — Pools/Lanes · Gateways · Events</div>
+            <div class="slide__cite">OMG BPMN 2.0 — Pools/Lanes · Gateways · Events</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Q6(도구 적합성)의 씨앗을 1교시에 심는다. BPMN을 유일해가 아니라 선택지로 소개.</p>
@@ -635,7 +635,7 @@
               <p class="beat fragment">End Event — 준비 완료·서류 미제출·채용 취소. 도달한 <em>결말마다 그 건이 닫힙니다</em>.</p>
             </div>
 
-            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 — start/end event semantics (docs.camunda.org/manual/7.x)</div>
+            <div class="slide__cite">BPMN 2.0 · Camunda 7 — start/end event semantics (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Q1을 요소 수준으로. 범위(11)에서 잡은 시작·끝을 Start/End Event라는 기호와 실행 의미로 정식화한다. Process Instance를 여기서 첫 등장 풀이.</p>
@@ -665,7 +665,7 @@
             </div>
 
             <div class="slide__support">같은 Pool 안은 Sequence Flow, 다른 Pool 사이는 Message Flow. Lane은 실행을 바꾸지 않는 책임 표기입니다.</div>
-            <div class="slide__cite">OMG BPMN 2.0.2 — Pools · Lanes · Message Flow</div>
+            <div class="slide__cite">OMG BPMN 2.0 — Pools · Lanes · Message Flow</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Q2를 표기로. 역할(12에서 인계로 봤던 것)을 Pool·Lane·Message Flow 기호로 읽는다. Lane은 실행 의미가 없는 책임 구획임을 명확히.</p>
@@ -870,7 +870,7 @@
             </div>
 
             <div class="slide__support">토큰은 DB 객체가 아니라 사고 도구입니다 — 지금 일이 어디까지 왔고 몇 갈래가 살아 있는가.</div>
-            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — parallel gateway split/join (docs.camunda.org/manual/7.x)</div>
+            <div class="slide__cite">BPMN 2.0 · Camunda 7 docs — parallel gateway split/join (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — 4교시 개막. 분기·합류를 '느낌'이 아니라 토큰의 위치·개수로 세는 사고 도구를 세운다. 이후 23~26이 이 세는 법을 Gateway별로 적용.</p>
@@ -930,7 +930,7 @@
               <p class="caveat fragment">조건이 모두 어긋나고 Default가 없으면 실행 예외 — 그래서 <em>Default 경로</em>를 둡니다.</p>
             </div>
 
-            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — exclusive gateway / default flow (docs.camunda.org/manual/7.x)</div>
+            <div class="slide__cite">BPMN 2.0 · Camunda 7 docs — exclusive gateway / default flow (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Exclusive(XOR) 분기+합류를 토큰 하나로 추적(§2-2). Default 경로의 필요성까지.</p>
@@ -962,7 +962,7 @@
               <p class="caveat fragment">하나라도 도착하지 않으면 합류는 멈춥니다 — 마지막 토큰까지 기다리기 때문입니다.</p>
             </div>
 
-            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — parallel gateway split/join (docs.camunda.org/manual/7.x)</div>
+            <div class="slide__cite">BPMN 2.0 · Camunda 7 docs — parallel gateway split/join (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Parallel 분기+합류를 토큰 1→3→1로 추적(§2-3). XOR과의 대비를 세운다(26 교착의 전제).</p>
@@ -994,7 +994,7 @@
             </div>
 
             <div class="slide__support">XOR은 조건에 맞는 한 경로에만 토큰을 만듭니다. Parallel 합류는 모든 들어오는 선의 토큰을 기다립니다.</div>
-            <div class="slide__cite">OMG BPMN 2.0.2 · Camunda 7 docs — parallel gateway (docs.camunda.org/manual/7.x)</div>
+            <div class="slide__cite">OMG BPMN 2.0 · Camunda 7 docs — parallel gateway (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
             <p><b>대사</b> — 하나만 고르는 XOR 뒤에 둘 다 기다리는 Parallel 합류를 붙인 잘못된 모델입니다. [다음] XOR이 원격을 골라 토큰 하나가 생깁니다. [다음] 사무실 경로의 토큰은 처음부터 존재하지 않습니다. [다음] 합류는 오지 않을 토큰을 기다리며 업무 한 건(Process Instance)이 멈춘 채 살아 있습니다 — 화면상 오류가 없어서 더 위험합니다.</p>
@@ -1061,7 +1061,7 @@
               <p class="caveat fragment">XOR은 하나, Parallel은 모두, Inclusive는 ‘<em>맞는 것만</em>’ — 개수가 정해져 있지 않습니다.</p>
             </div>
 
-            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — inclusive gateway (docs.camunda.org/manual/7.x)</div>
+            <div class="slide__cite">BPMN 2.0 · Camunda 7 docs — inclusive gateway (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — 세 번째 Gateway, Inclusive의 분기. 조건 참인 경로를 모두 여는 '하나 이상'을 토큰으로(§2-5). 개수가 가변임이 핵심.</p>
@@ -1118,8 +1118,8 @@
               <div class="bpmn__canvas"></div>
             </div>
             <div style="margin-bottom:96px">
-              <p class="beat fragment">분기 뒤 두 사건이 <em>경쟁</em>합니다 — 서류 제출(메시지) vs 3일 기한(타이머).</p>
-              <p class="beat fragment">지민이 이틀 만에 제출 — 제출 사건이 이기고, <em>기한 타이머는 취소</em>됩니다.</p>
+              <p class="beat fragment">분기 뒤 두 사건이 <em>경쟁</em>합니다 — 서류 제출(메시지) vs 3일 기한(Timer).</p>
+              <p class="beat fragment">지민이 이틀 만에 제출 — 제출 사건이 이기고, <em>기한 Timer는 취소</em>됩니다.</p>
               <p class="caveat fragment">Camunda 7은 뒤에 <em>Intermediate Catch Event만</em> — Receive Task·일반 분기는 못 붙입니다.</p>
             </div>
 
@@ -1127,7 +1127,7 @@
           </div>
           <aside class="notes">
             <p><b>역할</b> — 네 번째 Gateway, Event-based. 조건이 아니라 '어느 사건이 먼저 오나'로 갈린다(Q3·Q4). §2-1 교정: Camunda 7은 Catch Event만.</p>
-            <p><b>대사</b> — 지금까지 분기는 '조건'으로 갈렸습니다. Event-based는 다릅니다 — '사건'으로 갈립니다. [다음] 서류 대기 지점을 보면, 두 사건이 경쟁합니다. 지민이 서류를 제출하는 메시지, 그리고 3일 기한이 차는 타이머. [다음] 지민이 이틀 만에 냈다면 제출 사건이 먼저 도착해 이깁니다. 그 순간 기한 타이머는 취소됩니다 — 먼저 온 하나만 살아남죠. [다음] 한 가지 꼭 기억할 것. Camunda 7에서는 이 Gateway 뒤에 Intermediate Catch Event만 올 수 있습니다. Receive Task나 일반 조건 분기는 붙지 않아요. 다른 자료에 'Receive Task도 된다'고 있어도, Camunda 7에서는 아닙니다.</p>
+            <p><b>대사</b> — 지금까지 분기는 '조건'으로 갈렸습니다. Event-based는 다릅니다 — '사건'으로 갈립니다. [다음] 서류 대기 지점을 보면, 두 사건이 경쟁합니다. 지민이 서류를 제출하는 메시지, 그리고 3일 기한이 차는 Timer. [다음] 지민이 이틀 만에 냈다면 제출 사건이 먼저 도착해 이깁니다. 그 순간 기한 Timer는 취소됩니다 — 먼저 온 하나만 살아남죠. [다음] 한 가지 꼭 기억할 것. Camunda 7에서는 이 Gateway 뒤에 Intermediate Catch Event만 올 수 있습니다. Receive Task나 일반 조건 분기는 붙지 않아요. 다른 자료에 'Receive Task도 된다'고 있어도, Camunda 7에서는 아닙니다.</p>
             <p><b>오해</b> — "Event-based 뒤에 아무 태스크나 붙는다". <b>교정</b> — Camunda 7은 Intermediate Catch Event만 허용(검증노트 §2-1).</p>
           </aside>
         </div>
@@ -1188,7 +1188,7 @@
               <div class="flow__step fragment">
                 <span class="flow__n flow__n--ok">1</span>
                 <span class="flow__t">도달</span>
-                <span class="flow__d">User Task·타이머·메시지 앞에서 흐름이 멈춘다</span>
+                <span class="flow__d">User Task·Timer·메시지 앞에서 흐름이 멈춘다</span>
               </div>
               <span class="flow__arrow">→</span>
               <div class="flow__step fragment">
@@ -1206,7 +1206,7 @@
               <div class="flow__step fragment">
                 <span class="flow__n flow__n--ok">4</span>
                 <span class="flow__t">재개</span>
-                <span class="flow__d">타이머(입사일)·메시지(서류)가 오면 이어서 실행</span>
+                <span class="flow__d">Timer(입사일)·메시지(서류)가 오면 이어서 실행</span>
               </div>
             </div>
 
@@ -1217,7 +1217,7 @@
           </div>
           <aside class="notes">
             <p><b>역할</b> — Q4의 핵심 메커니즘. 대기가 '스레드를 붙든 멈춤'이 아니라 '상태 저장 후 재개'임을(§2-8). Timer(입사일) 포함.</p>
-            <p><b>대사</b> — 온보딩은 서류를, 입사일을, 며칠씩 기다립니다. 그동안 서버가 멈춰 붙잡혀 있을까요? 아닙니다. [다음] 흐름이 대기 지점에 도달하면 — User Task든 타이머든 — 멈춥니다. [다음] 이때 엔진은 상태를 저장하고 트랜잭션을 Commit한 뒤, 실행 스레드를 끝냅니다. 아무 자원도 붙잡지 않아요. [다음] 그 상태로 며칠, 몇 주를 기다립니다. [다음] 그러다 트리거가 오면 — 입사일 타이머가 차거나 서류 메시지가 오면 — 저장된 지점부터 이어서 실행합니다. [다음] 그래서 만 명이 동시에 대기해도 서버가 버팁니다. 기다림은 멈춤이 아니라 저장이니까요.</p>
+            <p><b>대사</b> — 온보딩은 서류를, 입사일을, 며칠씩 기다립니다. 그동안 서버가 멈춰 붙잡혀 있을까요? 아닙니다. [다음] 흐름이 대기 지점에 도달하면 — User Task든 Timer든 — 멈춥니다. [다음] 이때 엔진은 상태를 저장하고 트랜잭션을 Commit한 뒤, 실행 스레드를 끝냅니다. 아무 자원도 붙잡지 않아요. [다음] 그 상태로 며칠, 몇 주를 기다립니다. [다음] 그러다 트리거가 오면 — 입사일 Timer가 차거나 서류 메시지가 오면 — 저장된 지점부터 이어서 실행합니다. [다음] 그래서 만 명이 동시에 대기해도 서버가 버팁니다. 기다림은 멈춤이 아니라 저장이니까요.</p>
             <p><b>오해</b> — "대기 중엔 스레드가 계속 돌며 기다린다". <b>교정</b> — 상태를 저장하고 스레드를 끝낸 뒤, 트리거로 재개한다.</p>
           </aside>
         </div>
@@ -1277,7 +1277,7 @@
               </div>
               <div class="rows__item fragment">
                 <span class="rows__term rows__term--hi">Wait State</span>
-                <span class="rows__desc">멈춤이 아니라 저장 — 트리거(타이머·메시지)가 깨운다</span>
+                <span class="rows__desc">멈춤이 아니라 저장 — 트리거(Timer·메시지)가 깨운다</span>
               </div>
               <div class="rows__item fragment">
                 <span class="rows__term rows__term--hi">Correlation</span>
@@ -1422,15 +1422,15 @@
             </div>
             <div style="margin-bottom:96px">
               <p class="beat fragment">민호가 근무 형태·권한을 확인하는 <em>User Task</em>가 돌고 있습니다.</p>
-              <p class="beat fragment">4시간이 지나면 경계의 타이머가 발화 — 본 작업은 <em>멈추지 않고</em>, 곁길로 알림 토큰 하나가 더 생깁니다.</p>
+              <p class="beat fragment">4시간이 지나면 경계의 Timer가 발화 — 본 작업은 <em>멈추지 않고</em>, 곁길로 알림 토큰 하나가 더 생깁니다.</p>
               <p class="caveat fragment">실선 경계 = <em>중단</em>(작업 취소), 점선 경계 = <em>비중단</em>(추가 토큰). 이건 점선입니다.</p>
             </div>
 
-            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — boundary events (interrupting / non-interrupting)</div>
+            <div class="slide__cite">BPMN 2.0 · Camunda 7 docs — boundary events (interrupting / non-interrupting)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Q5. Boundary Event로 활동에 시간·오류 안전장치를 붙인다. 중단(interrupting) vs 비중단(non-interrupting) 구분(§2-10).</p>
-            <p><b>대사</b> — 일이 너무 오래 걸리면? 활동 테두리에 Boundary Event를 붙입니다. [다음] 민호가 근무 형태와 권한을 확인하는 User Task가 있죠. 급한 일이라 늦으면 곤란합니다. [다음] 테두리에 4시간 타이머를 붙였습니다. 4시간이 지나면 타이머가 울리는데 — 이건 점선, 비중단입니다. 민호의 확인은 계속 진행되고, 곁으로 '독촉 알림' 토큰 하나가 더 생겨 후속 조치로 갑니다. 일을 멈추지 않으면서 리마인더를 겁니다. [다음] 만약 실선이었다면? 중단입니다. 그 즉시 민호의 확인 작업을 취소하고 다른 경로로 갔겠죠. 실선은 중단, 점선은 비중단 — 테두리 하나로 시간·오류에 대응합니다.</p>
+            <p><b>대사</b> — 일이 너무 오래 걸리면? 활동 테두리에 Boundary Event를 붙입니다. [다음] 민호가 근무 형태와 권한을 확인하는 User Task가 있죠. 급한 일이라 늦으면 곤란합니다. [다음] 테두리에 4시간 Timer를 붙였습니다. 4시간이 지나면 Timer가 울리는데 — 이건 점선, 비중단입니다. 민호의 확인은 계속 진행되고, 곁으로 '독촉 알림' 토큰 하나가 더 생겨 후속 조치로 갑니다. 일을 멈추지 않으면서 리마인더를 겁니다. [다음] 만약 실선이었다면? 중단입니다. 그 즉시 민호의 확인 작업을 취소하고 다른 경로로 갔겠죠. 실선은 중단, 점선은 비중단 — 테두리 하나로 시간·오류에 대응합니다.</p>
             <p><b>오해</b> — "Boundary Event는 늘 작업을 멈춘다". <b>교정</b> — 점선(비중단)은 작업을 계속하며 추가 토큰만 낸다. 실선(중단)만 취소.</p>
           </aside>
         </div>
@@ -1501,7 +1501,7 @@
               <p class="caveat fragment">이런 ‘언제든’ 사건을 본류에 선으로 다 그리면 스파게티가 됩니다 — <em>범위 전체</em>에 한 번 겁니다.</p>
             </div>
 
-            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — event subprocess (interrupting)</div>
+            <div class="slide__cite">BPMN 2.0 · Camunda 7 docs — event subprocess (interrupting)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Q5. 진행 중 어디서든 올 수 있는 사건(취소)을 Event Subprocess로 범위 전체에 건다(§2-15). 모델 가독성.</p>
