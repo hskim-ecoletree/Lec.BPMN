@@ -29,6 +29,7 @@ tools: Read, Grep, Glob
 - **필수 요소**: 콘텐츠 슬라이드에 `.slide__key` 없으면 FAIL. 개념 장표에 `.scene` 없으면 FAIL(타이틀·전환·실습 안내 등은 N/A 판단). 사실 주장이 있는데 `.slide__cite` 없으면 FAIL.
 - **fragment/STEPS 정합**: `data-steps`가 있으면 `assets/js/deck.js`의 해당 STEPS 배열 길이가 (section 내 `.fragment` 수 + 1)과 일치하는지 확인. 불일치는 FAIL.
 - **bpmn 요소 id**: `data-focus`나 STEPS가 참조하는 id가 해당 `models/*.bpmn`에 실제 존재하는지 grep으로 확인. 없는 id는 FAIL.
+- **강사·운영 컨텍스트 노출**: 화면 텍스트(aside.notes 제외)에 교시 수·시간표·배정 시간·"설계안 N" 등 수강생에게 불필요한 제작·운영 정보가 보이면 FAIL. 제작 추적은 section의 `data-plan` 속성(비가시)만 허용.
 
 ### C. 헌장·사실 정합
 - **복무**: 이 장표가 COURSE.md §1의 어느 질문(Q1~Q6)에 복무하는지 inventory에 명시되어 있고, 내용이 실제로 그 질문에 답하는가. 복무 불명이면 FAIL.
