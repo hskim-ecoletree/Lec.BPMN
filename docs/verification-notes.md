@@ -66,7 +66,19 @@
 
 ---
 
-## 3. 슬라이드에 반영한 교정 요약
+## 3. BPMN 표준 연혁 (장표 05)
+
+출처: OMG BPMN spec 이력, Trisotech "BPMN Introduction and History", Wikipedia "Business Process Model and Notation", iso.org (ISO/IEC 19510:2013). 검증일 2026-07-15.
+
+| # | 사실 | 판정 | 비고 |
+|---|---|---|---|
+| 1 | BPMN 1.0은 2004년 BPMI(Business Process Management Initiative)가 발표 | ✅ | 2004-05 공개. 사람이 읽는 표기로 출발 |
+| 2 | BPMI는 2005년 OMG와 합병, OMG가 표준 관리 주체가 됨 | ✅ | OMG 첫 스펙 문서는 2006-02 |
+| 3 | BPMN 2.0은 2011년 1월 OMG formal 발표 — 명칭이 "Model and Notation"으로 바뀌고 **실행 의미(execution semantics)** 가 표준에 포함됨 | ✅ | "그림이 실행 규칙까지 담다"의 근거 |
+| 4 | 2013년 ISO/IEC 19510으로 국제 표준 채택 | ✅ | 대응 미세 버전은 출처 간 2.0.1/2.0.2 표기가 갈림 — **화면에는 미세 버전을 올리지 않는다** |
+| 5 | "BPMS 전성기의 약속이 무너졌다"류의 서사 | ⚠️ 해석 | 검증 가능한 사실이 아니라 해석 — 화면·대본에서는 연혁 사실 + 과정 핵심 메시지 M5(억지 모델링 금지)로만 말하고, 흥망 단정은 피한다. 도구 변화의 검증된 앵커는 §2 시점 주의(Camunda 7 CE 최종 7.24, 2025-10)뿐 — 화면 비노출, 예상 질문 대응용 |
+
+## 4. 슬라이드에 반영한 교정 요약
 
 - 설계안 03: OutSystems 표기 버전 명시, ODC/Workflows 주의, Screen≠User Task 강조, 공식 매핑 표 사용.
 - 설계안 39(Event-based Gateway) 제작 시: "뒤에 Catch Event 또는 Receive Task" → **"Camunda 7에서는 Intermediate Catch Event만"** 으로 교정할 것.
