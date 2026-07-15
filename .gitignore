@@ -12,3 +12,4 @@
 /dist/
 /export/
 *.log
+/temporary/
