@@ -34,17 +34,21 @@
 
 - [x] **7교시(42~46) 완성 (2026-07-15)**: 실습 단원. 42 실습 안내(신규 `.lab` 워크시트: 시작·끝·역할 슬롯)·43 실습 1 정상 경로(신규 `.tasks`: Start·User Task 동사·End·Sequence Flow)·44 실습 2 분기·병렬(lab 판단 슬롯 + 교착 caveat, 26 함정의 self-check)·45 실습 3 대기·기한·실패(tasks: Wait State·Timer·Retry/Incident)·46 모델 리뷰 체크리스트(qgrid 6점검, **M2 화면 확립**). 실습 사례는 중심 사례 온보딩(§6), 수강생이 요구사항 카드로 직접 구성. **운영 컨텍스트(시간·인원 배분)는 전부 aside.notes에만** — 화면 노출 0. 전 장표 slide-reviewer PASS + **deck-reviewer 7교시 마일스톤 PASS**(FAIL 0). §7에 Catch Event·Timer 등재(신규 컴포넌트 lab·tasks, theme.css?v=10).
 
+- [x] **8교시(47~50) 완성 (2026-07-15)**: 덜어내기·판단·마무리. 47 실습 4 그리지 않을 것(vs 남긴다↔밖에 둔다: 알림·검증·입력, **M5 화면 확립**)·48 BPMN 적용 판단 기준(신규 `.matrix` 의사결정: 상황×도구 BPMN/Flowchart/State Machine/Checklist, "적합/일부/과함")·49 여섯 관점 다시 보기(qgrid, **M1 화면 확립** — 07 북엔드, 이월 WARN 해소)·50 내 업무에서 BPMN을 쓰지 않을 곳(rows 3신호, 열린 질문 클로징, M5). 전 장표 slide-reviewer PASS. 신규 컴포넌트 matrix(theme.css?v=11), DESIGN.md 구도 컴포넌트에 lab·tasks·matrix 등재·vs 일반 용도 명시.
+
+- [x] **🎉 덱 최종 완성 (2026-07-15) — 50장 전량 통과 + deck-reviewer 최종 PASS(FAIL 0)**: 최종 판정 FAIL 1건(§7 "타이머" 혼용 — 화면·notes "타이머"→"Timer" 전면 통일, 32장 Timer/타이머 공존 제거) 해소. WARN 반영(cite "BPMN 2.0.2"→"BPMN 2.0", verification-notes §3-4). 잔여 WARN 1건(bpmn+beat 3연속 16–18·23–25·28–30)은 교습 단원의 정당한 예외로 **비차단** 판정. M1~M5 전부 화면 회수(M1=49·M2=08/46·M3=23·M4=35/36·M5=05/47/50), Q1~Q6 전 질문 복수 복무, 07↔49 북엔드 완결.
+
 ## 다음 세션이 할 일 (순서대로)
 
-1. **8교시(47~50) 제작** — 덜어내기·판단·마무리 단원: 47 실습 4 그리지 않을 것 정하기(Q6, **M5** 억지 모델링 금지 — 메일 문구·검증 알고리즘·화면 이동을 모델 밖으로, Before↔Simplified)·48 BPMN 적용 판단 기준(Q6, 의사결정 매트릭스: 여러 역할·장기 대기·반복 분기·중요 예외 → BPMN/Flowchart/State Machine/Checklist)·49 여섯 관점 다시 보기(전체 최종 회수, **M1** "BPMN은 목적이 아니라 Workflow를 명확하게 생각하기 위한 도구")·50 내 업무에서 BPMN을 쓰지 않을 곳(Q6 클로징, 과잉 적용 방지). `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
-   - **M1 정확 문장을 49 화면 msg에 확립**. M5는 47·48·50에서 재확립. 48은 의사결정 매트릭스 — 신규 표 컴포넌트 필요 가능.
-2. 8교시 완성 시 deck-reviewer(전 덱 최종 마일스톤 — 회수 M1~M5·여섯 질문 커버리지 전체 점검).
-3. 덱 완성 후: 대본 정식화(script-author)·PDF export(`?print-pdf`) 검토.
+**모든 장표 제작·검증 완료(50/50).** 남은 것은 완성 후 작업:
 
-### 이월 WARN (해당 교시에서 처리)
-- M1 정확 문장("BPMN은 목적이 아니라 …") 미등장 — 49(8교시) 최종 회수에서.
-- M5(억지 모델링 금지) 화면 재확립 — 47·48·50(8교시)에서.
-- `↔` 글리프: DESIGN.md vs 컴포넌트에 이미 명시됨(중앙 ↔). CLAUDE.md 허용 목록 명문화는 사용자 판단(비차단).
+1. **강사 대본 정식화** — `script-author` 스킬로 각 section `aside.notes`를 설계안 §8 형식(역할·대사·중요 문장·오해·교정·예상 질문·시간 조정)으로 다듬는다. 현재 전 장표에 대본 초안이 내장돼 있으나 정식 판정(slide-reviewer 중요 문장 일치)은 미실시. inventory 상태 "통과"→"대본"으로 갱신 대상.
+2. **PDF export 파이프라인** — `?print-pdf` 또는 decktape로 산출. 폰트·bpmn 렌더 오프라인 동일성 확인. PPTX는 확정 후 별도 논의(DESIGN §Responsive).
+3. **강의 직전 재확인** — verification-notes 시점 민감 항목(Camunda 7 CE EoL 7.24·2025-10 등) 공식 페이지 재확인.
+
+### 잔여 WARN (비차단 — 완성 판정을 막지 않음)
+- 구도 3연속(bpmn+beat 16–18·23–25·28–30): 교습 단원 정당 예외. 단원 리팩터 시 1장을 다른 구도로 환기하면 개선.
+- `↔` 글리프: DESIGN.md vs 컴포넌트에 명시됨(중앙 ↔). CLAUDE.md 허용 목록 명문화는 사용자 판단(비차단).
 
 ### 이월 WARN (해당 교시에서 처리)
 - 05 msg "유행은 오갔지만" — 해석 서사 잔존(§3-5). 5번 재방문 시 재검토.
@@ -57,13 +61,15 @@
 - **푸시**: origin=hskim-ecoletree/Lec.BPMN. **`env -u GITHUB_TOKEN git push`** 로 밀 것. `~/.zshrc`의 `GITHUB_TOKEN`(ecoletree)이 gh 활성 계정을 ecoletree로 고정 → 그냥 `git push`하면 403. gh 저장 기본 계정은 hskim-ecoletree로 전환해 둠.
 - **ditto 플러그인**: `~/.claude/settings.json`에 전역 활성(`ditto@ditto-local`). 매 프롬프트에 "DITTO prime directive" 주입 + PreToolUse 훅으로 일부 명령 차단(자격증명·`~/.claude` 쓰기 등). **세션 안에서 못 끔**(자기 훅이 차단). 사용자가 `/plugin`에서 비활성 대기 중 — 다음 세션부터 적용.
 - **디자인 이터레이션은 실물로** — 표지 등은 별도 시안 HTML을 만들어 스크린샷/렌더로 보여주고 고르게 한다.
-- 브라우저 캐시: `?nocache=N` 증가 + force reload. **theme.css/deck.js 수정 시 index.html의 `?v=` 올린다**(현재 `?v=4`).
+- 브라우저 캐시: `?nocache=N` 증가 + force reload. **theme.css/deck.js 수정 시 index.html의 `?v=` 올린다**(현재 theme.css `?v=11`·deck.js `?v=13`).
 - bpmn 로드는 비동기 — 슬라이드 진입 후 0.5초 대기 후 fragment 진행해야 STEPS 적용.
+- **원격 세션 푸시**: 이 환경에서는 평범한 `git push origin <branch>`가 정상 동작(위 `env -u GITHUB_TOKEN` 주의는 로컬 세션용). Playwright는 `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`를 executablePath로 지정.
 
 ## 미해결
 
-- [ ] 7~8교시 제작 (42~50, 9장). 진행: 01~41 통과(1~6교시 완료).
+- [x] ~~1~8교시 전 장표 제작(01~50)~~ — **완료. 덱 최종 deck-reviewer PASS.**
+- [ ] **강사 대본 정식화** (script-author) — 초안은 전 장표 내장, 정식 판정 미실시.
+- [ ] **PDF export**(`?print-pdf`/decktape) — 덱 완성했으므로 착수 가능.
 - [ ] ditto `/plugin` 비활성 (사용자 직접)
-- [ ] 구성안 v2: 명시적 "승인" 절차 없이 표지부터 제작 착수됨.
 - [ ] 브랜드 정확한 hex 미확보 — 현재 `#457075` 유지.
-- [ ] PDF export 파이프라인(`?print-pdf`)은 덱 완성 후.
+- [ ] 강의 직전 verification-notes 시점 민감 항목 재확인(Camunda 7 EoL 등).
