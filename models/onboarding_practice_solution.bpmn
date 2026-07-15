@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+  id="Definitions_OnboardingPracticeSolution"
+  targetNamespace="https://example.org/camunda7/training/onboarding"
+  exporter="Lec.BPMN"
+  exporterVersion="1.0">
+  <bpmn:message id="Message_DocumentsSubmitted" name="DocumentsSubmitted" />
+  <bpmn:process id="Process_OnboardingPracticeSolution" name="신입사원 온보딩 — 7교시 실습 솔루션" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:documentation>7교시 실습(정상 경로 → 근무형태 분기·준비 병렬 → 서류 대기·기한·계정 실패)의 최종 실행 가능 솔루션. Camunda 7 대상. Inclusive·Boundary·Event Subprocess는 실습 범위 밖이라 제외.</bpmn:documentation>
+
+    <bpmn:startEvent id="StartEvent_OfferAccepted" name="입사 제안 수락">
+      <bpmn:outgoing>Flow_start_request</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:userTask id="UserTask_RequestDocuments" name="서류 요청" camunda:candidateGroups="hr">
+      <bpmn:incoming>Flow_start_request</bpmn:incoming>
+      <bpmn:outgoing>Flow_request_wait</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:eventBasedGateway id="Gateway_DocumentsWait" name="서류 제출 대기">
+      <bpmn:incoming>Flow_request_wait</bpmn:incoming>
+      <bpmn:outgoing>Flow_wait_submitted</bpmn:outgoing>
+      <bpmn:outgoing>Flow_wait_deadline</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+
+    <bpmn:intermediateCatchEvent id="Catch_DocumentsSubmitted" name="서류 제출됨">
+      <bpmn:incoming>Flow_wait_submitted</bpmn:incoming>
+      <bpmn:outgoing>Flow_submitted_review</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MsgDef_DocumentsSubmitted" messageRef="Message_DocumentsSubmitted" />
+    </bpmn:intermediateCatchEvent>
+
+    <bpmn:intermediateCatchEvent id="Catch_Deadline" name="3일 기한 초과">
+      <bpmn:incoming>Flow_wait_deadline</bpmn:incoming>
+      <bpmn:outgoing>Flow_deadline_end</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerDef_Deadline">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P3D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+
+    <bpmn:endEvent id="EndEvent_NoDocuments" name="서류 미제출로 종료">
+      <bpmn:incoming>Flow_deadline_end</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:userTask id="UserTask_ReviewDocuments" name="서류 검토" camunda:candidateGroups="hr">
+      <bpmn:incoming>Flow_submitted_review</bpmn:incoming>
+      <bpmn:outgoing>Flow_review_workmode</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:exclusiveGateway id="Gateway_WorkMode" name="근무 형태?" default="Flow_workmode_office">
+      <bpmn:incoming>Flow_review_workmode</bpmn:incoming>
+      <bpmn:outgoing>Flow_workmode_remote</bpmn:outgoing>
+      <bpmn:outgoing>Flow_workmode_office</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:userTask id="UserTask_ShipEquipment" name="장비 배송(원격)" camunda:candidateGroups="it">
+      <bpmn:incoming>Flow_workmode_remote</bpmn:incoming>
+      <bpmn:outgoing>Flow_ship_join</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="UserTask_AssignSeat" name="좌석 배정(사무실)" camunda:candidateGroups="facility">
+      <bpmn:incoming>Flow_workmode_office</bpmn:incoming>
+      <bpmn:outgoing>Flow_seat_join</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:exclusiveGateway id="Gateway_WorkModeJoin">
+      <bpmn:incoming>Flow_ship_join</bpmn:incoming>
+      <bpmn:incoming>Flow_seat_join</bpmn:incoming>
+      <bpmn:outgoing>Flow_workmodejoin_split</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:parallelGateway id="Gateway_PrepSplit" name="준비 시작">
+      <bpmn:incoming>Flow_workmodejoin_split</bpmn:incoming>
+      <bpmn:outgoing>Flow_split_account</bpmn:outgoing>
+      <bpmn:outgoing>Flow_split_training</bpmn:outgoing>
+    </bpmn:parallelGateway>
+
+    <bpmn:serviceTask id="ServiceTask_CreateAccount" name="사용자 계정 생성" camunda:type="external" camunda:topic="create-user-account" camunda:asyncBefore="true">
+      <bpmn:incoming>Flow_split_account</bpmn:incoming>
+      <bpmn:outgoing>Flow_account_join</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:userTask id="UserTask_RegisterTraining" name="교육 등록" camunda:candidateGroups="hr">
+      <bpmn:incoming>Flow_split_training</bpmn:incoming>
+      <bpmn:outgoing>Flow_training_join</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:parallelGateway id="Gateway_PrepJoin">
+      <bpmn:incoming>Flow_account_join</bpmn:incoming>
+      <bpmn:incoming>Flow_training_join</bpmn:incoming>
+      <bpmn:outgoing>Flow_prepjoin_startdate</bpmn:outgoing>
+    </bpmn:parallelGateway>
+
+    <bpmn:intermediateCatchEvent id="Catch_StartDate" name="입사일 대기">
+      <bpmn:incoming>Flow_prepjoin_startdate</bpmn:incoming>
+      <bpmn:outgoing>Flow_startdate_final</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerDef_StartDate">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P7D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+
+    <bpmn:userTask id="UserTask_FinalCheck" name="첫 출근 준비 최종 확인" camunda:candidateGroups="hr">
+      <bpmn:incoming>Flow_startdate_final</bpmn:incoming>
+      <bpmn:outgoing>Flow_final_ready</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:endEvent id="EndEvent_Ready" name="첫 출근 준비 완료">
+      <bpmn:incoming>Flow_final_ready</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="Flow_start_request" sourceRef="StartEvent_OfferAccepted" targetRef="UserTask_RequestDocuments" />
+    <bpmn:sequenceFlow id="Flow_request_wait" sourceRef="UserTask_RequestDocuments" targetRef="Gateway_DocumentsWait" />
+    <bpmn:sequenceFlow id="Flow_wait_submitted" sourceRef="Gateway_DocumentsWait" targetRef="Catch_DocumentsSubmitted" />
+    <bpmn:sequenceFlow id="Flow_wait_deadline" sourceRef="Gateway_DocumentsWait" targetRef="Catch_Deadline" />
+    <bpmn:sequenceFlow id="Flow_deadline_end" sourceRef="Catch_Deadline" targetRef="EndEvent_NoDocuments" />
+    <bpmn:sequenceFlow id="Flow_submitted_review" sourceRef="Catch_DocumentsSubmitted" targetRef="UserTask_ReviewDocuments" />
+    <bpmn:sequenceFlow id="Flow_review_workmode" sourceRef="UserTask_ReviewDocuments" targetRef="Gateway_WorkMode" />
+    <bpmn:sequenceFlow id="Flow_workmode_remote" name="원격" sourceRef="Gateway_WorkMode" targetRef="UserTask_ShipEquipment">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${workMode == "remote"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_workmode_office" name="사무실(기본)" sourceRef="Gateway_WorkMode" targetRef="UserTask_AssignSeat" />
+    <bpmn:sequenceFlow id="Flow_ship_join" sourceRef="UserTask_ShipEquipment" targetRef="Gateway_WorkModeJoin" />
+    <bpmn:sequenceFlow id="Flow_seat_join" sourceRef="UserTask_AssignSeat" targetRef="Gateway_WorkModeJoin" />
+    <bpmn:sequenceFlow id="Flow_workmodejoin_split" sourceRef="Gateway_WorkModeJoin" targetRef="Gateway_PrepSplit" />
+    <bpmn:sequenceFlow id="Flow_split_account" sourceRef="Gateway_PrepSplit" targetRef="ServiceTask_CreateAccount" />
+    <bpmn:sequenceFlow id="Flow_split_training" sourceRef="Gateway_PrepSplit" targetRef="UserTask_RegisterTraining" />
+    <bpmn:sequenceFlow id="Flow_account_join" sourceRef="ServiceTask_CreateAccount" targetRef="Gateway_PrepJoin" />
+    <bpmn:sequenceFlow id="Flow_training_join" sourceRef="UserTask_RegisterTraining" targetRef="Gateway_PrepJoin" />
+    <bpmn:sequenceFlow id="Flow_prepjoin_startdate" sourceRef="Gateway_PrepJoin" targetRef="Catch_StartDate" />
+    <bpmn:sequenceFlow id="Flow_startdate_final" sourceRef="Catch_StartDate" targetRef="UserTask_FinalCheck" />
+    <bpmn:sequenceFlow id="Flow_final_ready" sourceRef="UserTask_FinalCheck" targetRef="EndEvent_Ready" />
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_OnboardingPracticeSolution">
+      <bpmndi:BPMNShape id="StartEvent_OfferAccepted_di" bpmnElement="StartEvent_OfferAccepted">
+        <dc:Bounds x="162" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="150" y="265" width="60" height="27" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_RequestDocuments_di" bpmnElement="UserTask_RequestDocuments">
+        <dc:Bounds x="250" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_DocumentsWait_di" bpmnElement="Gateway_DocumentsWait" isMarkerVisible="true">
+        <dc:Bounds x="410" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="398" y="272" width="74" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Catch_DocumentsSubmitted_di" bpmnElement="Catch_DocumentsSubmitted">
+        <dc:Bounds x="522" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="512" y="265" width="58" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Catch_Deadline_di" bpmnElement="Catch_Deadline">
+        <dc:Bounds x="522" y="380" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="508" y="423" width="66" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_NoDocuments_di" bpmnElement="EndEvent_NoDocuments">
+        <dc:Bounds x="610" y="380" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="592" y="423" width="74" height="27" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_ReviewDocuments_di" bpmnElement="UserTask_ReviewDocuments">
+        <dc:Bounds x="610" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_WorkMode_di" bpmnElement="Gateway_WorkMode" isMarkerVisible="true">
+        <dc:Bounds x="770" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="765" y="185" width="60" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_ShipEquipment_di" bpmnElement="UserTask_ShipEquipment">
+        <dc:Bounds x="870" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_AssignSeat_di" bpmnElement="UserTask_AssignSeat">
+        <dc:Bounds x="870" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_WorkModeJoin_di" bpmnElement="Gateway_WorkModeJoin" isMarkerVisible="true">
+        <dc:Bounds x="1030" y="215" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_PrepSplit_di" bpmnElement="Gateway_PrepSplit">
+        <dc:Bounds x="1110" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1105" y="185" width="60" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_CreateAccount_di" bpmnElement="ServiceTask_CreateAccount">
+        <dc:Bounds x="1210" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_RegisterTraining_di" bpmnElement="UserTask_RegisterTraining">
+        <dc:Bounds x="1210" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_PrepJoin_di" bpmnElement="Gateway_PrepJoin">
+        <dc:Bounds x="1370" y="215" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Catch_StartDate_di" bpmnElement="Catch_StartDate">
+        <dc:Bounds x="1472" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1462" y="265" width="58" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_FinalCheck_di" bpmnElement="UserTask_FinalCheck">
+        <dc:Bounds x="1560" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Ready_di" bpmnElement="EndEvent_Ready">
+        <dc:Bounds x="1720" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1702" y="265" width="74" height="27" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="Flow_start_request_di" bpmnElement="Flow_start_request">
+        <di:waypoint x="198" y="240" /><di:waypoint x="250" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_request_wait_di" bpmnElement="Flow_request_wait">
+        <di:waypoint x="350" y="240" /><di:waypoint x="410" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_wait_submitted_di" bpmnElement="Flow_wait_submitted">
+        <di:waypoint x="460" y="240" /><di:waypoint x="522" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_wait_deadline_di" bpmnElement="Flow_wait_deadline">
+        <di:waypoint x="435" y="265" /><di:waypoint x="435" y="398" /><di:waypoint x="522" y="398" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_deadline_end_di" bpmnElement="Flow_deadline_end">
+        <di:waypoint x="558" y="398" /><di:waypoint x="610" y="398" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_submitted_review_di" bpmnElement="Flow_submitted_review">
+        <di:waypoint x="558" y="240" /><di:waypoint x="610" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_review_workmode_di" bpmnElement="Flow_review_workmode">
+        <di:waypoint x="710" y="240" /><di:waypoint x="770" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_workmode_remote_di" bpmnElement="Flow_workmode_remote">
+        <di:waypoint x="795" y="215" /><di:waypoint x="795" y="120" /><di:waypoint x="870" y="120" />
+        <bpmndi:BPMNLabel><dc:Bounds x="800" y="160" width="30" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_workmode_office_di" bpmnElement="Flow_workmode_office">
+        <di:waypoint x="795" y="265" /><di:waypoint x="795" y="360" /><di:waypoint x="870" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="800" y="320" width="66" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_ship_join_di" bpmnElement="Flow_ship_join">
+        <di:waypoint x="970" y="120" /><di:waypoint x="1055" y="120" /><di:waypoint x="1055" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_seat_join_di" bpmnElement="Flow_seat_join">
+        <di:waypoint x="970" y="360" /><di:waypoint x="1055" y="360" /><di:waypoint x="1055" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_workmodejoin_split_di" bpmnElement="Flow_workmodejoin_split">
+        <di:waypoint x="1080" y="240" /><di:waypoint x="1110" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_split_account_di" bpmnElement="Flow_split_account">
+        <di:waypoint x="1135" y="215" /><di:waypoint x="1135" y="120" /><di:waypoint x="1210" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_split_training_di" bpmnElement="Flow_split_training">
+        <di:waypoint x="1135" y="265" /><di:waypoint x="1135" y="360" /><di:waypoint x="1210" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_account_join_di" bpmnElement="Flow_account_join">
+        <di:waypoint x="1310" y="120" /><di:waypoint x="1395" y="120" /><di:waypoint x="1395" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_training_join_di" bpmnElement="Flow_training_join">
+        <di:waypoint x="1310" y="360" /><di:waypoint x="1395" y="360" /><di:waypoint x="1395" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_prepjoin_startdate_di" bpmnElement="Flow_prepjoin_startdate">
+        <di:waypoint x="1420" y="240" /><di:waypoint x="1472" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_startdate_final_di" bpmnElement="Flow_startdate_final">
+        <di:waypoint x="1508" y="240" /><di:waypoint x="1560" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_final_ready_di" bpmnElement="Flow_final_ready">
+        <di:waypoint x="1660" y="240" /><di:waypoint x="1720" y="240" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
