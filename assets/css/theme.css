@@ -267,6 +267,20 @@
 .qa__q { font-family: var(--mono); font-size: 13.5px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
 .qa__a { font-size: 17.5px; font-weight: 520; color: var(--ink-soft); line-height: 1.45; }
 
+/* 이름 고치기 — 모호한 이름(좌·mute) → 좋은 이름(우·강조) */
+.rename { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.rename__row { display: grid; grid-template-columns: 220px 42px 1fr; align-items: baseline; gap: 16px; }
+.rename__bad { text-align: right; font-size: 19px; color: var(--ink-mute); }
+.rename__arw { text-align: center; font-size: 18px; color: var(--line); }
+.rename__good { font-size: 22px; font-weight: 700; color: var(--ink-deep); letter-spacing: -.01em; }
+.rename__good em { color: var(--accent); font-weight: 700; }
+
+/* 비트 — 도식 단계(STEPS)와 동기화되는 중립 캡션 한 줄 (좌측 중립 룰) */
+.beat { padding: 5px 0 5px 16px; border-left: 2px solid var(--line);
+  font-size: 16px; font-weight: 520; color: var(--ink-soft); line-height: 1.45; }
+.beat + .beat { margin-top: 12px; }
+.beat em { color: var(--accent); font-weight: 650; }
+
 /* 인계 — 역할에서 역할로, 넘기는 정보 (from · 정보 · to) */
 .handoff { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 26px; }
 .handoff__row { display: grid; grid-template-columns: 1fr 300px 1fr; align-items: center; gap: 22px; }

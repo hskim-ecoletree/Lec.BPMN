@@ -169,6 +169,37 @@
        "EndEvent_OnboardingCanceled", "Task_CreateAccount"], "active-el"),
   ];
 
+  // 슬라이드 16: Start/End Event — 시작 하나 강조 → 결말 셋 추가 강조
+  STEPS["s-startend"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().mark("StartEvent_OfferAccepted", "active-el"),
+    (a) => a.clear().mark(
+      ["StartEvent_OfferAccepted", "EndEvent_FirstDayReady",
+       "EndEvent_DocumentsMissing", "EndEvent_OnboardingCanceled"], "active-el"),
+  ];
+
+  // 슬라이드 17: Pool·Lane·Message Flow — Lane 강조 → 외부 Pool + Message Flow
+  STEPS["s-lanes"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().mark(
+      ["Lane_HR", "Lane_Manager", "Lane_IT", "Lane_Facilities"], "highlight-flow"),
+    (a) => a.clear()
+      .mark("Participant_IdentityProvider", "active-el")
+      .mark("MessageFlow_CreateAccountRequest", "highlight-flow"),
+  ];
+
+  // 슬라이드 18: User Task — 검토 태스크로 줌 → 대기(하류 dim)
+  STEPS["s-usertask"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear()
+      .focus(["Task_ReviewDocuments", "Gateway_DocumentsComplete", "Task_RequestCorrections"], 70)
+      .mark("Task_ReviewDocuments", "active-el"),
+    (a) => a.clear()
+      .focus(["Task_ReviewDocuments", "Gateway_DocumentsComplete", "Task_RequestCorrections"], 70)
+      .mark("Task_ReviewDocuments", "active-el")
+      .mark(["Gateway_DocumentsComplete", "Task_RequestCorrections", "Gateway_RequirementsMerge"], "dim-el"),
+  ];
+
   // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
   // 슬라이드 22: 토큰으로 진행 위치 읽기
   STEPS["s-token"] = [

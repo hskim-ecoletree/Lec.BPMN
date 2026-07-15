@@ -617,6 +617,218 @@
       </section>
 
       <!-- ============================================================= -->
+      <!-- 16 — Start Event와 End Event                                     -->
+      <!-- ============================================================= -->
+      <section data-steps="s-startend" data-plan="16">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">시작·종료와 역할·일</div>
+          <div class="slide__q">Q1</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">시작은 계기 하나, 끝은 여러 방식 —<br />계기마다 업무 한 건이 새로 생깁니다.</h2>
+
+            <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:20px">
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div style="margin-bottom:96px">
+              <p class="beat fragment">Start Event — ‘입사 제안 수락’이 발생할 때마다 업무 한 건(<em>Process Instance</em>)이 새로 열립니다.</p>
+              <p class="beat fragment">End Event — 준비 완료·서류 미제출·채용 취소. 도달한 <em>결말마다 그 건이 닫힙니다</em>.</p>
+            </div>
+
+            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 — start/end event semantics (docs.camunda.org/manual/7.x)</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — Q1을 요소 수준으로. 범위(11)에서 잡은 시작·끝을 Start/End Event라는 기호와 실행 의미로 정식화한다. Process Instance를 여기서 첫 등장 풀이.</p>
+            <p><b>대사</b> — 앞서 범위를 이야기했죠. 이제 그 시작과 끝을 기호로 봅니다. [다음] 왼쪽 끝의 동그라미가 Start Event입니다. '입사 제안 수락'이 일어날 때마다, 지민 건·영수 건·아라 건처럼 업무가 한 건씩 새로 생깁니다. 이 한 건을 Process Instance라고 부릅니다 — 오늘 여러 번 나올 말입니다. [다음] 오른쪽을 보면 끝나는 동그라미가 하나가 아닙니다. 준비 완료로 끝나기도, 서류 미제출로 끝나기도, 채용 취소로 끝나기도 합니다. 도달한 결말에서 그 건이 닫힙니다. 시작은 계기 하나지만, 끝은 여러 방식이라는 것 — 이게 Start와 End Event의 핵심입니다.</p>
+            <p><b>오해</b> — "끝 동그라미는 하나여야 한다". <b>교정</b> — End Event는 여럿일 수 있고, 각기 도달한 결말만 닫는다(전체를 멈추는 건 Terminate End뿐 — 후반 심화).</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 17 — Pool·Lane·Message Flow                                      -->
+      <!-- ============================================================= -->
+      <section data-steps="s-lanes" data-plan="17">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">시작·종료와 역할·일</div>
+          <div class="slide__q">Q2</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">누구의 일인지는 ‘칸’이 말합니다 —<br />Pool은 참여자, Lane은 그 안의 역할.</h2>
+
+            <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:20px">
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div style="margin-bottom:96px">
+              <p class="beat fragment">Lane — 회사 Pool 안의 역할 구획입니다(수진·민호·IT·시설). <em>일이 어느 칸에 있느냐가 곧 책임자</em>입니다.</p>
+              <p class="beat fragment">Message Flow — 다른 Pool을 넘는 통신입니다. 외부 Identity Provider에 <em>계정 생성을 요청</em>하는 선처럼.</p>
+            </div>
+
+            <div class="slide__support">같은 Pool 안은 Sequence Flow, 다른 Pool 사이는 Message Flow. Lane은 실행을 바꾸지 않는 책임 표기입니다.</div>
+            <div class="slide__cite">OMG BPMN 2.0.2 — Pools · Lanes · Message Flow</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — Q2를 표기로. 역할(12에서 인계로 봤던 것)을 Pool·Lane·Message Flow 기호로 읽는다. Lane은 실행 의미가 없는 책임 구획임을 명확히.</p>
+            <p><b>대사</b> — 12장에서 일이 사람 사이를 넘어간다고 했죠. 그 '누구'를 BPMN은 칸으로 표기합니다. [다음] 회사라는 하나의 Pool 안에, 수진·민호·IT·시설이 각자의 Lane, 즉 가로 칸을 가집니다. 어떤 일이 어느 칸에 그려져 있으면 그게 곧 책임자입니다. Lane은 그림상의 구획일 뿐 실행을 바꾸지는 않습니다 — 하지만 '누구 일인지'를 못 박아 줍니다. [다음] 그런데 외부 Identity Provider는 회사 밖입니다. 다른 Pool이죠. Pool과 Pool 사이는 Sequence Flow가 아니라 Message Flow로 잇습니다 — 계정 생성 요청처럼요. 같은 조직 안은 순서 흐름, 조직을 넘으면 메시지. 이 구분이 Q2의 기호입니다.</p>
+            <p><b>오해</b> — "Lane을 바꾸면 실행이 달라진다". <b>교정</b> — Lane은 책임·가독성 표기이고 엔진 동작에는 영향이 없다. 경계를 넘는 통신만 Message Flow.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 18 — User Task: 사람의 일과 대기                                 -->
+      <!-- ============================================================= -->
+      <section data-steps="s-usertask" data-plan="18">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">시작·종료와 역할·일</div>
+          <div class="slide__q">Q2 · Q4</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">User Task는 ‘할 일’이자 ‘대기’입니다 —<br />사람이 끝낼 때까지 흐름이 여기서 멈춥니다.</h2>
+
+            <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:20px">
+              <div class="bpmn__cap">User Task · 수진의 입사 서류 검토</div>
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div style="margin-bottom:96px">
+              <p class="beat fragment">일 — 수진이 Tasklist에서 완료해야 할 <em>User Task</em>입니다.</p>
+              <p class="beat fragment">대기 — 완료 전까지 다음 단계로 <em>넘어가지 않습니다</em>. 흐름이 사람을 기다립니다.</p>
+            </div>
+
+            <div class="slide__cite">Camunda 7 docs — user task · wait states (docs.camunda.org/manual/7.x)</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — User Task를 Q2(사람의 일)와 Q4(대기)의 교차점으로 소개. Wait State(32)의 씨앗을 심는다.</p>
+            <p><b>대사</b> — 사람이 하는 일은 BPMN에서 User Task로 그립니다. 그런데 이건 두 얼굴을 가집니다. [다음] 하나는 '할 일'입니다 — 수진의 Tasklist에 '입사 서류 검토'가 떠오르죠. [다음] 다른 하나는 '대기'입니다. 수진이 검토를 끝내기 전까지, 흐름은 다음 단계로 넘어가지 않고 여기서 멈춰 있습니다. 엔진은 이 상태를 저장해 두고 수진을 기다립니다. 사람의 일은 곧 흐름이 기다리는 지점이라는 것 — 이건 5교시 Wait State에서 다시 정식으로 다룹니다.</p>
+            <p><b>오해</b> — "User Task는 실행되고 바로 지나간다". <b>교정</b> — 사람이 완료할 때까지 멈춰 대기하는 지점이다 — 흐름이 사람을 기다린다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 19 — Service Task와 External Task                                -->
+      <!-- ============================================================= -->
+      <section data-plan="19">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">시작·종료와 역할·일</div>
+          <div class="slide__q">Q2</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">자동 처리도 둘로 나뉩니다 —<br />엔진이 하느냐, 외부가 가져가느냐.</h2>
+
+            <div class="vs">
+              <div class="vs__head">
+                <span class="vs__side vs__side--os">Service Task</span>
+                <span></span>
+                <span class="vs__side vs__side--bpmn">External Task</span>
+              </div>
+              <div class="fragment">
+                <div class="vs__cat">실행 주체</div>
+                <div class="vs__pair"><span class="os">엔진이 실행</span><span class="vs__x">↔</span><span class="bp">외부 Worker가 가져감</span></div>
+              </div>
+              <div class="fragment">
+                <div class="vs__cat">재시도 설정</div>
+                <div class="vs__pair"><span class="os">엔진 기본값</span><span class="vs__x">↔</span><span class="bp">Worker가 횟수·간격 지정</span></div>
+              </div>
+              <div class="fragment">
+                <div class="vs__cat">쓰는 곳</div>
+                <div class="vs__pair"><span class="os">짧은 내부 처리</span><span class="vs__x">↔</span><span class="bp">외부 시스템 호출·느린 작업</span></div>
+              </div>
+            </div>
+
+            <p class="caveat fragment" style="margin-bottom:110px">둘 다 자동입니다 — 다른 건 <em>‘누가 실행하느냐’</em>입니다. 계정 생성은 외부 IdP라 External Task.</p>
+
+            <div class="slide__support">External Task: 엔진이 실행하지 않고 외부 Worker가 가져가 처리하고 결과·실패를 보고합니다.</div>
+            <div class="slide__cite">Camunda 7 docs — service task / external tasks (docs.camunda.org/manual/7.x)</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 자동 처리(사람 아님)를 두 방식으로 구분. External Task·Worker 첫 등장 풀이. 개념 수준만 — 코드·설정은 배제(§4).</p>
+            <p><b>대사</b> — 사람이 아니라 시스템이 하는 일은 자동 처리입니다. 그런데 이것도 두 갈래예요. [다음] Service Task는 엔진이 직접 실행합니다. 짧은 내부 계산 같은 것. [다음] External Task는 다릅니다 — 엔진이 하지 않고, 외부 프로그램(Worker)이 "내가 할 일 있나?" 하고 가져가 처리한 뒤 결과를 보고합니다. 재시도 횟수도 이 Worker가 정하죠. [다음] 쓰는 곳이 갈립니다. 느리거나 외부 시스템을 호출하는 일은 External Task가 어울립니다. [다음] 둘 다 '자동'이라는 건 같습니다. 차이는 누가 실행하느냐예요. 지민의 계정 생성은 회사 밖 Identity Provider를 부르니 External Task입니다 — 17장의 그 Message Flow죠.</p>
+            <p><b>오해</b> — "자동 처리는 다 똑같다". <b>교정</b> — 엔진 실행(Service) vs 외부 Worker 실행(External)은 재시도·실패 처리 주체가 다르다. (6교시 복구에서 이어짐)</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 20 — Activity 이름 짓기                                          -->
+      <!-- ============================================================= -->
+      <section data-plan="20">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">시작·종료와 역할·일</div>
+          <div class="slide__q">Q2</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">이름이 흐름의 절반입니다 —<br />‘처리’가 아니라 ‘무엇을 어떻게’.</h2>
+
+            <div class="rename">
+              <div class="rename__row fragment">
+                <span class="rename__bad">처리</span><span class="rename__arw">→</span>
+                <span class="rename__good">입사 서류를 <em>검토한다</em></span>
+              </div>
+              <div class="rename__row fragment">
+                <span class="rename__bad">확인</span><span class="rename__arw">→</span>
+                <span class="rename__good">근무 형태·장비·권한을 <em>확인한다</em></span>
+              </div>
+              <div class="rename__row fragment">
+                <span class="rename__bad">계정</span><span class="rename__arw">→</span>
+                <span class="rename__good">사용자 계정을 <em>생성한다</em></span>
+              </div>
+              <div class="rename__row fragment">
+                <span class="rename__bad">최종</span><span class="rename__arw">→</span>
+                <span class="rename__good">첫 출근 준비를 <em>최종 확인한다</em></span>
+              </div>
+            </div>
+
+            <p class="caveat fragment" style="margin-bottom:96px">동사 + 대상으로 적으면, 그림만 보고도 <em>누가 무엇을 끝내야 하는지</em> 읽힙니다.</p>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 좋은 모델의 실무 습관 하나. 이름이 모호하면 역할·완료 조건이 흐려진다(Q2 품질). M2(같게 읽히는 모델)의 실천.</p>
+            <p><b>대사</b> — 작지만 큰 습관 하나. Activity 이름입니다. [다음] '처리'라고 적으면 무엇을 하는지 아무도 모릅니다 — '입사 서류를 검토한다'라고 적어야죠. [다음] '확인'이 아니라 '근무 형태·장비·권한을 확인한다'. [다음] '계정'이 아니라 '사용자 계정을 생성한다'. [다음] '최종'이 아니라 '첫 출근 준비를 최종 확인한다'. 규칙은 간단합니다 — 동사와 대상을 함께 적는다. [다음] 그러면 그림만 봐도 누가 무엇을 끝내야 하는지 읽힙니다. 이름 하나가 모델이 같게 읽히느냐를 좌우합니다.</p>
+            <p><b>오해</b> — "이름은 대충, 로직이 중요". <b>교정</b> — 이름이 모호하면 완료 조건·책임이 흐려져 서로 다르게 읽는다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 21 — 시작·끝·역할·일 정리 (3교시 회수)                           -->
+      <!-- ============================================================= -->
+      <section data-plan="21">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">시작·종료와 역할·일</div>
+          <div class="slide__q">Q1 · Q2</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">여기까지, 시작·끝은 Q1이고 칸·일·이름은 Q2입니다.</h2>
+
+            <div class="qgrid">
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Start / End Event</span>
+                <span class="qgrid__t">계기 하나가 업무 한 건을 열고, 결말은 여럿 (Q1)</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">Pool / Lane</span>
+                <span class="qgrid__t">참여자와 그 안의 역할 — 일이 놓인 칸이 곧 책임 (Q2)</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">User / Service / External</span>
+                <span class="qgrid__t">사람의 일과 자동 처리, 실행 주체로 갈림 (Q2)</span>
+              </div>
+              <div class="qgrid__item fragment">
+                <span class="qgrid__n">이름</span>
+                <span class="qgrid__t">동사 + 대상으로 — 같게 읽히는 모델의 기본 (Q2)</span>
+              </div>
+            </div>
+
+            <div class="slide__support">다음은 Q3 — 경로가 갈리고 다시 모이는 분기를, 토큰으로 세어 봅니다.</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 3교시 회수. 시작·끝(Q1)과 역할·일·이름(Q2)을 한 화면에 접고, 4교시(분기·토큰) 예고.</p>
+            <p><b>대사</b> — 3교시를 정리합니다. [다음] Start와 End — 계기 하나로 업무 한 건이 열리고, 끝나는 방식은 여럿이었습니다. 이게 Q1이죠. [다음] Pool과 Lane — 참여자와 역할의 칸, 일이 놓인 칸이 곧 책임자였습니다. [다음] 일의 종류 — 사람의 User Task, 엔진의 Service Task, 외부의 External Task. [다음] 그리고 이름 — 동사와 대상으로 적어야 같게 읽힌다. 뒤의 셋이 Q2입니다. [다음] 다음 시간엔 경로가 갈리는 곳, 분기입니다. 갈래를 눈이 아니라 '토큰'으로 세는 법을 배웁니다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
       <!-- 토큰 — 초대형 숫자                                              -->
       <!-- ============================================================= -->
       <section data-steps="s-token" data-plan="22">
@@ -750,6 +962,6 @@
 
   <script src="vendor/reveal/reveal.js"></script>
   <script src="vendor/bpmn/bpmn-navigated-viewer.production.min.js"></script>
-  <script src="assets/js/deck.js?v=6"></script>
+  <script src="assets/js/deck.js?v=8"></script>
 </body>
 </html>

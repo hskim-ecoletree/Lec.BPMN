@@ -115,6 +115,8 @@
 - **`dead-strip`**: 도식 아래 한 줄 색 원장(`ok`/`no`/`wt`).
 - **`flow`**: 가로 4단계 타임라인 — 50px thin 모노 번호(ok 녹/중립 mute/bad 테라코타).
 - **`caveat`**: 테라코타 2px 좌측 룰의 오해 교정 한 줄.
+- **`beat`**: 중립(라인색) 2px 좌측 룰의 캡션 한 줄. 도식 STEPS 단계와 fragment로 동기화되는 서술에 사용(caveat와 색·의미 구분).
+- **`rename`** 이름 고치기: 모호한 이름(우측정렬·mute) → 화살표 → 좋은 이름(강조). Activity 이름 짓기 등 before/after 대비에 사용, fragment로 행 단위 등장.
 
 ### BPMN 마커·토큰
 - 마커: `highlight-flow`·`active-el`=accent(+옅은 fill), `dead-el`=테라코타 점선(+옅은 fill), `dim-el`=0.3.

@@ -57,6 +57,8 @@
 | 9 | Message Correlation: message name + (business key / correlation 변수) | ✅ | business key는 사용자 지정 식별자, **엔진이 유일성 보장 안 함**. |
 | 10 | Boundary: 실선=interrupting(중단), 점선=non-interrupting(추가 토큰) | ✅ | `cancelActivity` true/false. |
 | 11 | BPMN 2.0 표준에 역할(Pool·Lane)·분기(Gateway)·대기(Intermediate Catch Event·User Task)·예외(Boundary/Error Event)의 표기가 정의되어 있다 | ✅ | OMG BPMN 2.0.2 스펙 목차 수준에서 확인 — Pools/Lanes, Gateways, Events(Catch/Boundary/Error) 장이 표준에 존재. "다른 표기법(순서도·상태도)에는 이런 요소의 **합의된 표기**가 없다"는 식의 비교는 "약속이 없다/표기 밖" 수준으로만 말하고 능력 부정 단정은 피한다. |
+| 12 | Start Event 발생 시 Process Instance 한 건이 생성되고, End Event는 도달한 토큰을 소멸시킨다. 프로세스에 End Event가 여럿일 수 있다 | ✅ | BPMN 2.0.2·Camunda 7 기본 실행 의미. None Start Event는 API/수동으로 인스턴스 시작, Message/Timer Start도 가능(온보딩은 None Start로 단순화). 여러 End Event 허용 — 각기 도달한 토큰만 소멸(Terminate End만 전체 종료). "계기마다 업무 한 건이 새로 생긴다"는 이 의미의 서술. |
+| 13 | Pool = 참여자(참가 조직/시스템)의 경계, Lane = Pool 안의 역할 구획, Message Flow = **서로 다른 Pool 사이**의 통신(같은 Pool 안은 Sequence Flow) | ✅ | OMG BPMN 2.0.2. Message Flow는 Pool 경계를 넘는 메시지에만 사용, Lane은 실행 의미가 없는 시각적 책임 구획(엔진 동작에 영향 없음, 가독성·책임 표기용). |
 
 ### 강사가 알아야 할 Camunda 7 시점 주의
 
