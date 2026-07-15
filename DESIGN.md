@@ -91,7 +91,7 @@
 ## Components
 
 ### `cover` — 표지(어둠 속의 빛)
-`cover__slit`(수직 광선 + 글로우) · `cover__kicker` · `cover__vert`(세로 "여섯 개의 질문") · `cover__title`(작은 활자, b가 강조 줄) · `cover__corp`. 표지의 주인공은 빛이고, 활자는 조용하다.
+`cover__slit`(수직 광선 + 글로우) · `cover__kicker` · `cover__vert`(세로 "신입사원 온보딩") · `cover__title`(작은 활자, b가 강조 줄) · `cover__corp`. 표지의 주인공은 빛이고, 활자는 조용하다.
 
 ### `slide` — 본문(빛 위의 그림자)
 `slide__shade` + `slide__label` + `slide__q` + `slide__inner`. 그림자는 장식이 아니라 **내비게이션**(단원·복무 질문의 자리)이며 표지의 어둠과 짝을 이룬다.
