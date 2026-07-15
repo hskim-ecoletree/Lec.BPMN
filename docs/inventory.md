@@ -47,12 +47,12 @@
 
 | # | reveal | 제목 | 복무 | 분 | 상태 | 출처 | 비고 |
 |---|---|---|---|---|---|---|---|
-| 16 | #/15 | Start Event와 End Event | Q1 | 8 | 검증 | BPMN 2.0.2·Camunda 7 (검증노트 §2-12) | 신규(병합). 전체 모델 + s-startend, Process Instance 첫 등장, 대본 (리뷰 대기) |
-| 17 | #/16 | Pool·Lane·Message Flow | Q2 | 7 | 검증 | OMG BPMN 2.0.2 (검증노트 §2-13) | 신규. 전체 모델 + s-lanes, beat 캡션, 대본 (리뷰 대기) |
-| 18 | #/17 | User Task — 사람의 일과 대기 | Q2·Q4 | 6 | 검증 | Camunda 7 docs (§2-8) | 신규. 검토 태스크 줌 + s-usertask, 대본 (리뷰 대기) |
-| 19 | #/18 | Service Task와 External Task | Q2 | 6 | 검증 | Camunda 7 docs (§2-7) | 신규(개념만). vs 구도, External Task·Worker 첫 등장 (리뷰 대기) |
-| 20 | #/19 | Activity 이름 짓기 | Q2 | 5 | 검증 | — | 신규. rename 구도(before→after), 대본 (리뷰 대기) |
-| 21 | #/20 | 시작·끝·역할·일 정리 | Q1·Q2 | 4 | 검증 | — | 신규(회수). qgrid 4정리, 4교시 예고 (리뷰 대기) |
+| 16 | #/15 | Start Event와 End Event | Q1 | 8 | 통과 | BPMN 2.0.2·Camunda 7 (검증노트 §2-12) | 신규(병합). 전체 모델 + s-startend, Process Instance 첫 등장, 대본 |
+| 17 | #/16 | Pool·Lane·Message Flow | Q2 | 7 | 통과 | OMG BPMN 2.0.2 (검증노트 §2-13) | 신규. 전체 모델 + s-lanes, beat 캡션, 대본 |
+| 18 | #/17 | User Task — 사람의 일과 대기 | Q2·Q4 | 6 | 통과 | Camunda 7 docs (§2-8) | 신규. 검토 태스크 줌 + s-usertask, 대본 |
+| 19 | #/18 | Service Task와 External Task | Q2 | 6 | 통과 | Camunda 7 docs (§2-7) | 신규(개념만). vs 구도, External Task·Worker 첫 등장 |
+| 20 | #/19 | Activity 이름 짓기 | Q2 | 5 | 통과 | — | 신규. rename 구도(before→after), 대본 |
+| 21 | #/20 | 시작·끝·역할·일 정리 | Q1·Q2 | 4 | 통과 | — | 신규(회수). qgrid 4정리, 4교시 예고 |
 
 ### 4교시 — 분기: 토큰으로 세는 법 (합 41분)
 
@@ -112,4 +112,4 @@
 
 - 교시별 시간 합: 41 / 44 / 38 / 41 / 42 / 43 / 50 / 45 — 전 교시 50분 이내.
 - 여섯 질문 커버리지: curriculum.md "커버리지 검산" 절과 일치(02는 Q1~Q5 도입부).
-- 제작 현황: 대본 1 (01) · 통과 16 (02~15·26·37) · 검증 7 (16~21 리뷰 대기·22) — 제작 24장, 나머지 26장 계획. **1·2교시 통과, 3교시 16~21 제작.**
+- 제작 현황: 대본 1 (01) · 통과 22 (02~21·26·37) · 검증 1 (22) — 제작 24장, 나머지 26장 계획. **1·2·3교시(01~21) 전 장표 통과.**
