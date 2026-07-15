@@ -388,10 +388,6 @@
 .title-slide h1 { font-size: 47px; line-height: 1.18; margin-bottom: 20px; }
 .title-slide h1 .hl { color: var(--accent); }
 .title-slide__sub { font-size: 23px; color: var(--ink-soft); max-width: 30ch; }
-.title-slide__meta {
-  margin-top: auto; display: flex; gap: 26px; font-size: 16px; color: var(--ink-mute);
-}
-.title-slide__meta div b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 2px; }
 .title-slide__side {
   background: var(--brand-deep);
   color: #dbeef3;
