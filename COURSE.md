@@ -112,6 +112,15 @@
 | Business Key | 업무 인스턴스를 찾는 사용자 지정 식별자 | 비즈니스 키(첫 등장 이후 혼용 가능) |
 | Human Activity | OutSystems 11 BPT의 사람 작업 요소 | Screen과 치환 금지 |
 | BPT | OutSystems 11의 Business Process Technology | ODC 문맥에서 사용 금지(ODC는 Workflows) |
+| Checklist | 할 일을 나열하고 완료를 표시하는 목록 — 대사에서는 '체크리스트'로 읽음 | 점검표 |
+| Flowchart | 순서와 분기를 그리는 일반 순서도 — 대사에서는 '순서도'로 읽음 | 플로차트 |
+| State Machine | 상태와 전이로 흐름을 적는 표기 — 대사에서는 '상태 기계'로 읽음 | 상태머신, 스테이트 머신 |
+| XOR | Exclusive Gateway의 축약 표기 — 하나만 고르는 분기·합류 | 배타 게이트웨이 |
+| Parallel | Parallel Gateway의 축약 표기 — 모두 실행하는 분기·합류 | 병렬 게이트웨이 |
+| Async | 완료를 확정할 지점을 나누는 비동기 실행 설정(asyncBefore 등) | 비동기 처리(Async 의미로 단독 사용) |
+| Retry | 실패한 Job을 다시 시도하는 것 | 리트라이, 재시도(Retry 표기 대신 단독 사용) |
+| 멱등 | 여러 번 실행해도 결과가 같음 | idempotent 영문 단독 표기 |
+| 안티패턴 | 문법상 가능하지만 의도와 다르게 움직이는 잘못된 모델 조합 | 앤티패턴 |
 
 스토리 고유명(`OfferAccepted`, `DocumentsSubmitted`, `FirstDayReady`, 인물 이름)은 철자·표기를 바꾸지 않는다. 새 용어가 필요하면 **이 표에 먼저 등재**하고 쓴다.
 

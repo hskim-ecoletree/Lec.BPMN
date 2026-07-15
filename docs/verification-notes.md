@@ -56,6 +56,7 @@
 | 8 | Wait State: 상태 저장 + 트랜잭션 Commit + 요청/스레드 종료, Trigger로 재개 | ✅ | User Task·Message/Timer Catch·External Task 등. |
 | 9 | Message Correlation: message name + (business key / correlation 변수) | ✅ | business key는 사용자 지정 식별자, **엔진이 유일성 보장 안 함**. |
 | 10 | Boundary: 실선=interrupting(중단), 점선=non-interrupting(추가 토큰) | ✅ | `cancelActivity` true/false. |
+| 11 | BPMN 2.0 표준에 역할(Pool·Lane)·분기(Gateway)·대기(Intermediate Catch Event·User Task)·예외(Boundary/Error Event)의 표기가 정의되어 있다 | ✅ | OMG BPMN 2.0.2 스펙 목차 수준에서 확인 — Pools/Lanes, Gateways, Events(Catch/Boundary/Error) 장이 표준에 존재. "다른 표기법(순서도·상태도)에는 이런 요소의 **합의된 표기**가 없다"는 식의 비교는 "약속이 없다/표기 밖" 수준으로만 말하고 능력 부정 단정은 피한다. |
 
 ### 강사가 알아야 할 Camunda 7 시점 주의
 

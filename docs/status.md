@@ -20,12 +20,12 @@
 
 ## 다음 세션이 할 일 (순서대로)
 
-1. **1교시 나머지 제작** (03·05·06·07) 순서대로, 1장씩 — `slide-author` 로드, 브라우저 검증 → `slide-reviewer` → inventory 상태 갱신 → 커밋.
-   - 03 Workflow 표현 도구들(B형): Checklist·Flowchart·State Machine·BPMN·코드 비교. 04(vs 구도)와 연속되므로 **vs 구도 금지**.
-   - 05 BPMN의 부침과 남은 가치(C형): 역사 사실 주장은 verification-notes에 먼저 검증 추가 필요.
+1. **1교시 나머지 제작** (05·06·07) 순서대로, 1장씩 — `slide-author` 로드, 브라우저 검증 → `slide-reviewer` → inventory 상태 갱신 → 커밋.
+   - 03 완료(통과, rows 구도). ~~26·37 재판정~~ 완료(둘 다 PASS).
+   - 05 BPMN의 부침과 남은 가치(C형): 역사 사실 주장은 verification-notes에 먼저 검증 추가 필요 (BPMN 표준화 연혁 등).
    - 06 AI 에이전트와 프로세스의 경계(B형), 07 흐름을 읽는 여섯 관점(R형, 회수).
-2. **재활용 장표 26·37 slide-reviewer 재판정** (26은 "v3 재작성 재판정 필요" 상태).
-3. 1교시(01~07) 완성 시 `deck-reviewer`.
+2. 1교시(01~07) 완성 시 `deck-reviewer`.
+3. 이후 2교시(08~15) 제작.
 
 ## 주의 (세션에서 배운 것)
 
