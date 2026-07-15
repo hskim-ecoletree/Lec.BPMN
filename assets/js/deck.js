@@ -134,8 +134,21 @@
   // slideId -> [stateFn(api), ...]  (index = 지금까지 보인 fragment 수)
   const STEPS = {};
 
-  // 슬라이드 08: 전체 온보딩 모델 — 조작 없음(fit)
-  // 슬라이드 38: 토큰으로 진행 위치 읽기
+  // 슬라이드 02: 목록 ↔ 구조 — 구조 요소를 순서대로 가리킨다 (전체 유지, 마크만)
+  STEPS["s-structure"] = [
+    (a) => a.clear(),
+    (a) => a.clear().mark("S_Start", "active-el"),
+    (a) => a.clear().mark(
+      ["S_Request", "S_Review", "S_Account", "S_Equipment", "S_Training"], "active-el"),
+    (a) => a.clear().mark(["S_Complete", "S_Split"], "active-el")
+      .mark(["S_fOk", "S_fLoop", "S_fAcc", "S_fEq", "S_fTr"], "highlight-flow"),
+    (a) => a.clear().mark(["S_Submitted", "S_StartDate"], "active-el"),
+    (a) => a.clear().mark("S_Ready", "active-el"),
+    (a) => a.clear().mark("S_Ready", "active-el"), // caveat 노출 — 마킹 유지
+  ];
+
+  // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
+  // 슬라이드 22: 토큰으로 진행 위치 읽기
   STEPS["s-token"] = [
     (a) => a.clear().fit(),
     (a) => a.clear()
@@ -160,7 +173,7 @@
       .token("EndEvent_FirstDayReady"),
   ];
 
-  // 슬라이드 35: 교착 (XOR 분기 + Parallel 합류)
+  // 슬라이드 26: 교착 (XOR 분기 + Parallel 합류)
   STEPS["s-deadlock"] = [
     (a) => a.clear(),
     (a) => a.clear()

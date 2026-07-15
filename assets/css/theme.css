@@ -242,6 +242,18 @@
 .dead-strip .no { color: var(--err); }
 .dead-strip .wt { color: var(--wait); }
 
+/* 목록 → 구조 재배열 — 상단 목록 스트립 + 전폭 다이어그램 + 구조 단어 행 */
+.relist { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 0; margin-top: 34px; }
+.relist__cap {
+  font-size: 12px; font-weight: 650; letter-spacing: .08em;
+  color: var(--ink-mute); text-transform: uppercase; margin-right: 34px;
+}
+.relist__item { font-size: 17px; font-weight: 560; color: var(--ink-soft); }
+.relist__item + .relist__item::before { content: "·"; color: var(--line); margin: 0 14px; }
+.facet-row { display: flex; gap: 46px; padding-top: 14px; }
+.facet { font-size: 21px; font-weight: 740; letter-spacing: -.01em; color: var(--ink-soft); }
+.facet.current-fragment { color: var(--accent); }
+
 /* 초대형 숫자 — 숫자가 곧 증거 */
 .cols--jumbo { display: grid; grid-template-columns: 1.55fr 1fr; gap: 40px; flex: 1; min-height: 0; }
 .cols--jumbo .col { min-width: 0; display: flex; flex-direction: column; }

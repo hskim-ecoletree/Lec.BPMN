@@ -104,6 +104,7 @@
 
 ### 구도 컴포넌트 — 같은 구도 반복 금지
 - **`vs`** 대형 매핑: 30px 용어쌍(OS=ink-soft ↔ BPMN=accent) + 중앙 `↔` + 카테고리 캡스. fragment로 행 단위 등장.
+- **`relist` + `facet-row`** 목록 재배열: 상단 목록 스트립(캡 + 중점 구분 항목) ↔ 전폭 다이어그램 대비 + 하단 구조 단어 행(fragment, 현재 단어만 accent).
 - **`bpmn` 전면**: 종이 위 투명 렌더(흰 면 CSS 제거). `bpmn__cap`은 mute 캡스 한 줄. 하단 `hero-foot`(persona 점 + 힌트).
 - **`cols--jumbo`**: 좌 bpmn + 우 132px accent 숫자(`fade-in-then-out`으로 같은 자리 교체 — 1→3→1→0).
 - **`dead-strip`**: 도식 아래 한 줄 색 원장(`ok`/`no`/`wt`).

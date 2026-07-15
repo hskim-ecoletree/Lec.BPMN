@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Workflow를 구조적으로 생각하는 법 — 강의 슬라이드 (수직 슬라이스)</title>
 
+  <link rel="icon" href="data:," />
   <link rel="stylesheet" href="vendor/reveal/reset.css" />
   <link rel="stylesheet" href="vendor/reveal/reveal.css" />
   <link rel="stylesheet" href="vendor/bpmn/diagram-js.css" />
   <link rel="stylesheet" href="vendor/bpmn/bpmn-embedded.css" />
-  <link rel="stylesheet" href="assets/css/theme.css?v=4" />
+  <link rel="stylesheet" href="assets/css/theme.css?v=5" />
 </head>
 <body>
   <div class="reveal">
@@ -33,9 +34,53 @@
       </section>
 
       <!-- ============================================================= -->
+      <!-- 02 — Workflow의 구조: 화면·기능 목록 ↔ 흐름의 구조             -->
+      <!-- ============================================================= -->
+      <section data-steps="s-structure" data-plan="02">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">업무를 흐름으로 보는 눈</div>
+          <div class="slide__q">Q1–Q5</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">할 일 목록을 흐름으로 펼치는 순간,<br />시작·분기·대기·결과가 나타납니다.</h2>
+
+            <div class="relist">
+              <span class="relist__cap">수진의 할 일 — 화면·기능 목록</span>
+              <span class="relist__item">서류 요청 화면</span>
+              <span class="relist__item">서류 검토 화면</span>
+              <span class="relist__item">계정 생성 기능</span>
+              <span class="relist__item">장비 준비 화면</span>
+              <span class="relist__item">교육 등록 기능</span>
+            </div>
+
+            <div class="bpmn" data-model="models/frag_structure_overview.bpmn" style="margin-top:14px">
+              <div class="bpmn__cap">같은 일 — 흐름의 구조</div>
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div class="facet-row">
+              <span class="facet fragment">시작</span>
+              <span class="facet fragment">일</span>
+              <span class="facet fragment">분기</span>
+              <span class="facet fragment">대기</span>
+              <span class="facet fragment">결과</span>
+            </div>
+
+            <p class="caveat fragment" style="margin:14px 0 96px">다이어그램이라서 구조인 것이 아닙니다 — 시작·분기·대기·결과를 <em>답할 수 있는 배열</em>이라서 구조입니다.</p>
+
+            <div class="slide__support">같은 다섯 가지 일입니다 — 배열이 달라지면 보이는 것이 달라집니다.</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 스토리 개막. 표지가 건 '구조로 읽는 법'의 '구조'를 눈으로 해소한다.</p>
+            <p><b>대사</b> — 수진에게 지민의 입사 확정 메일이 도착합니다. 머릿속에 떠오르는 건 위와 같은 할 일 목록입니다 — 화면과 기능, 우리가 일해 온 방식이죠. 그런데 이 목록은 답하지 못합니다. 무엇을 계기로 시작하는지, 무엇을 기다려야 하는지. 아래는 같은 다섯 가지 일을 흐름으로 펼친 것입니다. [다음] 시작 — 이 업무 전체는 '입사 제안 수락'이라는 사건으로 시작됩니다. 목록에는 없던 정보입니다. [다음] 일 — 목록의 다섯 항목이 그대로 흐름 안에 있습니다. 화면이 아니라 '완료해야 할 일'로요. [다음] 분기 — 서류가 완전한지에 따라 길이 갈라져 요청으로 되돌아가기도 하고, 준비 셋은 동시에 갈라집니다. 목록은 되돌아가지 못하죠. [다음] 대기 — 서류가 올 때까지, 입사일이 될 때까지 흐름은 멈춰 기다립니다. [다음] 결과 — 끝은 항목을 다 지운 상태가 아니라 '첫 출근 준비 완료'라는 업무의 결과입니다. 이 짜임새 — 시작·일·분기·대기·결과 — 가 오늘 하루 계속 말할 '구조'입니다. [다음] 주의할 점 하나. 다이어그램으로 그렸다고 구조가 되는 것은 아닙니다. 네 가지를 답할 수 있는 배열이라야 구조입니다. 기호는 아직 외우지 않아도 됩니다.</p>
+            <p><b>오해</b> — "다이어그램으로 그리면 곧 구조다". <b>교정</b> — 그림이 아니라 시작·분기·대기·결과를 답할 수 있는 배열이 구조다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
       <!-- OutSystems ↔ BPMN — 대형 매핑                                  -->
       <!-- ============================================================= -->
-      <section data-plan="03">
+      <section data-plan="04">
         <div class="slide">
           <div class="slide__shade"></div>
           <div class="slide__label">오리엔테이션 — 도구 연결</div>
@@ -78,7 +123,7 @@
       <!-- ============================================================= -->
       <!-- 온보딩 전체 이야기 — 다이어그램 전면                            -->
       <!-- ============================================================= -->
-      <section data-plan="08">
+      <section data-plan="09">
         <div class="slide">
           <div class="slide__shade"></div>
           <div class="slide__label">BPMN이라는 언어</div>
@@ -109,7 +154,7 @@
       <!-- ============================================================= -->
       <!-- 토큰 — 초대형 숫자                                              -->
       <!-- ============================================================= -->
-      <section data-steps="s-token" data-plan="38">
+      <section data-steps="s-token" data-plan="22">
         <div class="slide">
           <div class="slide__shade"></div>
           <div class="slide__label">분기 — 토큰으로 세는 법</div>
@@ -158,7 +203,7 @@
       <!-- ============================================================= -->
       <!-- 교착 — 다이어그램 전면 + 한 줄 원장                             -->
       <!-- ============================================================= -->
-      <section data-steps="s-deadlock" data-plan="35">
+      <section data-steps="s-deadlock" data-plan="26">
         <div class="slide">
           <div class="slide__shade"></div>
           <div class="slide__label">분기 — 토큰으로 세는 법</div>
@@ -189,7 +234,7 @@
       <!-- ============================================================= -->
       <!-- Async — 가로 타임라인                                          -->
       <!-- ============================================================= -->
-      <section data-plan="42">
+      <section data-plan="37">
         <div class="slide">
           <div class="slide__shade"></div>
           <div class="slide__label">실행과 복구</div>
@@ -240,6 +285,6 @@
 
   <script src="vendor/reveal/reveal.js"></script>
   <script src="vendor/bpmn/bpmn-navigated-viewer.production.min.js"></script>
-  <script src="assets/js/deck.js?v=3"></script>
+  <script src="assets/js/deck.js?v=4"></script>
 </body>
 </html>

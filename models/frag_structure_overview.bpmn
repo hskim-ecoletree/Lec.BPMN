@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_StructureOverview"
+  targetNamespace="https://example.org/camunda7/training/fragments">
+  <bpmn:process id="Process_StructureOverview" name="할 일 목록의 재배열" isExecutable="false">
+    <bpmn:startEvent id="S_Start" name="입사 제안 수락">
+      <bpmn:outgoing>S_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="S_Request" name="서류 요청">
+      <bpmn:incoming>S_f1</bpmn:incoming>
+      <bpmn:incoming>S_fLoop</bpmn:incoming>
+      <bpmn:outgoing>S_f2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:intermediateCatchEvent id="S_Submitted" name="서류 제출됨">
+      <bpmn:incoming>S_f2</bpmn:incoming>
+      <bpmn:outgoing>S_f3</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="S_SubmittedMsg" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:userTask id="S_Review" name="서류 검토">
+      <bpmn:incoming>S_f3</bpmn:incoming>
+      <bpmn:outgoing>S_f4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="S_Complete" name="서류가 완전한가?">
+      <bpmn:incoming>S_f4</bpmn:incoming>
+      <bpmn:outgoing>S_fOk</bpmn:outgoing>
+      <bpmn:outgoing>S_fLoop</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:parallelGateway id="S_Split">
+      <bpmn:incoming>S_fOk</bpmn:incoming>
+      <bpmn:outgoing>S_fAcc</bpmn:outgoing>
+      <bpmn:outgoing>S_fEq</bpmn:outgoing>
+      <bpmn:outgoing>S_fTr</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="S_Account" name="계정 생성">
+      <bpmn:incoming>S_fAcc</bpmn:incoming>
+      <bpmn:outgoing>S_fAcc2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="S_Equipment" name="장비 준비">
+      <bpmn:incoming>S_fEq</bpmn:incoming>
+      <bpmn:outgoing>S_fEq2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="S_Training" name="교육 등록">
+      <bpmn:incoming>S_fTr</bpmn:incoming>
+      <bpmn:outgoing>S_fTr2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="S_Join">
+      <bpmn:incoming>S_fAcc2</bpmn:incoming>
+      <bpmn:incoming>S_fEq2</bpmn:incoming>
+      <bpmn:incoming>S_fTr2</bpmn:incoming>
+      <bpmn:outgoing>S_f5</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:intermediateCatchEvent id="S_StartDate" name="입사일 대기">
+      <bpmn:incoming>S_f5</bpmn:incoming>
+      <bpmn:outgoing>S_f6</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="S_StartDateTimer" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="S_Ready" name="첫 출근 준비 완료">
+      <bpmn:incoming>S_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="S_f1" sourceRef="S_Start" targetRef="S_Request" />
+    <bpmn:sequenceFlow id="S_f2" sourceRef="S_Request" targetRef="S_Submitted" />
+    <bpmn:sequenceFlow id="S_f3" sourceRef="S_Submitted" targetRef="S_Review" />
+    <bpmn:sequenceFlow id="S_f4" sourceRef="S_Review" targetRef="S_Complete" />
+    <bpmn:sequenceFlow id="S_fOk" name="완전함" sourceRef="S_Complete" targetRef="S_Split" />
+    <bpmn:sequenceFlow id="S_fLoop" name="보완 필요" sourceRef="S_Complete" targetRef="S_Request" />
+    <bpmn:sequenceFlow id="S_fAcc" sourceRef="S_Split" targetRef="S_Account" />
+    <bpmn:sequenceFlow id="S_fEq" sourceRef="S_Split" targetRef="S_Equipment" />
+    <bpmn:sequenceFlow id="S_fTr" sourceRef="S_Split" targetRef="S_Training" />
+    <bpmn:sequenceFlow id="S_fAcc2" sourceRef="S_Account" targetRef="S_Join" />
+    <bpmn:sequenceFlow id="S_fEq2" sourceRef="S_Equipment" targetRef="S_Join" />
+    <bpmn:sequenceFlow id="S_fTr2" sourceRef="S_Training" targetRef="S_Join" />
+    <bpmn:sequenceFlow id="S_f5" sourceRef="S_Join" targetRef="S_StartDate" />
+    <bpmn:sequenceFlow id="S_f6" sourceRef="S_StartDate" targetRef="S_Ready" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_StructureOverview">
+    <bpmndi:BPMNPlane id="BPMNPlane_StructureOverview" bpmnElement="Process_StructureOverview">
+      <bpmndi:BPMNShape id="S_Start_di" bpmnElement="S_Start">
+        <dc:Bounds x="160" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="126" y="245" width="104" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Request_di" bpmnElement="S_Request">
+        <dc:Bounds x="250" y="180" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Submitted_di" bpmnElement="S_Submitted">
+        <dc:Bounds x="440" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="418" y="245" width="80" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Review_di" bpmnElement="S_Review">
+        <dc:Bounds x="530" y="180" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Complete_di" bpmnElement="S_Complete" isMarkerVisible="true">
+        <dc:Bounds x="715" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="680" y="252" width="120" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Split_di" bpmnElement="S_Split">
+        <dc:Bounds x="830" y="195" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Account_di" bpmnElement="S_Account">
+        <dc:Bounds x="950" y="60" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Equipment_di" bpmnElement="S_Equipment">
+        <dc:Bounds x="950" y="180" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Training_di" bpmnElement="S_Training">
+        <dc:Bounds x="950" y="300" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Join_di" bpmnElement="S_Join">
+        <dc:Bounds x="1155" y="195" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_StartDate_di" bpmnElement="S_StartDate">
+        <dc:Bounds x="1270" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1248" y="245" width="80" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Ready_di" bpmnElement="S_Ready">
+        <dc:Bounds x="1370" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1330" y="245" width="116" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="S_f1_di" bpmnElement="S_f1">
+        <di:waypoint x="196" y="220" /><di:waypoint x="250" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_f2_di" bpmnElement="S_f2">
+        <di:waypoint x="380" y="220" /><di:waypoint x="440" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_f3_di" bpmnElement="S_f3">
+        <di:waypoint x="476" y="220" /><di:waypoint x="530" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_f4_di" bpmnElement="S_f4">
+        <di:waypoint x="660" y="220" /><di:waypoint x="715" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fOk_di" bpmnElement="S_fOk">
+        <di:waypoint x="765" y="220" /><di:waypoint x="830" y="220" />
+        <bpmndi:BPMNLabel><dc:Bounds x="772" y="198" width="50" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fLoop_di" bpmnElement="S_fLoop">
+        <di:waypoint x="740" y="195" /><di:waypoint x="740" y="100" /><di:waypoint x="315" y="100" /><di:waypoint x="315" y="180" />
+        <bpmndi:BPMNLabel><dc:Bounds x="495" y="80" width="60" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fAcc_di" bpmnElement="S_fAcc">
+        <di:waypoint x="855" y="195" /><di:waypoint x="855" y="100" /><di:waypoint x="950" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fEq_di" bpmnElement="S_fEq">
+        <di:waypoint x="880" y="220" /><di:waypoint x="950" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fTr_di" bpmnElement="S_fTr">
+        <di:waypoint x="855" y="245" /><di:waypoint x="855" y="340" /><di:waypoint x="950" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fAcc2_di" bpmnElement="S_fAcc2">
+        <di:waypoint x="1090" y="100" /><di:waypoint x="1180" y="100" /><di:waypoint x="1180" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fEq2_di" bpmnElement="S_fEq2">
+        <di:waypoint x="1090" y="220" /><di:waypoint x="1155" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_fTr2_di" bpmnElement="S_fTr2">
+        <di:waypoint x="1090" y="340" /><di:waypoint x="1180" y="340" /><di:waypoint x="1180" y="245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_f5_di" bpmnElement="S_f5">
+        <di:waypoint x="1205" y="220" /><di:waypoint x="1270" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="S_f6_di" bpmnElement="S_f6">
+        <di:waypoint x="1306" y="220" /><di:waypoint x="1370" y="220" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
