@@ -267,6 +267,21 @@
 .qa__q { font-family: var(--mono); font-size: 13.5px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
 .qa__a { font-size: 17.5px; font-weight: 520; color: var(--ink-soft); line-height: 1.45; }
 
+/* 실습 워크시트 — 라벨(mono·accent) + 채울 빈 칸(대시 밑줄 + 흐린 프롬프트) */
+.lab { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+.lab__slot { display: grid; grid-template-columns: 200px 1fr; gap: 30px; align-items: baseline; }
+.lab__key { font-family: var(--mono); font-size: 13.5px; font-weight: 700; color: var(--accent); letter-spacing: .06em; padding-top: 5px; }
+.lab__fill { border-bottom: 1.5px dashed var(--line); padding: 2px 2px 11px; min-height: 26px; }
+.lab__hint { font-size: 15px; color: var(--ink-mute); line-height: 1.5; }
+.lab__hint em { color: var(--ink-soft); font-weight: 570; font-style: normal; }
+
+/* 실습 과제 — 번호(mono·accent) + 지시 한 줄, 순서대로 등장 */
+.tasks { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.tasks__item { display: grid; grid-template-columns: 34px 1fr; gap: 22px; align-items: baseline; }
+.tasks__n { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--accent); }
+.tasks__t { font-size: 18px; font-weight: 540; color: var(--ink-soft); line-height: 1.5; }
+.tasks__t em { color: var(--accent); font-weight: 650; }
+
 /* 이름 고치기 — 모호한 이름(좌·mute) → 좋은 이름(우·강조) */
 .rename { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
 .rename__row { display: grid; grid-template-columns: 220px 42px 1fr; align-items: baseline; gap: 16px; }
