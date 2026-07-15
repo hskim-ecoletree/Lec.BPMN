@@ -32,11 +32,14 @@
 
 - [x] **6교시(35~41) 완성 (2026-07-15)**: 35 Definition·Instance·Cockpit(병합, **M4 확대경 화면 확립** at msg, s-instances 세 인스턴스 지민·영수·아라)·36 저장·롤백 범위(s-savepoint, asyncBefore)·37 재활용 통과·38 Boundary Event(s-boundary, 중단/비중단, §2-10)·39 업무 결과 vs 기술 실패(vs, §2-6 cite)·40 채용 취소 Event Subprocess(s-eventsub, §2-15)·41 회수(rows, M4 재확립). 전 장 slide-reviewer PASS + **deck-reviewer 6교시 마일스톤 PASS**(FAIL 0). WARN 반영: async→Async·End→End Event 표기 통일. §7에 **Commit**·Boundary Event·Event Subprocess·Cockpit·Async 등재, §6에 예시 인스턴스 영수·아라(persona 아님) 등재, verification-notes §2-14·15 추가.
 
+- [x] **7교시(42~46) 완성 (2026-07-15)**: 실습 단원. 42 실습 안내(신규 `.lab` 워크시트: 시작·끝·역할 슬롯)·43 실습 1 정상 경로(신규 `.tasks`: Start·User Task 동사·End·Sequence Flow)·44 실습 2 분기·병렬(lab 판단 슬롯 + 교착 caveat, 26 함정의 self-check)·45 실습 3 대기·기한·실패(tasks: Wait State·Timer·Retry/Incident)·46 모델 리뷰 체크리스트(qgrid 6점검, **M2 화면 확립**). 실습 사례는 중심 사례 온보딩(§6), 수강생이 요구사항 카드로 직접 구성. **운영 컨텍스트(시간·인원 배분)는 전부 aside.notes에만** — 화면 노출 0. 전 장표 slide-reviewer PASS + **deck-reviewer 7교시 마일스톤 PASS**(FAIL 0). §7에 Catch Event·Timer 등재(신규 컴포넌트 lab·tasks, theme.css?v=10).
+
 ## 다음 세션이 할 일 (순서대로)
 
-1. **7교시(42~46) 제작** — 실습(형식 L) 단원: 42 실습 안내(범위 문장·역할 워크시트)·43 실습 1(정상 경로 최소 모델 Start→검토→End, Q1·Q2)·44 실습 2(분기·병렬 + 토큰 세기, 교착 함정, Q3)·45 실습 3(기한 Timer·계정 실패·Retry, Q4·Q5)·46 모델 리뷰 체크리스트(회수 R, 구 17을 실습 평가로, 전체). **실습 장표는 개념 노출이 아니라 활동 지시** — 화면은 과제 문장·워크시트 뼈대, 상세 진행은 notes(강사 전용). `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
-2. 7교시 완성 시 deck-reviewer.
-3. 이후 8교시(47~50, M5 at 47·48·50, **M1 최종 회수** at 49) 순.
+1. **8교시(47~50) 제작** — 덜어내기·판단·마무리 단원: 47 실습 4 그리지 않을 것 정하기(Q6, **M5** 억지 모델링 금지 — 메일 문구·검증 알고리즘·화면 이동을 모델 밖으로, Before↔Simplified)·48 BPMN 적용 판단 기준(Q6, 의사결정 매트릭스: 여러 역할·장기 대기·반복 분기·중요 예외 → BPMN/Flowchart/State Machine/Checklist)·49 여섯 관점 다시 보기(전체 최종 회수, **M1** "BPMN은 목적이 아니라 Workflow를 명확하게 생각하기 위한 도구")·50 내 업무에서 BPMN을 쓰지 않을 곳(Q6 클로징, 과잉 적용 방지). `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
+   - **M1 정확 문장을 49 화면 msg에 확립**. M5는 47·48·50에서 재확립. 48은 의사결정 매트릭스 — 신규 표 컴포넌트 필요 가능.
+2. 8교시 완성 시 deck-reviewer(전 덱 최종 마일스톤 — 회수 M1~M5·여섯 질문 커버리지 전체 점검).
+3. 덱 완성 후: 대본 정식화(script-author)·PDF export(`?print-pdf`) 검토.
 
 ### 이월 WARN (해당 교시에서 처리)
 - M1 정확 문장("BPMN은 목적이 아니라 …") 미등장 — 49(8교시) 최종 회수에서.

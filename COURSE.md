@@ -132,6 +132,8 @@
 | Inclusive | Inclusive Gateway의 축약 표기 — 조건 참인 경로를 모두 여는 분기·합류 | 포함 게이트웨이 |
 | Event-based | Event-based Gateway — 먼저 도착한 사건으로 갈리는 분기(Camunda 7=Catch Event만) | 이벤트 기반 게이트웨이 |
 | Correlation | 메시지를 이름 + Business Key로 특정 인스턴스의 대기 지점에 짝짓는 것 | 코릴레이션, 상관관계 |
+| Catch Event | 메시지·시간 등 외부 계기가 올 때까지 기다렸다 받는 Event(Wait State) | 캐치 이벤트, 수신 이벤트 |
+| Timer | 시간 경과·기한을 기다렸다 발화하는 Event(Timer Event) | 타이머(한글 전사) |
 | Boundary Event | 활동 테두리에 붙어 시간·오류에 대응하는 이벤트(실선=중단, 점선=비중단) | 경계 이벤트(한글 단독) |
 | Event Subprocess | 범위 전체에 걸어 언제든 발생하는 사건을 처리하는 서브프로세스(중단/비중단) | 이벤트 서브프로세스(한글 전사) |
 | Cockpit | 실행 중 Process Instance의 상태·위치를 관찰하는 Camunda 운영 도구 | 콕핏(한글 전사) |
