@@ -30,16 +30,17 @@
 
 - [x] **5교시(28~34) 완성 (2026-07-15)**: 28 Inclusive 분기(s-inclusive, 개수 가변)·29 Inclusive 합류(s-inclusive-join, 활성 경로만·복잡 모델 경고)·30 Event-based(s-eventbased, 제출 win·기한 취소, §2-1 Catch Event만 교정)·31 선택 기준(qgrid)·32 Wait State(flow, 저장·재개)·33 Correlation(src+rows)·34 회수(rows). 전 장 slide-reviewer PASS(32는 '대기'색 err→wait 수정) + **deck-reviewer 5교시 마일스톤 PASS**. §7에 Inclusive·Event-based·Correlation 등재, 신규 `.flow__n--wait`.
 
+- [x] **6교시(35~41) 완성 (2026-07-15)**: 35 Definition·Instance·Cockpit(병합, **M4 확대경 화면 확립** at msg, s-instances 세 인스턴스 지민·영수·아라)·36 저장·롤백 범위(s-savepoint, asyncBefore)·37 재활용 통과·38 Boundary Event(s-boundary, 중단/비중단, §2-10)·39 업무 결과 vs 기술 실패(vs, §2-6 cite)·40 채용 취소 Event Subprocess(s-eventsub, §2-15)·41 회수(rows, M4 재확립). 전 장 slide-reviewer PASS + **deck-reviewer 6교시 마일스톤 PASS**(FAIL 0). WARN 반영: async→Async·End→End Event 표기 통일. §7에 **Commit**·Boundary Event·Event Subprocess·Cockpit·Async 등재, §6에 예시 인스턴스 영수·아라(persona 아님) 등재, verification-notes §2-14·15 추가.
+
 ## 다음 세션이 할 일 (순서대로)
 
-1. **6교시(35~41) 제작** — 37은 이미 있음(재활용 통과): 6교시 작업 시 label 확인. 35 Definition·Instance·Cockpit(병합, **M4 확대경 화면 확립**)·36 저장·롤백 범위·37(재활용)·38 Boundary Event(중단/비중단, §2-10)·39 업무 결과 vs 기술 실패·40 채용 취소 Event Subprocess·41 회수(M4). `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
-   - **M4(Camunda=모델의 실행 의미를 관찰하는 확대경)를 35 또는 41 화면에 확립** — 현재 05 notes에만 있음(deck-reviewer 이월).
-2. 6교시 완성 시 deck-reviewer.
-3. 이후 7교시(실습 42~46) → 8교시(47~50, **M1 최종 회수** at 49) 순.
+1. **7교시(42~46) 제작** — 실습(형식 L) 단원: 42 실습 안내(범위 문장·역할 워크시트)·43 실습 1(정상 경로 최소 모델 Start→검토→End, Q1·Q2)·44 실습 2(분기·병렬 + 토큰 세기, 교착 함정, Q3)·45 실습 3(기한 Timer·계정 실패·Retry, Q4·Q5)·46 모델 리뷰 체크리스트(회수 R, 구 17을 실습 평가로, 전체). **실습 장표는 개념 노출이 아니라 활동 지시** — 화면은 과제 문장·워크시트 뼈대, 상세 진행은 notes(강사 전용). `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
+2. 7교시 완성 시 deck-reviewer.
+3. 이후 8교시(47~50, M5 at 47·48·50, **M1 최종 회수** at 49) 순.
 
 ### 이월 WARN (해당 교시에서 처리)
-- M4(Camunda=확대경) 화면 미등장 — 6교시(35 Cockpit/41)에서 화면 확립.
-- M1 정확 문장 — 49(8교시) 최종 회수에서.
+- M1 정확 문장("BPMN은 목적이 아니라 …") 미등장 — 49(8교시) 최종 회수에서.
+- M5(억지 모델링 금지) 화면 재확립 — 47·48·50(8교시)에서.
 - `↔` 글리프: DESIGN.md vs 컴포넌트에 이미 명시됨(중앙 ↔). CLAUDE.md 허용 목록 명문화는 사용자 판단(비차단).
 
 ### 이월 WARN (해당 교시에서 처리)
@@ -58,7 +59,7 @@
 
 ## 미해결
 
-- [ ] 6~8교시 제작 (35~50, 16장). 진행: 01~34 통과(1~5교시 완료), 37 재활용 통과 존재.
+- [ ] 7~8교시 제작 (42~50, 9장). 진행: 01~41 통과(1~6교시 완료).
 - [ ] ditto `/plugin` 비활성 (사용자 직접)
 - [ ] 구성안 v2: 명시적 "승인" 절차 없이 표지부터 제작 착수됨.
 - [ ] 브랜드 정확한 hex 미확보 — 현재 `#457075` 유지.
