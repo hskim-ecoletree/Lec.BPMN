@@ -267,6 +267,16 @@
 .qa__q { font-family: var(--mono); font-size: 13.5px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
 .qa__a { font-size: 17.5px; font-weight: 520; color: var(--ink-soft); line-height: 1.45; }
 
+/* 인계 — 역할에서 역할로, 넘기는 정보 (from · 정보 · to) */
+.handoff { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 26px; }
+.handoff__row { display: grid; grid-template-columns: 1fr 300px 1fr; align-items: center; gap: 22px; }
+.handoff__from { justify-self: end; }
+.handoff__to { justify-self: start; }
+.handoff__what {
+  text-align: center; font-size: 14.5px; color: var(--ink-mute);
+  border-bottom: 1px solid var(--line); padding-bottom: 7px; line-height: 1.35;
+}
+
 /* 질문 격자 — 회수 장표의 여섯 질문 (2열) */
 .qgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px 56px; align-content: center; }
 .qgrid__item { display: flex; flex-direction: column; gap: 7px; }

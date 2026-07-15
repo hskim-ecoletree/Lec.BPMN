@@ -155,6 +155,20 @@
       ["Sc_Start", "Sc_Ready", "Sc_Missing", "Sc_Canceled"], "active-el"),
   ];
 
+  // 슬라이드 13: 정상 경로와 예외 경로 — 결말 하나(정상) → 예외 셋 누적 강조
+  STEPS["s-paths"] = [
+    (a) => a.clear(),
+    (a) => a.clear().mark("EndEvent_FirstDayReady", "active-el"),
+    (a) => a.clear().mark(
+      ["EndEvent_FirstDayReady", "EndEvent_DocumentsMissing"], "active-el"),
+    (a) => a.clear().mark(
+      ["EndEvent_FirstDayReady", "EndEvent_DocumentsMissing",
+       "EndEvent_OnboardingCanceled"], "active-el"),
+    (a) => a.clear().mark(
+      ["EndEvent_FirstDayReady", "EndEvent_DocumentsMissing",
+       "EndEvent_OnboardingCanceled", "Task_CreateAccount"], "active-el"),
+  ];
+
   // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
   // 슬라이드 22: 토큰으로 진행 위치 읽기
   STEPS["s-token"] = [

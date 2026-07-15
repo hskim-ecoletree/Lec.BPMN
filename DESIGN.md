@@ -109,6 +109,7 @@
 - **`qgrid`** 질문 격자: 회수 장표 전용 — Q번호(모노·accent) + 질문 한 줄의 2열 격자. fragment로 질문 단위 등장.
 - **`src`** 원문 인용: 모호한 한 문장(24px/640 ink, 큰따옴표). 프로즈의 여러 읽기를 대비시키는 입력으로 사용.
 - **`qa`** 질문-답 워크시트: Q라벨(모노·accent) + 답 한 줄의 단일 열 목록. "다이어그램 없이 여섯 질문으로 정리"에 사용, fragment로 질문 단위 등장.
+- **`handoff`** 인계: from-persona · 넘기는 정보(연결선) · to-persona의 3열 행. 역할과 인계 지점(Q2)에 사용, fragment로 인계 단위 등장. persona 점·색 고정 준수.
 - **`bpmn` 전면**: 종이 위 투명 렌더(흰 면 CSS 제거). `bpmn__cap`은 mute 캡스 한 줄. 하단 `hero-foot`(persona 점 + 힌트).
 - **`cols--jumbo`**: 좌 bpmn + 우 132px accent 숫자(`fade-in-then-out`으로 같은 자리 교체 — 1→3→1→0).
 - **`dead-strip`**: 도식 아래 한 줄 색 원장(`ok`/`no`/`wt`).
