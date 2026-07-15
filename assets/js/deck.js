@@ -146,9 +146,9 @@
       .focus(["Gateway_PreparationSplit", "Task_RegisterTraining", "Task_CreateAccount",
               "Task_PrepareEquipment", "Gateway_PreparationJoin"], 55)
       .mark(["Task_CreateAccount", "Task_PrepareEquipment", "Task_RegisterTraining"], "active-el")
-      .token("Task_CreateAccount", "①")
-      .token("Task_PrepareEquipment", "②")
-      .token("Task_RegisterTraining", "③"),
+      .token("Task_CreateAccount", "1")
+      .token("Task_PrepareEquipment", "2")
+      .token("Task_RegisterTraining", "3"),
     (a) => a.clear()
       .focus(["Gateway_PreparationJoin", "CatchEvent_StartDate", "Task_FinalReadinessCheck"], 60)
       .mark("CatchEvent_StartDate", "active-el")
@@ -156,7 +156,7 @@
     (a) => a.clear()
       .focus(["Task_FinalReadinessCheck", "EndEvent_FirstDayReady"], 70)
       .mark("EndEvent_FirstDayReady", "active-el")
-      .token("EndEvent_FirstDayReady", "✓"),
+      .token("EndEvent_FirstDayReady", "1"),
   ];
 
   // 슬라이드 35: 교착 (XOR 분기 + Parallel 합류)
@@ -175,7 +175,7 @@
       .mark("Frag_Office", "dim-el")
       .mark(["Frag_AND", "Frag_fToOrientation"], "dead-el")
       .mark(["Frag_Orientation", "Frag_End", "Frag_fEnd"], "dim-el")
-      .token("Frag_AND", "⛔", "tok--wait")
+      .token("Frag_AND", "1", "tok--wait")
       .token("Frag_Office", "", "tok--ghost"),
   ];
 
