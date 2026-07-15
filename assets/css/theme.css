@@ -282,6 +282,17 @@
 .tasks__t { font-size: 18px; font-weight: 540; color: var(--ink-soft); line-height: 1.5; }
 .tasks__t em { color: var(--accent); font-weight: 650; }
 
+/* 의사결정 매트릭스 — 상황(행) × 도구(열), 적합도 한 단어 */
+.matrix { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; }
+.matrix__row { display: grid; grid-template-columns: 280px repeat(4, 1fr); align-items: center; }
+.matrix__row + .matrix__row { border-top: 1px solid var(--line); }
+.matrix__row--head { border-top: 0; }
+.matrix__row--head .matrix__cell { font-family: var(--mono); font-size: 12.5px; letter-spacing: .03em; color: var(--ink-mute); padding-bottom: 15px; }
+.matrix__sit { font-size: 16px; font-weight: 570; color: var(--ink-soft); line-height: 1.4; }
+.matrix__cell { text-align: center; font-size: 15px; padding: 15px 6px; color: transparent; }
+.matrix__cell--fit { color: var(--accent); font-weight: 700; }
+.matrix__cell--sub { color: var(--ink-mute); }
+
 /* 이름 고치기 — 모호한 이름(좌·mute) → 좋은 이름(우·강조) */
 .rename { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
 .rename__row { display: grid; grid-template-columns: 220px 42px 1fr; align-items: baseline; gap: 16px; }
