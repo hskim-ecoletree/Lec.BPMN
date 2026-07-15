@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_DeadlockFragment"
+  targetNamespace="https://example.org/camunda7/training/fragments">
+  <bpmn:process id="Process_Deadlock" name="교착 예시" isExecutable="false">
+    <bpmn:startEvent id="Frag_Start" name="근무 형태 결정">
+      <bpmn:outgoing>Frag_f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Frag_XOR" name="원격 또는 사무실?">
+      <bpmn:incoming>Frag_f1</bpmn:incoming>
+      <bpmn:outgoing>Frag_fRemote</bpmn:outgoing>
+      <bpmn:outgoing>Frag_fOffice</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Frag_Remote" name="원격 배송 준비">
+      <bpmn:incoming>Frag_fRemote</bpmn:incoming>
+      <bpmn:outgoing>Frag_fRemoteJoin</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Frag_Office" name="사무실 좌석 준비">
+      <bpmn:incoming>Frag_fOffice</bpmn:incoming>
+      <bpmn:outgoing>Frag_fOfficeJoin</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="Frag_AND" name="모두 대기">
+      <bpmn:incoming>Frag_fRemoteJoin</bpmn:incoming>
+      <bpmn:incoming>Frag_fOfficeJoin</bpmn:incoming>
+      <bpmn:outgoing>Frag_fToOrientation</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:task id="Frag_Orientation" name="오리엔테이션 진행">
+      <bpmn:incoming>Frag_fToOrientation</bpmn:incoming>
+      <bpmn:outgoing>Frag_fEnd</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Frag_End" name="준비 완료">
+      <bpmn:incoming>Frag_fEnd</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Frag_f1" sourceRef="Frag_Start" targetRef="Frag_XOR" />
+    <bpmn:sequenceFlow id="Frag_fRemote" name="원격" sourceRef="Frag_XOR" targetRef="Frag_Remote" />
+    <bpmn:sequenceFlow id="Frag_fOffice" name="사무실" sourceRef="Frag_XOR" targetRef="Frag_Office" />
+    <bpmn:sequenceFlow id="Frag_fRemoteJoin" sourceRef="Frag_Remote" targetRef="Frag_AND" />
+    <bpmn:sequenceFlow id="Frag_fOfficeJoin" sourceRef="Frag_Office" targetRef="Frag_AND" />
+    <bpmn:sequenceFlow id="Frag_fToOrientation" sourceRef="Frag_AND" targetRef="Frag_Orientation" />
+    <bpmn:sequenceFlow id="Frag_fEnd" sourceRef="Frag_Orientation" targetRef="Frag_End" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Deadlock">
+    <bpmndi:BPMNPlane id="BPMNPlane_Deadlock" bpmnElement="Process_Deadlock">
+      <bpmndi:BPMNShape id="Frag_Start_di" bpmnElement="Frag_Start">
+        <dc:Bounds x="160" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="146" y="245" width="64" height="27" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Frag_XOR_di" bpmnElement="Frag_XOR" isMarkerVisible="true">
+        <dc:Bounds x="260" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="248" y="252" width="74" height="27" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Frag_Remote_di" bpmnElement="Frag_Remote">
+        <dc:Bounds x="380" y="90" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Frag_Office_di" bpmnElement="Frag_Office">
+        <dc:Bounds x="380" y="270" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Frag_AND_di" bpmnElement="Frag_AND">
+        <dc:Bounds x="575" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="568" y="252" width="64" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Frag_Orientation_di" bpmnElement="Frag_Orientation">
+        <dc:Bounds x="690" y="180" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Frag_End_di" bpmnElement="Frag_End">
+        <dc:Bounds x="872" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="866" y="245" width="50" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Frag_f1_di" bpmnElement="Frag_f1">
+        <di:waypoint x="196" y="220" /><di:waypoint x="260" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Frag_fRemote_di" bpmnElement="Frag_fRemote">
+        <di:waypoint x="285" y="195" /><di:waypoint x="285" y="130" /><di:waypoint x="380" y="130" />
+        <bpmndi:BPMNLabel><dc:Bounds x="296" y="150" width="30" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Frag_fOffice_di" bpmnElement="Frag_fOffice">
+        <di:waypoint x="285" y="245" /><di:waypoint x="285" y="310" /><di:waypoint x="380" y="310" />
+        <bpmndi:BPMNLabel><dc:Bounds x="292" y="285" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Frag_fRemoteJoin_di" bpmnElement="Frag_fRemoteJoin">
+        <di:waypoint x="500" y="130" /><di:waypoint x="600" y="130" /><di:waypoint x="600" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Frag_fOfficeJoin_di" bpmnElement="Frag_fOfficeJoin">
+        <di:waypoint x="500" y="310" /><di:waypoint x="600" y="310" /><di:waypoint x="600" y="245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Frag_fToOrientation_di" bpmnElement="Frag_fToOrientation">
+        <di:waypoint x="625" y="220" /><di:waypoint x="690" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Frag_fEnd_di" bpmnElement="Frag_fEnd">
+        <di:waypoint x="810" y="220" /><di:waypoint x="872" y="220" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

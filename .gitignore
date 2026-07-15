@@ -1,0 +1,12 @@
+# 에디터 / 도구
+.idea/
+.vscode/
+.DS_Store
+
+# 세션 도구 (로컬 전용)
+.ditto/
+
+# 빌드 산출물 (export)
+/dist/
+/export/
+*.log
