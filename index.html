@@ -19,19 +19,17 @@
       <!-- 01 · 타이틀 (설계안 슬라이드 01)                              -->
       <!-- ============================================================= -->
       <section data-plan="01">
-        <div class="title-slide">
-          <div class="title-slide__main">
-            <div class="title-slide__kicker">BPMN · Camunda 7</div>
-            <h1>Workflow를 <span class="hl">구조적으로</span> 생각하는<br />BPMN·Camunda 7 과정</h1>
-            <p class="title-slide__sub">업무 흐름을 시작·역할·분기·대기·예외로 나누어 읽는 관점을 익힙니다.</p>
-          </div>
-          <div class="title-slide__side">
-            <h3>오늘의 다섯 관점</h3>
-            <div class="lens"><div class="lens__n">1</div><div class="lens__t">시작<span>무엇이 이 흐름을 시작시키는가</span></div></div>
-            <div class="lens"><div class="lens__n">2</div><div class="lens__t">역할<span>누가 무엇을 완료해야 하는가</span></div></div>
-            <div class="lens"><div class="lens__n">3</div><div class="lens__t">분기<span>어떤 조건이 경로를 가르는가</span></div></div>
-            <div class="lens"><div class="lens__n">4</div><div class="lens__t">대기<span>어디에서 사람·시간·메시지를 기다리는가</span></div></div>
-            <div class="lens"><div class="lens__n">5</div><div class="lens__t">예외<span>실패·기한 초과에서 어떻게 복구하는가</span></div></div>
+        <div class="cover">
+          <div class="cover__kicker">BPMN · Camunda 7</div>
+          <h1>Workflow를 <span class="hl">구조적으로</span><br />생각하는 법</h1>
+          <p class="cover__sub">업무 흐름을 여섯 개의 질문으로 읽습니다. 도형은 그 다음입니다.</p>
+          <div class="cover__qs">
+            <div class="q"><span>01 시작·종료</span>무엇을 계기로 시작하고 어디에서 끝나는가</div>
+            <div class="q"><span>02 역할</span>누가 어떤 일을 완료해야 하는가</div>
+            <div class="q"><span>03 분기</span>어떤 조건 때문에 경로가 달라지는가</div>
+            <div class="q"><span>04 대기</span>어디에서 사람·시간·메시지를 기다리는가</div>
+            <div class="q"><span>05 예외·복구</span>실패하거나 기한을 넘기면 어떻게 복구하는가</div>
+            <div class="q"><span>06 적합성</span>이 흐름을 BPMN으로 그리는 것이 도움이 되는가</div>
           </div>
         </div>
       </section>
@@ -48,20 +46,20 @@
             <span class="scene__text"><b class="nowrap">수진</b>이 <b>입사 서류 검토</b> 업무를 수행하는 같은 장면을, 두 도구가 각자 어떻게 표현하는지 비교합니다.</span>
           </div>
 
-          <div class="cols cols--2" style="flex:0 0 auto;gap:22px;margin-bottom:20px">
-            <div class="col card card--flat" style="gap:8px">
-              <span class="pill pill--os" style="margin:0 0 4px">OutSystems 11 · BPT</span>
-              <div style="font-family:var(--mono);font-size:17px;color:var(--ink-soft)">
+          <div class="cols cols--2" style="flex:0 0 auto;gap:44px;margin-bottom:26px">
+            <div class="col" style="gap:9px">
+              <span class="pill pill--os">OutSystems 11 · BPT</span>
+              <div class="mono" style="font-size:18px;color:var(--ink)">
                 Process&nbsp;→&nbsp;<b style="color:#c2410c">Human&nbsp;Activity</b>&nbsp;→&nbsp;Destination&nbsp;<b>Screen</b>
               </div>
-              <p style="font-size:15.5px;color:var(--ink-mute);line-height:1.45;margin:0">BPT(Business Process Technology)는 앱 안에 내장되어 바로 실행되는 프로세스. Human Activity는 <b>Taskbox</b>에 뜨고 <b>Destination Screen</b>에서 완료합니다.</p>
+              <p style="font-size:16px;color:var(--ink-soft)">BPT(Business Process Technology)는 앱 안에 내장되어 실행되는 프로세스. Human Activity는 <b>Taskbox</b>에 뜨고 <b>Destination Screen</b>에서 완료합니다.</p>
             </div>
-            <div class="col card card--flat" style="gap:8px">
-              <span class="pill pill--bpmn" style="margin:0 0 4px">BPMN · Camunda 7</span>
-              <div style="font-family:var(--mono);font-size:17px;color:var(--ink-soft)">
+            <div class="col" style="gap:9px">
+              <span class="pill pill--bpmn">BPMN · Camunda 7</span>
+              <div class="mono" style="font-size:18px;color:var(--ink)">
                 Process&nbsp;→&nbsp;<b style="color:var(--brand-dark)">User&nbsp;Task</b>&nbsp;→&nbsp;Tasklist&nbsp;/&nbsp;<b>Form</b>
               </div>
-              <p style="font-size:15.5px;color:var(--ink-mute);line-height:1.45;margin:0">역할·시스템을 가로지르는 업무 의미를 <b>표준 기호</b>로 표현. User Task는 사람의 일과 그 <b>대기 상태</b>를 뜻합니다.</p>
+              <p style="font-size:16px;color:var(--ink-soft)">역할·시스템을 가로지르는 업무 의미를 <b>표준 기호</b>로 표현합니다. User Task는 사람의 일과 그 <b>대기 상태</b>를 뜻합니다.</p>
             </div>
           </div>
 
@@ -81,7 +79,7 @@
             <span class="tag">ODC에서는 BPT 대신 Workflows</span>
           </div>
 
-          <div class="slide__key">OutSystems를 배운 여러분에게 BPMN은 낯선 세계가 아닙니다. 같은 업무 장면을 서로 다른 관점으로 읽어 보는 것이 오늘의 연결 지점입니다.</div>
+          <div class="slide__key">OutSystems를 배운 여러분에게 BPMN은 낯선 세계가 아닙니다.</div>
           <div class="slide__cite">출처: OutSystems 11 — Notation Reference for BPMN Practitioners / Human Activity (success.outsystems.com)</div>
         </div>
       </section>
