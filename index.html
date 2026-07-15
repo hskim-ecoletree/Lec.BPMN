@@ -1295,6 +1295,68 @@
       </section>
 
       <!-- ============================================================= -->
+      <!-- 35 — Process Definition·Instance·Cockpit (M4)                    -->
+      <!-- ============================================================= -->
+      <section data-steps="s-instances" data-plan="35">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">실행과 복구</div>
+          <div class="slide__q">Q5 · Q4</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">Camunda는 목적이 아니라,<br />모델이 실제로 어떻게 도는지 비추는 확대경입니다.</h2>
+
+            <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:18px">
+              <div class="bpmn__cap">하나의 설계 · 여러 업무 한 건 · Cockpit이 위치를 비춘다</div>
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div style="margin-bottom:96px">
+              <p class="beat fragment">Process Definition — 배포된 설계 하나입니다. <em>버전</em>이 붙습니다.</p>
+              <p class="beat fragment">Process Instance — 그 설계로 흐르는 업무 한 건. 지민·영수·아라가 <em>각자 다른 위치</em>에 있습니다.</p>
+              <p class="beat fragment">Cockpit — 각 건의 토큰이 지금 어디인지 비춥니다. 그게 <em>확대경</em>입니다.</p>
+            </div>
+
+            <div class="slide__cite">Camunda 7 docs — process definition/instance · Cockpit (docs.camunda.org/manual/7.x)</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 6교시 개막. 핵심 메시지 M4를 화면에 확립한다(Camunda=실행 의미를 관찰하는 확대경). Definition/Instance/Cockpit 병합(§2-14). Q5·Q4에 복무.</p>
+            <p><b>대사</b> — 이제 실행과 복구입니다. 그전에 세 단어를 정리하죠. [다음] Process Definition은 우리가 그려서 배포한 설계 하나입니다. 고치면 버전이 올라가요. [다음] 그 설계로 실제 업무가 흐르면 그게 Process Instance, 업무 한 건입니다. 지민 건, 영수 건, 아라 건 — 같은 설계에서 나왔지만 각자 다른 위치에 있죠. 지민은 서류 검토 중, 영수는 병렬 준비 중, 아라는 입사일 대기 중. [다음] 이 세 건이 지금 어디 있는지 어떻게 볼까요? Cockpit입니다. 각 건의 토큰 위치를 비춰 줍니다. 여기서 오늘 하루의 결론 하나 — Camunda는 목적이 아닙니다. 모델이 실제로 어떻게 도는지 눈으로 확인하는 확대경입니다. 우리가 상상한 토큰이 진짜 그렇게 움직이는지 보는 거죠.</p>
+            <p><b>오해</b> — "Camunda를 잘 다루는 게 목표". <b>교정</b> — 목표는 흐름을 구조로 읽는 것. Camunda는 그 실행 의미를 관찰하는 도구(M4).</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 36 — 저장 지점과 롤백 범위                                       -->
+      <!-- ============================================================= -->
+      <section data-steps="s-savepoint" data-plan="36">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">실행과 복구</div>
+          <div class="slide__q">Q5</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">실패해도 처음으로 돌아가지 않습니다 —<br />마지막 저장 지점까지만 되돌립니다.</h2>
+
+            <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:18px">
+              <div class="bpmn__cap">저장 지점(asyncBefore) · 계정 생성 실패의 롤백 범위</div>
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div style="margin-bottom:96px">
+              <p class="beat fragment">계정 생성 앞에 <em>저장 지점</em>(asyncBefore) — 여기까지는 Commit되어 저장됩니다.</p>
+              <p class="beat fragment">계정 생성이 외부 장애로 <em>실패</em>합니다.</p>
+              <p class="beat fragment">되돌림은 이 저장 지점까지 — 앞의 병렬 준비는 <em>다시 하지 않습니다</em>.</p>
+            </div>
+
+            <div class="slide__cite">Camunda 7 docs — transactions / asyncBefore save points (docs.camunda.org/manual/7.x)</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — Q5의 기초. 트랜잭션 저장 지점(Wait State·async)이 롤백 범위를 정한다(§2-8). 37 Async/Retry의 전제.</p>
+            <p><b>대사</b> — 실패하면 어디서부터 다시 할까요? 처음부터라면 끔찍하죠. [다음] Camunda는 대기 지점과 async 경계마다 상태를 저장(Commit)합니다. 계정 생성 앞에도 asyncBefore로 저장 지점이 있어요. 여기까지 온 건 저장돼 있습니다. [다음] 그런데 계정 생성이 외부 장애로 실패합니다. [다음] 이때 되돌리는 범위는 처음이 아니라 마지막 저장 지점까지입니다. 이미 끝낸 서류 검토나 병렬 준비는 다시 하지 않아요. 실패는 국소적으로 되감기고, 그 지점부터 다시 시도합니다 — 다음 장이 그 재시도 이야기입니다.</p>
+            <p><b>오해</b> — "실패하면 프로세스를 처음부터 다시 돌린다". <b>교정</b> — 마지막 저장 지점(Commit)까지만 롤백, 그 앞의 완료된 일은 보존된다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
       <!-- Async — 가로 타임라인                                          -->
       <!-- ============================================================= -->
       <section data-plan="37">
@@ -1343,11 +1405,155 @@
         </div>
       </section>
 
+      <!-- ============================================================= -->
+      <!-- 38 — Boundary Event: 중단과 비중단                               -->
+      <!-- ============================================================= -->
+      <section data-steps="s-boundary" data-plan="38">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">실행과 복구</div>
+          <div class="slide__q">Q5</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">Boundary Event는 일 위에 붙는 안전장치 —<br />중단하거나, 멈추지 않고 곁길을 냅니다.</h2>
+
+            <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:18px">
+              <div class="bpmn__cap">Boundary Event · 매니저 확인 4시간 경과 (비중단)</div>
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div style="margin-bottom:96px">
+              <p class="beat fragment">민호가 근무 형태·권한을 확인하는 <em>User Task</em>가 돌고 있습니다.</p>
+              <p class="beat fragment">4시간이 지나면 경계의 타이머가 발화 — 본 작업은 <em>멈추지 않고</em>, 곁길로 알림 토큰 하나가 더 생깁니다.</p>
+              <p class="caveat fragment">실선 경계 = <em>중단</em>(작업 취소), 점선 경계 = <em>비중단</em>(추가 토큰). 이건 점선입니다.</p>
+            </div>
+
+            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — boundary events (interrupting / non-interrupting)</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — Q5. Boundary Event로 활동에 시간·오류 안전장치를 붙인다. 중단(interrupting) vs 비중단(non-interrupting) 구분(§2-10).</p>
+            <p><b>대사</b> — 일이 너무 오래 걸리면? 활동 테두리에 Boundary Event를 붙입니다. [다음] 민호가 근무 형태와 권한을 확인하는 User Task가 있죠. 급한 일이라 늦으면 곤란합니다. [다음] 테두리에 4시간 타이머를 붙였습니다. 4시간이 지나면 타이머가 울리는데 — 이건 점선, 비중단입니다. 민호의 확인은 계속 진행되고, 곁으로 '독촉 알림' 토큰 하나가 더 생겨 후속 조치로 갑니다. 일을 멈추지 않으면서 리마인더를 겁니다. [다음] 만약 실선이었다면? 중단입니다. 그 즉시 민호의 확인 작업을 취소하고 다른 경로로 갔겠죠. 실선은 중단, 점선은 비중단 — 테두리 하나로 시간·오류에 대응합니다.</p>
+            <p><b>오해</b> — "Boundary Event는 늘 작업을 멈춘다". <b>교정</b> — 점선(비중단)은 작업을 계속하며 추가 토큰만 낸다. 실선(중단)만 취소.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 39 — 업무상 다른 결과와 기술 실패                                -->
+      <!-- ============================================================= -->
+      <section data-plan="39">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">실행과 복구</div>
+          <div class="slide__q">Q5</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">‘부적합’과 ‘503 오류’는 다릅니다 —<br />하나는 업무 결과, 하나는 기술 실패.</h2>
+
+            <div class="vs">
+              <div class="vs__head">
+                <span class="vs__side vs__side--os">업무상 다른 결과</span>
+                <span></span>
+                <span class="vs__side vs__side--bpmn">기술 실패</span>
+              </div>
+              <div class="fragment">
+                <div class="vs__cat">예시</div>
+                <div class="vs__pair"><span class="os">보안 검토 부적합</span><span class="vs__x">↔</span><span class="bp">Identity Provider 503</span></div>
+              </div>
+              <div class="fragment">
+                <div class="vs__cat">모델에서</div>
+                <div class="vs__pair"><span class="os">Gateway·End로 그린다</span><span class="vs__x">↔</span><span class="bp">Retry·Incident로 처리</span></div>
+              </div>
+              <div class="fragment">
+                <div class="vs__cat">누가 정하나</div>
+                <div class="vs__pair"><span class="os">규칙·사람의 판단</span><span class="vs__x">↔</span><span class="bp">시스템·인프라 상태</span></div>
+              </div>
+            </div>
+
+            <p class="caveat fragment" style="margin-bottom:110px">기술 실패를 업무 분기로 그리면 모델이 지저분해집니다 — 복구는 <em>실행 계층</em>에서.</p>
+
+            <div class="slide__support">‘부적합’은 흐름의 정상적 결말, ‘503’은 그 자리에서 다시 시도할 일시적 오류입니다.</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — Q5. 업무적 결과(모델링 대상)와 기술적 실패(실행 계층 복구)를 가르는 판단. 모델을 깨끗하게 유지하는 원칙.</p>
+            <p><b>대사</b> — 실패라고 다 같은 실패가 아닙니다. 두 가지를 꼭 구분하세요. [다음] 하나는 '보안 검토 부적합' 같은 업무상 결과입니다. 또 하나는 계정 생성 때 외부 Identity Provider가 503을 뱉는 기술 실패죠. [다음] 이 둘은 모델에서 다르게 다룹니다. 업무 결과는 Gateway와 End로 흐름에 그립니다. 기술 실패는 흐름에 그리지 않고 Retry와 Incident로 처리합니다. [다음] 왜냐면 결정 주체가 다르거든요. 부적합은 규칙이나 사람이 판단하고, 503은 시스템·인프라 상태입니다. [다음] 기술 실패를 굳이 업무 분기로 그리면 '503이면 이리로, 타임아웃이면 저리로' 하면서 모델이 지저분해집니다. 복구는 실행 계층에 맡기고, 모델에는 업무 결과만 그리세요.</p>
+            <p><b>오해</b> — "모든 실패를 흐름에 그려야 완전한 모델". <b>교정</b> — 업무적 결과만 모델에. 기술 실패는 Retry·Incident 등 실행 계층에서 복구.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 40 — 채용 취소와 Event Subprocess                               -->
+      <!-- ============================================================= -->
+      <section data-steps="s-eventsub" data-plan="40">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">실행과 복구</div>
+          <div class="slide__q">Q5</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">언제든 올 수 있는 사건은 본류에 못 그립니다 —<br />Event Subprocess가 전체를 감싸 멈춥니다.</h2>
+
+            <div class="bpmn" data-model="models/new_hire_onboarding.bpmn" style="margin-top:18px">
+              <div class="bpmn__cap">Event Subprocess · 채용 취소가 진행 전체를 중단</div>
+              <div class="bpmn__canvas"></div>
+            </div>
+            <div style="margin-bottom:96px">
+              <p class="beat fragment">지민의 온보딩은 진행 중 — 어느 단계에 있든 상관없습니다.</p>
+              <p class="beat fragment">채용 취소(OfferCanceled)가 도착하면, 감싸고 있던 Event Subprocess가 발화해 <em>진행 전체를 중단</em>합니다.</p>
+              <p class="caveat fragment">이런 ‘언제든’ 사건을 본류에 선으로 다 그리면 스파게티가 됩니다 — <em>범위 전체</em>에 한 번 겁니다.</p>
+            </div>
+
+            <div class="slide__cite">BPMN 2.0.2 · Camunda 7 docs — event subprocess (interrupting)</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — Q5. 진행 중 어디서든 올 수 있는 사건(취소)을 Event Subprocess로 범위 전체에 건다(§2-15). 모델 가독성.</p>
+            <p><b>대사</b> — 마지막 복구 장치입니다. 채용이 취소되면 어떻게 될까요? 취소는 서류 검토 중일 수도, 병렬 준비 중일 수도, 입사일 대기 중일 수도 있습니다 — 언제든 옵니다. [다음] 지민의 온보딩이 어느 단계에 있든 상관없습니다. [다음] 채용 취소 사건이 오면, 프로세스를 감싸고 있던 Event Subprocess가 발화해서 진행 전체를 멈추고 취소 처리로 넘어갑니다. [다음] 만약 이걸 본류에 그린다면? 모든 단계마다 '여기서 취소되면...' 선을 그어야 해서 스파게티가 됩니다. Event Subprocess는 범위 전체에 한 번만 걸어 깔끔하게 처리합니다. 언제든 올 수 있는 사건의 표기법입니다.</p>
+            <p><b>오해</b> — "취소 같은 사건도 본류 분기로 그린다". <b>교정</b> — 범위 어디서나 발생하는 사건은 Event Subprocess로 감싼다 — 본류가 깨끗해진다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- 41 — 복구 지점: 저장·재시도·운영 (6교시 회수, M4)                -->
+      <!-- ============================================================= -->
+      <section data-plan="41">
+        <div class="slide">
+          <div class="slide__shade"></div>
+          <div class="slide__label">실행과 복구</div>
+          <div class="slide__q">Q5</div>
+          <div class="slide__inner">
+            <h2 class="slide__msg">실패는 처음이 아니라 마지막 저장부터 —<br />Camunda는 그 되감기를 비추는 확대경입니다.</h2>
+
+            <div class="rows">
+              <div class="rows__item fragment">
+                <span class="rows__term rows__term--hi">저장 지점</span>
+                <span class="rows__desc">대기·async마다 Commit — 실패는 마지막 저장 지점까지만 되돌린다</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term rows__term--hi">재시도·Incident</span>
+                <span class="rows__desc">Job은 자동 재시도, 소진되면 Incident로 운영자 개입</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term rows__term--hi">경계·취소</span>
+                <span class="rows__desc">Boundary(중단/비중단), Event Subprocess가 전체를 멈춘다</span>
+              </div>
+              <div class="rows__item fragment">
+                <span class="rows__term rows__term--hi">업무 vs 기술</span>
+                <span class="rows__desc">다른 결과는 모델로, 기술 실패는 실행 계층으로</span>
+              </div>
+            </div>
+
+            <div class="slide__support">다음은 실습 — 지금까지의 질문과 기호로, 여러분의 이야기를 직접 모델로 만듭니다.</div>
+          </div>
+          <aside class="notes">
+            <p><b>역할</b> — 6교시 회수, 메시지 M4 재확인. 저장·재시도·경계·취소·업무/기술 구분을 한 화면에. 7교시(실습) 예고.</p>
+            <p><b>대사</b> — 실행과 복구를 정리합니다. [다음] 저장 지점 — 실패는 처음이 아니라 마지막 Commit까지만 되돌립니다. [다음] 재시도와 Incident — Job은 자동으로 다시 시도하고, 소진되면 Incident로 사람이 개입합니다. [다음] 경계와 취소 — Boundary Event는 활동에 중단·비중단 안전장치를 붙이고, Event Subprocess는 언제든 올 사건을 범위 전체에 겁니다. [다음] 그리고 업무 결과와 기술 실패는 다르게 다룬다. 이 모든 걸 Camunda로 눈으로 확인합니다 — 우리가 상상한 복구가 실제로 그렇게 도는지 비추는 확대경. 다음 시간엔 여러분이 직접, 자기 업무를 모델로 만들어 봅니다.</p>
+          </aside>
+        </div>
+      </section>
+
     </div>
   </div>
 
   <script src="vendor/reveal/reveal.js"></script>
   <script src="vendor/bpmn/bpmn-navigated-viewer.production.min.js"></script>
-  <script src="assets/js/deck.js?v=12"></script>
+  <script src="assets/js/deck.js?v=13"></script>
 </body>
 </html>

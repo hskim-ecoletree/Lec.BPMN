@@ -131,6 +131,9 @@
 | Inclusive | Inclusive Gateway의 축약 표기 — 조건 참인 경로를 모두 여는 분기·합류 | 포함 게이트웨이 |
 | Event-based | Event-based Gateway — 먼저 도착한 사건으로 갈리는 분기(Camunda 7=Catch Event만) | 이벤트 기반 게이트웨이 |
 | Correlation | 메시지를 이름 + Business Key로 특정 인스턴스의 대기 지점에 짝짓는 것 | 코릴레이션, 상관관계 |
+| Boundary Event | 활동 테두리에 붙어 시간·오류에 대응하는 이벤트(실선=중단, 점선=비중단) | 경계 이벤트(한글 단독) |
+| Event Subprocess | 범위 전체에 걸어 언제든 발생하는 사건을 처리하는 서브프로세스(중단/비중단) | 이벤트 서브프로세스(한글 전사) |
+| Cockpit | 실행 중 Process Instance의 상태·위치를 관찰하는 Camunda 운영 도구 | 콕핏(한글 전사) |
 | Async | 완료를 확정할 지점을 나누는 비동기 실행 설정(asyncBefore 등) | 비동기 처리(Async 의미로 단독 사용) |
 | Retry | 실패한 Job을 다시 시도하는 것 — 대사·보조 설명에서는 '재시도'로 읽음(화면 라벨은 Retry) | 리트라이 |
 | 멱등 | 여러 번 실행해도 결과가 같음 | idempotent 영문 단독 표기 |

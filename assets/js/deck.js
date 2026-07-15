@@ -284,6 +284,59 @@
       .mark("CatchEvent_DocumentsDeadline", "dead-el").token("CatchEvent_DocumentsDeadline", null, "tok--ghost"),
   ];
 
+  // 슬라이드 35: Definition/Instance/Cockpit — 한 설계, 세 건이 다른 위치
+  STEPS["s-instances"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().fit(),
+    (a) => a.clear().fit()
+      .token("Task_ReviewDocuments").token("Task_CreateAccount").token("CatchEvent_StartDate"),
+    (a) => a.clear().fit()
+      .token("Task_ReviewDocuments").token("Task_CreateAccount").token("CatchEvent_StartDate"),
+  ];
+
+  // 슬라이드 36: 저장 지점과 롤백 — 계정 생성 앞 저장 지점 → 실패 → 롤백 범위
+  var SAVE = ["Gateway_PreparationSplit", "Task_CreateAccount", "Gateway_PreparationJoin"];
+  STEPS["s-savepoint"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().focus(SAVE, 55).mark("Task_CreateAccount", "active-el").token("Task_CreateAccount", null, "tok--wait"),
+    (a) => a.clear().focus(SAVE, 55).mark("Task_CreateAccount", "dead-el").token("Task_CreateAccount", null, "tok--ghost"),
+    (a) => a.clear().focus(SAVE, 55).mark("Task_CreateAccount", "dead-el").token("Task_CreateAccount", null, "tok--wait"),
+  ];
+
+  // 슬라이드 38: Boundary Event — 확인 작업 계속 + 비중단 곁길 토큰
+  var BND = ["Task_ConfirmRequirements", "BoundaryEvent_ManagerDelay",
+             "Task_ManagerDelayFollowup", "EndEvent_ReminderCompleted"];
+  STEPS["s-boundary"] = [
+    (a) => a.clear().fit(),
+    (a) => a.clear().focus(BND, 55).mark("Task_ConfirmRequirements", "active-el").token("Task_ConfirmRequirements"),
+    (a) => a.clear().focus(BND, 55)
+      .mark("Task_ConfirmRequirements", "active-el").token("Task_ConfirmRequirements")
+      .mark(["BoundaryEvent_ManagerDelay", "Task_ManagerDelayFollowup"], "highlight-flow")
+      .token("Task_ManagerDelayFollowup"),
+    (a) => a.clear().focus(BND, 55)
+      .mark("Task_ConfirmRequirements", "active-el").token("Task_ConfirmRequirements")
+      .mark(["BoundaryEvent_ManagerDelay", "Task_ManagerDelayFollowup"], "highlight-flow")
+      .token("Task_ManagerDelayFollowup"),
+  ];
+
+  // 슬라이드 40: Event Subprocess — 취소가 진행 전체를 중단
+  var ESUB = ["EventSubProcess_OfferCancellation", "StartEvent_OfferCanceled",
+              "Task_RecordCancellation", "EndEvent_OnboardingCanceled"];
+  STEPS["s-eventsub"] = [
+    (a) => a.clear().fit().token("Task_ReviewDocuments"),
+    (a) => a.clear().fit().token("Task_ReviewDocuments"),
+    (a) => a.clear().focus(ESUB, 55)
+      .mark(["EventSubProcess_OfferCancellation", "StartEvent_OfferCanceled",
+             "Task_RecordCancellation", "EndEvent_OnboardingCanceled"], "highlight-flow")
+      .token("StartEvent_OfferCanceled")
+      .token("Task_ReviewDocuments", null, "tok--ghost"),
+    (a) => a.clear().focus(ESUB, 55)
+      .mark(["EventSubProcess_OfferCancellation", "StartEvent_OfferCanceled",
+             "Task_RecordCancellation", "EndEvent_OnboardingCanceled"], "highlight-flow")
+      .token("StartEvent_OfferCanceled")
+      .token("Task_ReviewDocuments", null, "tok--ghost"),
+  ];
+
   // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
   // 슬라이드 22: 토큰으로 진행 위치 읽기
   STEPS["s-token"] = [
