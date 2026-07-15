@@ -1395,7 +1395,7 @@
 
             <p class="caveat fragment" style="margin-bottom:104px">Retry는 <em>멱등</em>(여러 번 실행해도 결과가 같음)이 아니면 외부 부작용을 반복합니다.</p>
 
-            <div class="slide__support">일반 async Job은 엔진 기본 3회 시도, External Task는 Worker가 handleFailure로 재시도를 정합니다.</div>
+            <div class="slide__support">일반 Async Job은 엔진 기본 3회 시도, External Task는 Worker가 handleFailure로 재시도를 정합니다.</div>
             <div class="slide__cite">Camunda 7 docs — job executor / external tasks / transactions (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
@@ -1470,6 +1470,7 @@
             <p class="caveat fragment" style="margin-bottom:110px">기술 실패를 업무 분기로 그리면 모델이 지저분해집니다 — 복구는 <em>실행 계층</em>에서.</p>
 
             <div class="slide__support">‘부적합’은 흐름의 정상적 결말, ‘503’은 그 자리에서 다시 시도할 일시적 오류입니다.</div>
+            <div class="slide__cite">Camunda 7 docs — retry / incidents (docs.camunda.org/manual/7.x)</div>
           </div>
           <aside class="notes">
             <p><b>역할</b> — Q5. 업무적 결과(모델링 대상)와 기술적 실패(실행 계층 복구)를 가르는 판단. 모델을 깨끗하게 유지하는 원칙.</p>
