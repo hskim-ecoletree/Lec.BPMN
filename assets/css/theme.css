@@ -28,6 +28,8 @@
   --dark-text: #b5afa3;
   --dark-hi:   #efe9dc;
   --dark-dim:  #6d675c;
+  --dark-vert: #8a8378;   /* 표지 세로 부제 */
+  --dark-corp: #57524a;   /* 표지 브랜드 서명 */
   --light:     #f6f2e8;   /* 빛 */
 
   /* 의미색 */
@@ -92,7 +94,7 @@
   position: absolute; top: 120px; left: calc(46% + 130px);
   writing-mode: vertical-rl;
   font-size: 15px; letter-spacing: .42em;
-  color: #8a8378; font-weight: 400;
+  color: var(--dark-vert); font-weight: 400;
 }
 .cover__title {
   position: absolute; left: 64px; bottom: 96px;
@@ -106,7 +108,7 @@
 .cover__corp {
   position: absolute; bottom: 58px; left: 64px;
   font-size: 11.5px; letter-spacing: .3em;
-  color: #57524a; font-weight: 500; text-transform: uppercase;
+  color: var(--dark-corp); font-weight: 500; text-transform: uppercase;
 }
 
 /* =========================================================================
