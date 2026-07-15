@@ -22,17 +22,20 @@
 - [x] **verification-notes §3 신설**: BPMN 표준 연혁(2004/2011/2013) 웹 검증 + "흥망 서사는 해석 — 화면·대본 단정 금지" 규칙. §2-11(표준 표기 범위·비교 완화 규칙) 추가.
 - [x] **COURSE.md §7 확장**: Checklist·Flowchart·State Machine·XOR·Parallel·Async·Retry·멱등·안티패턴·AI 에이전트·Service Task·Automatic Activity·Destination Screen·Form 등재.
 
+- [x] **2교시(08~15) 완성 (2026-07-15)**: 08 BPMN 정의(M2, src+rows)·10 무-다이어그램 정리(qa)·11 범위 시작·끝(frag_scope_startend.bpmn, s-scope)·12 역할·인계(handoff)·13 정상·예외 경로(전체 모델+dead-strip, s-paths)·14 요소 네 갈래(qgrid)·15 질문↔요소 회수(rows) 신규, 09 재활용 개정(지도 훑기·M2 중복 제거·능력 부정 완화·채용 매니저). 전 장표 slide-reviewer PASS + **deck-reviewer 2교시 마일스톤 PASS**. 신규 컴포넌트 src·qa·handoff, qgrid 등재 확장. COURSE §7에 Event·Activity·Sequence Flow 등재, Retry 읽기형 '재시도' 허용.
+
 ## 다음 세션이 할 일 (순서대로)
 
-1. **2교시(08~15) 제작** — 08 BPMN이란 무엇인가(M2)부터 1장씩. 09는 이미 있음(검증 상태): 2교시 작업 시 재판정 + deck-reviewer가 넘긴 WARN 처리(notes "일반 문장이나 순서도로는 … 드러나지 않습니다" 능력 부정 단정 완화, "민호 · 매니저" → 채용 매니저 표기 확인).
-2. 2교시 완성 시 deck-reviewer.
-3. 이후 3교시(16~21) → 4교시(22 재판정·cite 추가 포함) 순.
+1. **3교시(16~21) 제작** — 16 Start/End Event(병합·단계 노출)부터 1장씩. `slide-author` 로드 → 브라우저 검증 → `slide-reviewer` → inventory 갱신 → 커밋.
+   - 19 Service Task/External Task 제작 시 Service Task·Form 첫 등장 풀이 배치 확정(deck-reviewer 이월).
+2. 3교시 완성 시 deck-reviewer.
+3. 이후 4교시(22 재판정·cite 추가 포함) → 5·6교시 순. 6교시에서 37 재검토(현 화면 desc "재시도"는 §7 읽기형 허용으로 정합됨).
 
-### deck-reviewer가 넘긴 WARN (해당 교시에서 처리)
+### 이월 WARN (해당 교시에서 처리)
 - 05 msg "유행은 오갔지만" — 해석 서사 잔존(§3-5). 5번 재방문 시 재검토.
-- M1 정확 문장("BPMN은 목적이 아니라 …") 미등장 — 49 제작 전 재검토.
+- M1 정확 문장("BPMN은 목적이 아니라 …") 미등장 — 49(8교시) 제작 전 재검토.
 - 22 화면 주장에 cite 없음 — 4교시에서 추가.
-- Service Task·Form 첫 등장 풀이 배치 — 19 제작 시 확정.
+- 재활용 22·26·37 단원명 label이 자기 교시 기준 — 해당 교시 제작 시 확인.
 
 ## 주의 (세션에서 배운 것)
 
@@ -44,6 +47,7 @@
 
 ## 미해결
 
+- [ ] 3~8교시 제작 (16~50, 재활용 22 포함 32장). 진행: 01~15 통과(1·2교시 완료).
 - [ ] ditto `/plugin` 비활성 (사용자 직접)
 - [ ] 구성안 v2: 명시적 "승인" 절차 없이 표지부터 제작 착수됨.
 - [ ] 브랜드 정확한 hex 미확보 — 현재 `#457075` 유지.
