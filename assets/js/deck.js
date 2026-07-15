@@ -218,6 +218,9 @@
       .mark("Task_PrepareRemoteShipping", "active-el").token("Task_PrepareRemoteShipping")
       .mark("Task_PrepareOfficeSeat", "dim-el").token("Task_PrepareOfficeSeat", null, "tok--ghost"),
     (a) => a.clear().focus(WM, 60).mark("Gateway_WorkModeMerge", "active-el").token("Gateway_WorkModeMerge"),
+    // caveat — 조건 미일치 시 Default 경로가 받는다(근무 형태 다시 확인)
+    (a) => a.clear().focus(WM.concat(["Task_ResolveWorkMode"]), 60)
+      .mark("Task_ResolveWorkMode", "active-el").token("Task_ResolveWorkMode"),
   ];
 
   // 슬라이드 25: Parallel Gateway — 분기(1) → 셋(3) → 합류 대기
@@ -230,6 +233,12 @@
       .mark(["Task_CreateAccount", "Task_PrepareEquipment", "Task_RegisterTraining"], "active-el")
       .token("Task_CreateAccount").token("Task_PrepareEquipment").token("Task_RegisterTraining"),
     (a) => a.clear().focus(PREP, 55).mark("Gateway_PreparationJoin", "active-el").token("Gateway_PreparationJoin"),
+    // caveat — 하나라도 도착하지 않으면 합류가 멈춘다(26 교착 예고)
+    (a) => a.clear().focus(PREP, 55)
+      .mark("Gateway_PreparationJoin", "dead-el")
+      .token("Task_CreateAccount").token("Task_PrepareEquipment")
+      .token("Task_RegisterTraining", null, "tok--ghost")
+      .token("Gateway_PreparationJoin", null, "tok--wait"),
   ];
 
   // 슬라이드 09: 전체 온보딩 모델 — 조작 없음(fit)
