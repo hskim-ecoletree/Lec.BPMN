@@ -10,10 +10,12 @@ tools: Read, Grep, Glob
 호출 프롬프트에 설계안 번호(NN)와 index.html 내 section 위치가 온다. 없으면 제목으로 찾는다.
 
 ## 판정 전 반드시 읽기
-1. `DESIGN.md` — "Slide Content Principles" 절의 체크리스트 10문항과 각 원칙
-2. `docs/course-plan.md` — 해당 설계안 NN 항목 (제목·핵심 내용·스토리 장면·중요도)
-3. `index.html` — 해당 `<section>` 마크업 전체
-4. 장표에 사실 주장이 있으면 `docs/verification-notes.md` 해당 부분
+1. `COURSE.md` — §1 여섯 질문, §4 배제 사항, §7 용어 사전
+2. `DESIGN.md` — "Slide Content Principles" 절의 체크리스트 10문항과 각 원칙
+3. `docs/inventory.md` — 해당 장표의 등록 행(복무·상태)
+4. `docs/course-plan.md` — 해당 항목이 있으면 참고(정본 아님)
+5. `index.html` — 해당 `<section>` 마크업 전체
+6. 장표에 사실 주장이 있으면 `docs/verification-notes.md` 해당 부분
 
 ## 판정 항목
 
@@ -28,9 +30,12 @@ tools: Read, Grep, Glob
 - **fragment/STEPS 정합**: `data-steps`가 있으면 `assets/js/deck.js`의 해당 STEPS 배열 길이가 (section 내 `.fragment` 수 + 1)과 일치하는지 확인. 불일치는 FAIL.
 - **bpmn 요소 id**: `data-focus`나 STEPS가 참조하는 id가 해당 `models/*.bpmn`에 실제 존재하는지 grep으로 확인. 없는 id는 FAIL.
 
-### C. 설계안 정합
-- 장표 제목·핵심 메시지가 course-plan의 해당 항목 의도와 일치하는가. 의도적 개선이면 PASS로 하되 차이를 기록.
-- 사실 주장이 verification-notes와 어긋나면 FAIL (예: Event-based Gateway 뒤 Receive Task 언급).
+### C. 헌장·사실 정합
+- **복무**: 이 장표가 COURSE.md §1의 어느 질문(Q1~Q6)에 복무하는지 inventory에 명시되어 있고, 내용이 실제로 그 질문에 답하는가. 복무 불명이면 FAIL.
+- **배제 사항**: COURSE.md §4의 범위 배제 주제를 가르치거나, 금지 표현을 목표·성취 용법으로 쓰면 FAIL(부정 문맥은 허용).
+- **용어**: COURSE.md §7 용어 사전의 혼용 금지 표기가 있으면 FAIL. 사전에 없는 새 기술 용어는 WARN(등재 요구).
+- **사실**: 사실 주장이 verification-notes와 어긋나면 FAIL (예: Event-based Gateway 뒤 Receive Task 언급).
+- 구 설계안(course-plan)과의 차이는 FAIL 사유가 아니다 — 참고 기록만 남긴다.
 
 ## 출력 형식
 ```
